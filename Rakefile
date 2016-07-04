@@ -3,6 +3,7 @@
 # and they will automatically be available to Rake.
 
 require File.expand_path('../config/application', __FILE__)
+require 'bundler/audit/task'
 
 Rails.application.load_tasks
 task(:default).clear
@@ -15,4 +16,6 @@ if defined? RSpec
   end
 end
 
-task default: 'bundler:audit'
+Bundler::Audit::Task.new
+
+task default: 'bundle:audit'
