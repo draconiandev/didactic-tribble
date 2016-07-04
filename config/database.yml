@@ -1,0 +1,25 @@
+#
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
+  host: localhost
+  username: <%= ENV["DB_USERNAME"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
+  reaping_frequency: 10
+  timeout: 5000
+
+development:
+  <<: *default
+  database: trekhub_development
+
+test:
+  <<: *default
+  database: trekhub_test
+
+production:
+  <<: *default
+  database: trekhub_production
+  username: trekhub
+  password: <%= ENV['TREKHUB_DATABASE_PASSWORD'] %>
+  pool: <%= ENV["DB_POOL"] || ENV['MAX_THREADS'] || 5 %>
