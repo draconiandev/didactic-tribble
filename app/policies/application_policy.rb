@@ -52,4 +52,10 @@ class ApplicationPolicy
       scope
     end
   end
+
+  private
+
+  def manager?
+    person.try(:editor?) || person.try(:admin?)
+  end
 end

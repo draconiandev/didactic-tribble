@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   get 'static_pages/trust'
 
   resources :people, only: [:index, :show, :destroy]
+  resources :destinations
 end

@@ -1,0 +1,29 @@
+	<div class="row">
+	  <div class="col s12">
+	    <%#= image_tag @destination.cover.cover.url, class:'cover-img materialboxed' %>
+	  </div>
+	</div>
+<div class="container">
+
+	<h4><%= @destination.name %></h4>
+	<h5><%#= @destination.state.name if @destination.state %></h5>
+	<p><%= @destination.description %></p>
+	<br><br>
+
+	<% if policy(:destination).edit? %>
+		<%= link_to(edit_destination_path) do %>
+			<div class="btn waves-effect waves-light">Edit Destination<i class="material-icons right">mode_edit</i></div>
+		<% end %>
+	<% end %>
+
+	<% if policy(:destination).destroy? %>
+		<div style="float:right;">
+			<%= link_to destination_path(@destination), method: :delete, data: {confirm: "Do you really want to delete this destination?"} do %>
+				<div class="btn waves-effect waves-light red">Delete Destination<i class="material-icons right">delete</i></div>
+			<% end %>
+		</div>
+	<% end %>
+	
+</div>
+
+<%#= render 'activity' %>

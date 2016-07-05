@@ -1,0 +1,23 @@
+<% if @destination.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@destination.errors.count, "error") %>
+      prohibited this destination from being saved:</h2>
+    <ul>
+      <% @destination.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="row">
+<%= simple_form_for @destination, html: { multipart: true, class: 'col s12' } do |f| %>
+  <%= f.input :name, input_html: { class: 'row input-field col s12' } %> <br><br><br>
+  <%= f.input :description, input_html: { id: 'textarea1', class: 'materialize-textarea' } %>
+  <%= f.input :brief, label: 'Meta description' %>
+  <%= f.input :slug %>
+  <div class=""><p>*Destination Cover Image</p></div>
+  <%= f.input :cover, as: :file, label: '' %><br><br>
+  <%#= f.association :state %>
+  <%= f.submit "Submit", class: 'center-align btn waves-effect waves-light' %>
+<% end %>
+</div>
