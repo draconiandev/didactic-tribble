@@ -1,0 +1,18 @@
+<nav>
+    <div class="nav-wrapper">
+      <div class="push-center">
+        <%= link_to (image_tag("trekhub_logo.png", size: "58x58", alt: "Trekhub Logo",
+                    class: "brand-logo")), root_path %>
+      </div>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <div class="th-nav">
+      <ul class="right hide-on-med-and-down">
+        <%= render 'shared/navlinks' %>
+      </ul>
+      </div>
+    </div>
+    <ul class="side-nav" id="mobile-demo">
+      <%= render 'shared/navlinks' %>
+    </ul>
+</nav>
+ 

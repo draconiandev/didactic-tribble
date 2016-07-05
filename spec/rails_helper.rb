@@ -32,15 +32,15 @@ RSpec.configure do |config|
   end
 
   config.include FactoryGirl::Syntax::Methods
-  # config.include Warden::Test::Helpers
+  config.include Warden::Test::Helpers
   # config.include Omniauth::Mock
   # config.include Omniauth::SessionHelpers,  type: :feature
-  # config.include Features,                    type: :feature
-  # config.include Devise::TestHelpers,         type: :controller
+  config.include Features,                    type: :feature
+  config.include Devise::TestHelpers,         type: :controller
 
-  # config.before :suite do
-  #   Warden.test_mode!
-  # end
+  config.before :suite do
+    Warden.test_mode!
+  end
 
   Shoulda::Matchers.configure do |configure|
     configure.integrate do |with|
