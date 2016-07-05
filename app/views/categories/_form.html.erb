@@ -1,0 +1,28 @@
+<div class="container">
+  <div id="error_explanation">
+    <% if @category.errors.any? %>
+    <h2><%= pluralize(@category.errors.count, "error") %>
+    prohibited this category from being saved:</h2>
+    <ul>
+      <% @category.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <%= simple_form_for @category, html: { multipart: true, class: 'col s12' } do |f| %>
+    <%= f.input :name, input_html: { class: 'row input-field col s12' } %> <br><br><br>
+    <%= f.input :description, input_html: { id: 'textarea1', class: 'materialize-textarea' } %>
+    <%= f.input :main_category %> <br>
+    <p>*Category Cover Image</p>
+    <%= f.input :cover, as: :file, label: '' %> <br>
+    <%= f.input :slug %>
+    <%= f.input :brief, label: 'Meta Description',
+                            input_html: { id: 'textarea1', class: 'materialize-textarea' } %>
+
+    <%= f.submit "Submit", class: 'center-align btn waves-effect waves-light' %>
+    <% end %>
+  </div>
+</div>

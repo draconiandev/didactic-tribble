@@ -15,4 +15,5 @@ Rails.application.routes.draw do
 
   resources :people, only: [:index, :show, :destroy]
   resources :destinations
+  resources :categories
 end
