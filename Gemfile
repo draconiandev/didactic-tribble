@@ -9,6 +9,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails', '~> 4.1', '>= 4.1.1'
 gem 'jbuilder', '~> 2.0'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
+gem 'devise', '~> 4.2'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 
