@@ -6,8 +6,9 @@ gem 'pg', '~> 0.15'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.1', '>= 4.1.1'
 gem 'jbuilder', '~> 2.0'
+
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
@@ -18,29 +19,28 @@ group :development, :test do
   gem 'awesome_print'
   gem 'bullet'
   gem 'bundler-audit', require: false
-  gem 'rspec-rails', '~> 3.4'
-  gem 'poltergeist', '~> 1.9'
-  gem 'faker', '~> 1.6'
-  gem 'shoulda-callback-matchers', '~> 1.1'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'poltergeist', '~> 1.10'
+  gem 'faker', '~> 1.6', '>= 1.6.3'
+  gem 'shoulda-callback-matchers', '~> 1.1', '>= 1.1.4'
 end
 
 group :development do
-  gem 'web-console', '~> 2.0'
-  gem 'spring'
-  gem 'spring-commands-rspec'
-  gem 'quiet_assets'
-  gem 'better_errors'
+  gem 'web-console', '~> 3.3'
+  gem 'spring', '~> 1.7', '>= 1.7.2'
+  gem 'spring-commands-rspec', '~> 1.0', '>= 1.0.4'
+  gem 'quiet_assets', '~> 1.1'
+  gem 'better_errors', '~> 2.1', '>= 2.1.1'
   gem 'brakeman', require: false
-  gem 'meta_request'
-  gem 'rails-erd'
+  gem 'meta_request', '~> 0.4.0'
 end
 
 group :test do
-  gem 'capybara', '~> 2.6'
-  gem 'selenium-webdriver', '~> 2.52'
-  gem 'shoulda-matchers'
-  gem 'database_cleaner', '~> 1.5'
-  gem 'factory_girl_rails', '~> 4.6'
-  gem 'launchy', '~> 2.4'
+  gem 'capybara', '~> 2.7', '>= 2.7.1'  
+  gem 'selenium-webdriver', '~> 2.53', '>= 2.53.4'
+  gem 'shoulda-matchers', '~> 3.1', '>= 3.1.1'
+  gem 'database_cleaner', '~> 1.5', '>= 1.5.3'
+  gem 'factory_girl_rails', '~> 4.7'
+  gem 'launchy', '~> 2.4', '>= 2.4.3'
   gem 'simplecov', require: false
 end
