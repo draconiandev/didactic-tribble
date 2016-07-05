@@ -6,7 +6,7 @@ require 'spec_helper'
 require 'rspec/rails'
 
 ActiveRecord::Migration.maintain_test_schema!
-Capybara.javascript_driver = :selenium
+Capybara.javascript_driver = :poltergeist
 # OmniAuth.config.test_mode = true
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
