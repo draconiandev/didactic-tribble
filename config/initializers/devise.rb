@@ -20,7 +20,7 @@ Devise.setup do |config|
   config.reset_password_keys = [:email]
   config.reset_password_within = 12.hours
   config.sign_out_via = :delete
-  # config.omniauth :facebook, ENV['FB_KEY'], ENV['FB_SECRET']
-  # config.omniauth :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'],
-  #                 name: 'google'
+  config.omniauth :facebook, ENV['FB_KEY'], ENV['FB_SECRET']
+  config.omniauth :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'],
+                  name: 'google'
 end

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
   devise_for :people, controllers: {
-    registrations: 'people/registrations'
+    registrations: 'people/registrations',
+    omniauth_callbacks: 'people/omniauth_callbacks'
   }
 
   root 'static_pages#home'

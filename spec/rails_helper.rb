@@ -7,7 +7,7 @@ require 'rspec/rails'
 
 ActiveRecord::Migration.maintain_test_schema!
 Capybara.javascript_driver = :poltergeist
-# OmniAuth.config.test_mode = true
+OmniAuth.config.test_mode = true
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
@@ -33,8 +33,8 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
   config.include Warden::Test::Helpers
-  # config.include Omniauth::Mock
-  # config.include Omniauth::SessionHelpers,  type: :feature
+  config.include Omniauth::Mock
+  config.include Omniauth::SessionHelpers,  type: :feature
   config.include Features,                    type: :feature
   config.include Devise::TestHelpers,         type: :controller
 
