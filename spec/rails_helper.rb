@@ -34,9 +34,9 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include Warden::Test::Helpers
   config.include Omniauth::Mock
-  config.include Omniauth::SessionHelpers,  type: :feature
-  config.include Features,                    type: :feature
-  config.include Devise::TestHelpers,         type: :controller
+  config.include Omniauth::SessionHelpers,                type: :feature
+  config.include Features,                                type: :feature
+  config.include Devise::Test::ControllerHelpers,         type: :controller
 
   config.before :suite do
     Warden.test_mode!
