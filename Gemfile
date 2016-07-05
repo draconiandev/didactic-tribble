@@ -13,6 +13,7 @@ gem 'devise', '~> 4.2'
 gem 'omniauth-facebook', '~> 3.0'
 gem 'omniauth-google-oauth2', '~> 0.4.1'
 gem 'enumerize', '~> 1.1', '>= 1.1.1'
+gem 'pundit', '~> 1.1'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 
