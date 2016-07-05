@@ -1,7 +1,7 @@
 #
 class PeopleController < ApplicationController
   before_action :set_person,            only: [:show, :destroy]
-  # before_action :authenticate_person!,  only: [:show]
+  before_action :authenticate_person!,  only: [:show]
   # before_action :authenticate_manager!, only: [:index]
   # after_action  :verify_authorized
 

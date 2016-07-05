@@ -1,0 +1,29 @@
+<div class="container">
+<h3>People</h3>
+
+<table class="bordered striped">
+  <thead>
+    <tr>
+      <th data-field="id">Name</th>
+      <th data-field="email">Email</th>
+      <th data-field="role">Role</th>
+      <% if policy(:person).destroy? %>
+        <th data-field="delete">Delete Person</th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @people.each do |person| %>
+    <td><%= link_to person.name.titleize, person %></td>
+    <td><%= person.email %></td>
+    <td><%= person.role.humanize %></td>
+    <td>
+      <% if policy(:person).destroy? %>
+        <%= link_to("Delete person", person_path(person),
+            data: { confirm: "Are you sure?" }, method: :delete) unless person == current_person %>
+      <% end %>
+    </td>
+  </tbody>
+  <% end %>
+</table>
+</div>
