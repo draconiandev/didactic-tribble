@@ -37,12 +37,12 @@ RSpec.describe Activity, type: :model do
     it { expect(activity).to have_db_column(:cover).of_type(:string) }
     it { expect(activity).to have_db_column(:brief).of_type(:text) }
     it { expect(activity).to have_db_column(:slug).of_type(:string) }
-    # it { expect(activity).to have_db_index(:title).unique(:true) }
+    it { expect(activity).to have_db_index(:title).unique(:true) }
   end
 
   describe 'ActiveRecord associations' do
-    # it { expect(activity).to belong_to(:destination) }
-    # it { expect(activity).to belong_to(:category) }
+    it { expect(activity).to belong_to(:destination) }
+    it { expect(activity).to belong_to(:category) }
   end
 
   describe 'public class methods' do

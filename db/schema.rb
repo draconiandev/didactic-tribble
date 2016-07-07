@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160707055020) do
+ActiveRecord::Schema.define(version: 20160707060911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,13 @@ ActiveRecord::Schema.define(version: 20160707055020) do
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
     t.string   "slug"
+    t.integer  "category_id"
+    t.integer  "destination_id"
   end
+
+  add_index "activities", ["category_id"], name: "index_activities_on_category_id", using: :btree
+  add_index "activities", ["destination_id"], name: "index_activities_on_destination_id", using: :btree
+  add_index "activities", ["title"], name: "index_activities_on_title", unique: true, using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -84,4 +90,6 @@ ActiveRecord::Schema.define(version: 20160707055020) do
   add_index "people", ["name"], name: "index_people_on_name", using: :btree
   add_index "people", ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "activities", "categories"
+  add_foreign_key "activities", "destinations"
 end

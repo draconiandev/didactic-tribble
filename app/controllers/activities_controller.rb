@@ -63,6 +63,7 @@ class ActivitiesController < ApplicationController
     params.require(:activity).permit(:title, :overview, :itinerary,
                                      :price, :start_date, :end_date, :cover,
                                      :handcrafted, :handcrafted_category,
-                                     :difficulty, :brief, :slug)
+                                     :difficulty, :brief, :slug, :category_id,
+                                     :destination_id)
   end
 end

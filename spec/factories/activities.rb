@@ -13,8 +13,8 @@ FactoryGirl.define do
     handcrafted_category    'weekend_getaway'
     slug                    Faker::Internet.slug
     brief                   Faker::Lorem.sentence
-    # association             :destination, factory: :destination
-    # association             :category, factory: :category
+    association             :destination, factory: :destination
+    association             :category, factory: :category
   end
 
   factory :invalid_activity do
