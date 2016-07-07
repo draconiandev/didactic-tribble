@@ -1,0 +1,88 @@
+<div class='container'>
+  <%= simple_form_for @activity, remote: true, authenticity_token: true,
+                                 html: { multipart: true } do |f| %>
+    <%= f.error_notification %>
+    <ul>
+      <% @activity.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <div class='row'><div class='col s12'><%= f.input :title %></div>
+      <div class='col s6'><%= f.input :difficulty %></div>
+      <div class='col s6'><%= f.input :price, as: :decimal %></div>
+      <hr><br><h5 class='center'>Brief</h5><hr><br>
+      <div class='col s12'>
+        <%= f.input :overview, input_html: { id: 'textarea1', class: 'materialize-textarea' } %>
+      </div>
+      <div class='col s12'>
+        <%= f.input :itinerary, input_html: { id: 'textarea1', class: 'materialize-textarea' } %>
+      </div>
+      <hr><br><h5 class='center'>Associations</h5><hr><br>
+      <div class='row'>
+        <div class='col s6'><%#= f.association :destination %></div>
+        <div class='col s6'><%#= f.association :category %></div>
+        <div class='col s6 left'><%= link_to 'New Destination', new_destination_path, target: '_blank' %></div>
+        <div class='col s6 right'><%= link_to 'New Category', new_category_path, target: '_blank' %></div> 
+      </div>
+      <div class='row'>
+      <hr><br><h5 class='center'>Dates</h5><hr><br>
+      <!-- Datepicker works only with Jquery v1 -->
+      <div class='col s6'>
+        <%= f.label :start_date %>
+        <%= f.text_field :start_date, type: :date, class: 'datepicker', label: 'Start Date' %>
+      </div>
+      <div class='col s6'>
+        <%= f.label :end_date %>
+        <%= f.text_field :end_date, type: :date, class: 'datepicker', label: 'End Date' %>
+      </div>
+      </div>
+      <hr><br><h5 class='center'>Special Category?</h5><hr><br>
+      <div class='row'>
+      <div class='col s12 m6 l6'><br>
+      <%= f.input :handcrafted, label: 'Handcrafted?'%>
+      </div>
+      <div class='col s12 m6 l6'><br>
+        <%= f.input :handcrafted_category, prompt: 'Select only if the activity is handcrafted',
+                                         label: 'Handcrafted Categories', include_blank: true %>
+      </div>
+      </div>
+      <hr><br><h5 class='center'>SEO</h5><hr><br>
+      <div class='col s12'><%#= f.input :slug %></div>
+      <div class='col s12'>
+        <%= f.input :brief, label: 'Meta description', input_html: { id: 'textarea1', class: 'materialize-textarea' } %>
+      </div>
+      <hr><br>
+      <hr><br><h5 class='center'>Images</h5><hr><br>
+      <div class='col s12'><br>
+        <div class='file-field input-field'>
+          <div class='btn'>
+            <span>*Cover Image</span>
+            <%= f.file_field :cover, type: :file, label: '' %>
+          </div>
+          <div class='file-path-wrapper'>
+            <input class='file-path validate' type='text'>
+          </div>
+        </div>
+        <%= @activity.cover? ? 'There is a file already' : '' %>
+      </div>
+
+      <div class='col s12'><br>
+        <div class='file-field input-field'>
+          <div class='btn'>
+            <span>Gallery Images</span>
+            <%= f.simple_fields_for :images do |i| %>
+              <%= i.file_field :image, type: :file, label: '', multiple: true,
+                                       name: "activity[images_attributes][][image]"
+ %>
+            <% end %>
+          </div>
+          <div class='file-path-wrapper'>
+            <input class='file-path validate' type='text'>
+          </div>
+        </div>
+        <%#= link_to 'Add an image', :images %>
+        </div>
+    </div>
+    <%= f.submit 'Submit', class: 'center-align btn waves-effect waves-light' %>
+  <% end %>
+</div>
