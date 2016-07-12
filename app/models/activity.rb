@@ -14,7 +14,7 @@ class Activity < ActiveRecord::Base
   enumerize :handcrafted_category, in: [:weekend_getaway, :team_outing,
                                         :elderly_activity, :women_special]
 
-  # mount_uploader :cover, CoverUploader
+  mount_uploader :cover, CoverUploader
 
   def end_date_after_start_date
     return if end_date.blank? || start_date.blank?

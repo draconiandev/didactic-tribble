@@ -4,5 +4,5 @@ class Destination < ActiveRecord::Base
 
   validates :name, :description, :brief, :slug, presence: true
 
-  # mount_uploader :cover, CoverUploader
+  mount_uploader :cover, CoverUploader
 end

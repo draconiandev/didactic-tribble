@@ -1,0 +1,41 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'install', 'phantomjs', '-g' ]
+2 info using npm@2.15.8
+3 info using node@v4.4.7
+4 verbose install initial load of /usr/lib/package.json
+5 verbose readDependencies loading dependencies from /usr/lib/package.json
+6 silly cache add args [ 'phantomjs', null ]
+7 verbose cache add spec phantomjs
+8 silly cache add parsed spec Result {
+8 silly cache add   raw: 'phantomjs',
+8 silly cache add   scope: null,
+8 silly cache add   name: null,
+8 silly cache add   rawSpec: 'phantomjs',
+8 silly cache add   spec: '/home/p150/Documents/website/TrekHub/phantomjs',
+8 silly cache add   type: 'local' }
+9 silly addLocalTarball shasum (computed) 88e05602a06ec3ef209d35508245007c56f7cfea
+10 verbose addTmpTarball /home/p150/Documents/website/TrekHub/phantomjs not in flight; adding
+11 verbose correctMkdir /home/p150/.npm correctMkdir not in flight; initializing
+12 verbose addTmpTarball validating metadata from /home/p150/Documents/website/TrekHub/phantomjs
+13 verbose tar unpack /home/p150/Documents/website/TrekHub/phantomjs
+14 verbose tar unpacking to /tmp/npm-15465-280c7f16/unpack-99987a9f66f0
+15 silly gentlyRm /tmp/npm-15465-280c7f16/unpack-99987a9f66f0 is being purged
+16 verbose gentlyRm don't care about contents; nuking /tmp/npm-15465-280c7f16/unpack-99987a9f66f0
+17 silly gunzTarPerm modes [ '775', '664' ]
+18 error not a package /home/p150/Documents/website/TrekHub/phantomjs
+19 error addLocal Could not install /home/p150/Documents/website/TrekHub/phantomjs
+20 verbose stack Error: ENOENT: no such file or directory, open '/tmp/npm-15465-280c7f16/unpack-99987a9f66f0/package.json'
+20 verbose stack     at Error (native)
+21 verbose cwd /home/p150/Documents/website/TrekHub
+22 error Linux 4.4.0-28-generic
+23 error argv "/usr/bin/nodejs" "/usr/bin/npm" "install" "phantomjs" "-g"
+24 error node v4.4.7
+25 error npm  v2.15.8
+26 error path /tmp/npm-15465-280c7f16/unpack-99987a9f66f0/package.json
+27 error code ENOENT
+28 error errno -2
+29 error syscall open
+30 error enoent ENOENT: no such file or directory, open '/tmp/npm-15465-280c7f16/unpack-99987a9f66f0/package.json'
+30 error enoent This is most likely not a problem with npm itself
+30 error enoent and is related to npm not being able to find a file.
+31 verbose exit [ -2, true ]

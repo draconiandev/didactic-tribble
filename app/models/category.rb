@@ -9,5 +9,5 @@ class Category < ActiveRecord::Base
             :slug, presence: true
   validates :name, uniqueness: true
 
-  # mount_uploader :cover, CoverUploader
+  mount_uploader :cover, CoverUploader
 end

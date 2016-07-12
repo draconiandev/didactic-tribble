@@ -21,7 +21,7 @@ RSpec.describe Destination, type: :model do
     it { expect(destination).to have_db_column(:description).of_type(:text) }
     it { expect(destination).to have_db_column(:brief).of_type(:text) }
     it { expect(destination).to have_db_column(:cover).of_type(:string) }
-    # it { expect(destination).to have_db_index(:name).unique(:true) }
+    it { expect(destination).to have_db_index(:name).unique(:true) }
   end
 
   describe 'public class methods' do

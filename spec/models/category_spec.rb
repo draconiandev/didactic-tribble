@@ -29,7 +29,7 @@ RSpec.describe Category, type: :model do
   end
 
   describe 'ActiveRecord associations' do
-    # it { expect(category).to have_many(:activities).dependent(:destroy) }
+    it { expect(category).to have_many(:activities).dependent(:destroy) }
   end
 
   describe 'public class methods' do

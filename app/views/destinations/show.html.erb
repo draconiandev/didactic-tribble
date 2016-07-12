@@ -1,12 +1,11 @@
 	<div class="row">
 	  <div class="col s12">
-	    <%#= image_tag @destination.cover.cover.url, class:'cover-img materialboxed' %>
+	    <%= image_tag @destination.cover.cover.url, class:'cover-img materialboxed' %>
 	  </div>
 	</div>
 <div class="container">
 
 	<h4><%= @destination.name %></h4>
-	<h5><%#= @destination.state.name if @destination.state %></h5>
 	<p><%= @destination.description %></p>
 	<br><br>
 

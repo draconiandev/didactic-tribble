@@ -63,6 +63,8 @@ ActiveRecord::Schema.define(version: 20160707060911) do
     t.datetime "updated_at",  null: false
   end
 
+  add_index "destinations", ["name"], name: "index_destinations_on_name", unique: true, using: :btree
+
   create_table "people", force: :cascade do |t|
     t.string   "name",                   default: "",     null: false
     t.string   "email",                  default: "",     null: false
