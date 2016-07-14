@@ -2,6 +2,9 @@
 class Activity < ActiveRecord::Base
   belongs_to :destination
   belongs_to :category
+  has_many :galleries
+
+  accepts_nested_attributes_for :galleries
 
   validates :title, :overview, :itinerary, :price, :start_date,
             :difficulty, :brief, :slug, :destination_id, :category_id, presence: true

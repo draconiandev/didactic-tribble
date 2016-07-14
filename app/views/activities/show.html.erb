@@ -52,7 +52,10 @@
 <!-- Content End -->
 
 <!-- Gallery Begin -->
-
+<% @galleries.each do |p| %>
+  <%= image_tag p.image.url %>
+  <%= link_to "Edit Attachment", edit_gallery_path(p) %>
+<% end %>
 <!-- Gallery End -->
 <div class='container'>
   <% if policy(:activity).edit? %>

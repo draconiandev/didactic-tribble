@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160707060911) do
+ActiveRecord::Schema.define(version: 20160714051208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,14 @@ ActiveRecord::Schema.define(version: 20160707060911) do
   end
 
   add_index "destinations", ["name"], name: "index_destinations_on_name", unique: true, using: :btree
+
+  create_table "galleries", force: :cascade do |t|
+    t.integer  "activity_id"
+    t.string   "image"
+    t.string   "alt_text"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "people", force: :cascade do |t|
     t.string   "name",                   default: "",     null: false

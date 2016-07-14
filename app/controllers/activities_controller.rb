@@ -13,12 +13,16 @@ class ActivitiesController < ApplicationController
   def new
     authorize Activity
     @activity = Activity.new
+    @gallery = @activity.galleries.build
   end
 
   def create
-    @activity = Activity.new
+    @activity = Activity.new(activity_params)
     authorize @activity
     if @activity.save
+      params[:galleries]['image'].each do |a|
+        @gallery = @activity.galleries.create!(image: a, activity_id: @activity.id)
+      end
       flash[:success] = 'Activity has been created.'
       redirect_to activity_path(@activity)
     else
@@ -28,6 +32,7 @@ class ActivitiesController < ApplicationController
   end
 
   def show
+    @galleries = @activity.galleries.all
     authorize @activity
   end
 
@@ -37,13 +42,13 @@ class ActivitiesController < ApplicationController
 
   def update
     authorize @activity
-      if @activity.update(activity_params)
-        flash[:success] = 'Activity has been updated.'
-        redirect_to activity_path(@activity)
-      else
-        flash.now[:alert] = 'Sorry! Activity has not been updated.'
-        render 'new'
-      end
+    if @activity.update(activity_params)
+      flash[:success] = 'Activity has been updated.'
+      redirect_to activity_path(@activity)
+    else
+      flash.now[:alert] = 'Sorry! Activity has not been updated.'
+      render 'new'
+    end
   end
 
   def destroy
@@ -64,6 +69,8 @@ class ActivitiesController < ApplicationController
                                      :price, :start_date, :end_date, :cover,
                                      :handcrafted, :handcrafted_category,
                                      :difficulty, :brief, :slug, :category_id,
-                                     :destination_id)
+                                     :destination_id,
+                                     galleries_attributes: [:id, :activity_id,
+                                      :image, :alt_text])
   end
 end

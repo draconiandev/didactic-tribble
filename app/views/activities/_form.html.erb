@@ -19,8 +19,8 @@
       </div>
       <hr><br><h5 class='center'>Associations</h5><hr><br>
       <div class='row'>
-        <div class='col s6'><%#= f.association :destination %></div>
-        <div class='col s6'><%#= f.association :category %></div>
+        <div class='col s6'><%= f.association :destination %></div>
+        <div class='col s6'><%= f.association :category %></div>
         <div class='col s6 left'><%= link_to 'New Destination', new_destination_path, target: '_blank' %></div>
         <div class='col s6 right'><%= link_to 'New Category', new_category_path, target: '_blank' %></div>
       </div>
@@ -47,7 +47,7 @@
       </div>
       </div>
       <hr><br><h5 class='center'>SEO</h5><hr><br>
-      <div class='col s12'><%#= f.input :slug %></div>
+      <div class='col s12'><%= f.input :slug %></div>
       <div class='col s12'>
         <%= f.input :brief, label: 'Meta description', input_html: { id: 'textarea1', class: 'materialize-textarea' } %>
       </div>
@@ -70,9 +70,9 @@
         <div class='file-field input-field'>
           <div class='btn'>
             <span>Gallery Images</span>
-            <%= f.simple_fields_for :images do |i| %>
+            <%= f.simple_fields_for :galleries do |i| %>
               <%= i.file_field :image, type: :file, label: '', multiple: true,
-                                       name: "activity[images_attributes][][image]"
+                                       name: "galleries[image][]" 
  %>
             <% end %>
           </div>
