@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta content="IE=edge" http-equiv="X-UA-Compatible" />
   <meta charset="utf-8" />
@@ -8,6 +8,8 @@
   <!--  Android 5 Chrome Color-->
   <meta name="theme-color" content="#009688">
   <title>TrekHub</title>
+  <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Ek+Mukta", property: "stylesheet" %>
+  <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons", property: "stylesheet" %>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -20,7 +22,9 @@
     <% end %>
   </p>
 
-<%= yield %>
+  <%= yield %>
+  <%= render 'shared/footer' %>
+  <%= render 'shared/flash_messages' %>
 
 </body>
 </html>

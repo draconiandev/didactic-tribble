@@ -16,6 +16,8 @@ gem 'enumerize', '~> 1.1', '>= 1.1.1'
 gem 'pundit', '~> 1.1'
 gem 'carrierwave', '~> 0.11.2'
 gem 'mini_magick', '~> 4.5'
+gem 'materialize-sass', '~> 0.97.6'
+gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 

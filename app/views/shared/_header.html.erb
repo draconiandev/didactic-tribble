@@ -1,0 +1,30 @@
+<div class="aheader">
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center white-text">Welcome Home</h1>
+        <div class="row center">
+          <h5 class="header white-text text-lighten-1 col s12 light"> Experience 200+ activities in more than 20 destinations</h5>
+        </div>
+        <nav class="deep-orange lighten-1">
+          <div class="nav-wrapper">
+            <form>
+              <ul class="input-field">
+                <form class="col s12">
+                  <%= form_tag activities_path, method: :get, class: "navbar-form navbar-right", role: "search" do %>
+                    <p>
+                    <%= text_field_tag :search, params[:search], class: "form-control" %>
+                    <%= submit_tag "Search", name: nil, class: "btn" %>
+                    </p>
+                  <% end %>
+                </form>
+              </ul>
+            </form>
+          </div>
+        </nav>  
+        <br><br>
+      </div>
+    </div>
+  </div>
+</div>

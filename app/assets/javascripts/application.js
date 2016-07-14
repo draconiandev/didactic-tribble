@@ -12,4 +12,24 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require materialize-sprockets
+//= require materialize/extras/nouislider
 //= require_tree .
+
+$(document).ready(function() {
+    $('input.datepicker').pickadate({
+      selectMonths: true,
+      format: 'You selecte!d: dddd, dd mmm, yyyy',
+    });
+   $('.tabs-wrapper .row').pushpin();
+    $('select').material_select();
+    $('.parallax').parallax();
+    $('ul.tabs').tabs();
+    $('.materialboxed').materialbox();
+    $('#textarea1').trigger('autoresize');
+    $('#textarea2').trigger('autoresize');
+    $(".dropdown-button").dropdown({
+        hover: true,
+        belowOrigin: true,
+      });
+});

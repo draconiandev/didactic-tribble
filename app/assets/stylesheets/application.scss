@@ -1,0 +1,102 @@
+@import 'materialize/components/color';
+$primary-color: color('teal', 'darken-3') !default;
+$secondary-color: color('orange', 'base') !default;
+$link-color: color('blue', 'darken-2') !default;
+@import 'materialize';
+@import 'materialize/extras/nouislider';
+@import 'font-awesome';
+
+html {
+    font-family: Ek Mukta, Roboto, sans-serif;
+}
+
+body {
+  background-color: #FCFCFC;
+}
+
+::selection {
+  background: #B2DFDB; 
+}
+
+nav.subnav{
+  background-color: #009688;
+  color: black;
+  z-index: 5;
+}
+
+nav.ul.a.subnav {
+  color: #212121;
+}
+
+a.footer-icons {
+  color: white;
+  padding-right: 1.5rem;
+}
+
+.push-center {
+  padding-left: 15%;
+}
+
+.toast-flash {
+  border-radius: 0.5rem;
+}
+
+.toast-success {
+  background-color: #007E33;
+}
+
+.toast-error {
+  background-color: #CC0000;
+}
+
+.toast-alert {
+  background-color: #FF8800;
+}
+
+.toast-notice {
+  background-color: #0099CC;
+}
+
+.google {
+  color: #DF4930;
+  text-color: white;
+}
+
+.facebook {
+  color: #507CC0;
+  text-color: white;
+}
+
+.twitter {
+  color: #64CCF1 ;
+  text-color: white;
+}
+
+.flat-button {
+  border: 0.1rem solid $primary-color;
+  border-radius: 0.3rem;
+}
+
+.cover-img {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+  background-color: #000;
+  margin: auto;
+}
+
+.push-down {
+  margin-top: -6.75%;
+}
+
+.aheader{
+  background-image: url('/headerbg.jpeg');
+  background-size:cover;
+  background-position: bottom;
+  position:relative;
+  width: 100%;
+  z-index:1;
+  margin-top: -1rem;
+}
