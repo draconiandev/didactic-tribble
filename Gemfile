@@ -3,21 +3,36 @@ ruby '2.3.1'
 
 gem 'rails', '4.2.6'
 gem 'pg', '~> 0.15'
+gem 'jbuilder', '~> 2.0'
+gem 'enumerize', '~> 1.1', '>= 1.1.1'
+
+#Frontend
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails', '~> 4.1', '>= 4.1.1'
-gem 'jbuilder', '~> 2.0'
+gem 'materialize-sass', '~> 0.97.6'
+gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
+
+#Authentication
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'devise', '~> 4.2'
 gem 'omniauth-facebook', '~> 3.0'
 gem 'omniauth-google-oauth2', '~> 0.4.1'
-gem 'enumerize', '~> 1.1', '>= 1.1.1'
+
+#Authorization
 gem 'pundit', '~> 1.1'
+
+#Image
 gem 'carrierwave', '~> 0.11.2'
 gem 'photoswipe-rails', '~> 4.1', '>= 4.1.1'
 gem 'mini_magick', '~> 4.5'
-gem 'materialize-sass', '~> 0.97.6'
-gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
+
+#Pagination
+gem 'will_paginate', '~> 3.1'
+
+#Search
+gem 'elasticsearch-rails', '~> 0.1.9'
+gem 'elasticsearch-model', '~> 0.1.9'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 
