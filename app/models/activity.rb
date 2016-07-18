@@ -1,5 +1,6 @@
 #
 class Activity < ActiveRecord::Base
+
   belongs_to :destination
   belongs_to :category
   has_many :galleries
@@ -19,6 +20,8 @@ class Activity < ActiveRecord::Base
   enumerize :difficulty, in: [:easy, :moderate, :challenging]
   enumerize :handcrafted_category, in: [:weekend_getaway, :team_outing,
                                         :elderly_activity, :women_special]
+
+  include SearchableActivity
 
   mount_uploader :cover, CoverUploader
 

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :galleries
   devise_for :people, controllers: {
     registrations: 'people/registrations',
     omniauth_callbacks: 'people/omniauth_callbacks'
@@ -13,9 +12,11 @@ Rails.application.routes.draw do
   get 'static_pages/policies'
   get 'static_pages/help'
   get 'static_pages/trust'
+  get 'search' => 'search#show', as: :search
 
   resources :people, only: [:index, :show, :destroy]
   resources :destinations
   resources :categories
   resources :activities
+  resources :galleries
 end

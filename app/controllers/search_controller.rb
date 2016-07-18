@@ -1,8 +1,5 @@
-class StaticPagesController < ApplicationController
+class SearchController < ApplicationController
   before_action :beautify_url
-
-  def home
-  end
 
   def show
     @activities = Activity.search(query_term).paginate(page: params[:page]).records
@@ -10,31 +7,13 @@ class StaticPagesController < ApplicationController
     @destinations = Destination.search(query_term).records
   end
 
-  def about
-  end
-
-  def contact
-  end
-
-  def terms
-  end
-
-  def policies
-  end
-
-  def help
-  end
-
-  def trust
-  end
-
   private
 
-  def beautify_url
-    if params[:search].present?
-      redirect_to search_url(q: params[:search][:q])
+    def beautify_url
+      if params[:search].present?
+        redirect_to search_url(q: params[:search][:q])
+      end
     end
-  end
 
   def query_term
     params[:q] || ''

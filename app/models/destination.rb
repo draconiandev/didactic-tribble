@@ -7,6 +7,8 @@ class Destination < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :finders]
 
+  include SearchableDestination
+
   mount_uploader :cover, CoverUploader
 
   def should_generate_new_friendly_id?
