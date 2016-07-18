@@ -9,17 +9,9 @@
         </div>
         <nav class="deep-orange lighten-1">
           <div class="nav-wrapper">
-            <form>
               <ul class="input-field">
-                <form class="col s12">
-                  <%= form_for :search, url: search_path, method: :get, class: "navbar-form navbar-right", role: "search" do |f| %>
-                    <p>
-                    <%= f.search_field :q, value: params[:q], placeholder: 'Search for activities, categories and destinations', class: "form-control", autocomplete: 'off', onfocus: 'this.value = this.value' %>
-                    </p>
-                  <% end %>
-                </form>
+                <%= react_component('SearchBar', {}, { prerender: true }) %>            
               </ul>
-            </form>
           </div>
         </nav>  
         <br><br>
