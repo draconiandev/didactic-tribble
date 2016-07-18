@@ -13,6 +13,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails', '~> 4.1'
 gem 'materialize-sass', '~> 0.97.6'
 gem 'font-awesome-rails', '~> 4.6'
+gem 'react-rails', '~> 1.8'
 
 #Authentication
 gem 'simple_form', '~> 3.2'
