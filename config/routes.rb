@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   get 'static_pages/trust'
   get 'search' => 'search#show', as: :search
 
+  namespace :api do
+    get 'autocomplete' => 'search_autocomplete#index'    
+  end
+  
   resources :people, only: [:index, :show, :destroy]
   resources :destinations
   resources :categories

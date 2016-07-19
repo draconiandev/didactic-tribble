@@ -2,16 +2,16 @@
   <div class="col s12 m10 l4 offset-m1 offset-l4">
     <h3 class="teal-text center">Sign Up</h3>
     <div class="center social-login">
-      <%#= link_to person_facebook_omniauth_authorize_path do %>
+      <%= link_to person_facebook_omniauth_authorize_path do %>
         <div class="waves-effect waves-light btn indigo facebook white-text">
           <i class="fa fa-facebook fa-fw"></i>
         </div>
-      <%# end %>
-      <%#= link_to person_google_omniauth_authorize_path do %>
+      <% end %>
+      <%= link_to person_google_omniauth_authorize_path do %>
         <div class="btn waves-effect waves-light red darken-1" id="google">
           <i class="fa fa-google fa-fw"></i>
         </div>
-      <%# end %>
+      <% end %>
     </div>
     <br><br>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>

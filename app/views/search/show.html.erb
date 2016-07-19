@@ -13,29 +13,10 @@
     </div>
   </nav>
   <br><br><br>
-    <div class="col-md-6" data-animation="fadeInUp-fadeOutDown">
-      <% if @activities.any? %>
-        <div data-behavior="endless-scroll">
-          <h4 class="small-heading border-top">Activities</h4>
-          <%= render @activities %>
-        </div>
-        <div class="center">
-          <%= will_paginate @activities %>
-        </div>
-      <% end %>
-    </div>
 
-    <aside class="col-md-4" data-animation="fadeInUp-fadeOutDown">
-      <% if @categories.any? %>
-        <h4 class="small-heading border-top">Categories</h4>
-        <%= render @categories %>
-      <% end %>
-      <% if @destinations.any? %>
-        <h4 class="small-heading border-top">Destinations</h4>
-          <%= render @destinations %>
-      <% end %>
-    </aside>
-
+  <%= render 'activities' %>
+  <div>
+    <%= render 'categories' %>
+    <%= render 'destinations' %>
   </div>
-</div>
 </div>
