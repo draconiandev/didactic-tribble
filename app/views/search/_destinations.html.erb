@@ -1,13 +1,18 @@
-<div class="right">
+<div class="center">
 	<% if @destinations.any? %>
 	  <h5 class="center">Destinations</h5>
 	  <h6><%= @destination_records.count %> <%=  "destination".pluralize(@destination_records.count) %> found</h6>
+    <br>
 	  
 	  <% @destinations.each do |destination| %>
-	    <p class="center">
-        <%= image_tag destination.cover.thumb.url, class: 'circle responsive-img'  %>
-        <%=link_to destination.name, destination_path(destination) %>
-      </p> 
+	    <div class="row valign-wrapper">
+        <div class="col s6">
+          <%= image_tag destination.cover.thumb.url, class: 'circle responsive-img right'  %>
+        </div>
+        <div class="col s6">
+          <%=link_to truncate(destination.name, length: 9), destination_path(destination), class: 'left' %>
+        </div>
+      </div> 
 	  <% end %>
 	<% end %>
 </div>

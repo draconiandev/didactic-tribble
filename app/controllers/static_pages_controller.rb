@@ -2,7 +2,7 @@ class StaticPagesController < ApplicationController
   before_action :beautify_url
 
   def home
-    @activities = Activity.limit(6).includes(:destination)
+    @activities = Activity.limit(6).includes(:destination, :category)
     @destinations = Destination.order("created_at desc").limit(6)
   end
 

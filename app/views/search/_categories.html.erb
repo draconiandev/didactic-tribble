@@ -1,10 +1,18 @@
-<div class="right">
+<div class="center">
 	<% if @categories.any? %>
 	  <h5 class="center">Categories</h5>
 	  <h6><%= @category_records.count %> <%=  "category".pluralize(@category_records.count) %> found</h6>
+    <br>
 
 	  <% @categories.each do |category| %>
-	    <p class="center"><%=link_to category.name, category_path(category) %></p>
+      <div class="row valign-wrapper">
+        <div class="col s6">
+          <%= image_tag category.cover.thumb.url, class: 'circle responsive-img right'  %>
+        </div>
+        <div class="col s6">
+          <%=link_to truncate(category.name, length: 9), category_path(category), class: 'left' %>
+        </div>
+      </div> 
 	  <% end %>
 	<% end %>
 </div>

@@ -19,7 +19,7 @@ class Activity < ActiveRecord::Base
   extend Enumerize
   enumerize :difficulty, in: [:easy, :moderate, :challenging]
   enumerize :handcrafted_category, in: [:weekend_getaway, :team_outing,
-                                        :elderly_activity, :women_special]
+                                        :elderly_activity, :women_special], scope: :handcrafted
 
   include SearchableActivity
 
