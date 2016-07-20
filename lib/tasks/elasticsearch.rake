@@ -1,7 +1,7 @@
 namespace :elasticsearch do
   desc 'reindex Elasticsearch for all searchable models'
   task :reindex => :environment do
-    [Activity, Category, Destination].each do |klass|
+    [Activity, Destination, Category].each do |klass|
       # Delete the previous index in Elasticsearch
       klass.__elasticsearch__.client.indices.delete index: klass.index_name rescue nil
 
@@ -11,8 +11,11 @@ namespace :elasticsearch do
         body: { settings: klass.settings.to_hash, mappings: klass.mappings.to_hash }
 
       # Index all records from the DB to Elasticsearch
-      klass.import
+      if klass == Activity
+        klass.all.published.import
+      else
+        klass.import
+      end
     end
-
   end
 end

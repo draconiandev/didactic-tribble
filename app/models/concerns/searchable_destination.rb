@@ -4,7 +4,7 @@ module SearchableDestination
     included do
     include Elasticsearch::Model
     include Elasticsearch::Model::Callbacks
-
+    
     # Sync up Elasticsearch with PostgreSQL.
     after_commit :index_document, on: [:create, :update]
     after_commit :delete_document, on: [:destroy]
@@ -33,7 +33,7 @@ module SearchableDestination
 
   def as_indexed_json(options ={})
     self.as_json({
-      only: [:name, :slug]
+      only: [:name, :slug, :description]
     })
   end
 

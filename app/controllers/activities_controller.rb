@@ -7,7 +7,7 @@ class ActivitiesController < ApplicationController
 
   def index
     authorize Activity
-    @activities = Activity.all.limit(24)
+    @activities = Activity.all.limit(24).includes(:destination, :category)
   end
 
   def new
@@ -19,13 +19,14 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Activity.new(activity_params)
     authorize @activity
-    if @activity.save
+    if @activity.publish
       params[:galleries]['image'].each do |a|
         @gallery = @activity.galleries.create!(image: a, activity_id: @activity.id)
       end
       flash[:success] = 'Activity has been created.'
       redirect_to activity_path(@activity)
     else
+      @activity.unpublish
       flash.now[:alert] = 'Sorry! Activity could not been created.'
       render 'new'
     end
@@ -33,6 +34,12 @@ class ActivitiesController < ApplicationController
 
   def show
     @galleries = @activity.galleries.all
+    @related_activities = Activity.where("id != '#{@activity.id}'")
+                                  .where("category_id = '#{@activity.category.id}'")
+                                  .limit(3)
+    @nearby_activities =  Activity.where("id != '#{@activity.id}'")
+                                  .where("destination_id = '#{@activity.destination.id}'")
+                                  .limit(3)
     authorize @activity
   end
 
@@ -42,10 +49,12 @@ class ActivitiesController < ApplicationController
 
   def update
     authorize @activity
-    if @activity.update(activity_params)
+    @activity.assign_attributes(activity_params)
+    if @activity.publish
       flash[:success] = 'Activity has been updated.'
       redirect_to activity_path(@activity)
     else
+      @activity.unpublish
       flash.now[:alert] = 'Sorry! Activity has not been updated.'
       render 'new'
     end
@@ -68,8 +77,8 @@ class ActivitiesController < ApplicationController
     params.require(:activity).permit(:title, :overview, :itinerary,
                                      :price, :start_date, :end_date, :cover,
                                      :handcrafted, :handcrafted_category,
-                                     :difficulty, :brief, :slug, :category_id,
-                                     :destination_id,
+                                     :difficulty, :brief, :slug, :published_at, :featured,
+                                     :category_id, :destination_id,
                                      galleries_attributes: [:id, :activity_id,
                                       :image, :alt_text])
   end

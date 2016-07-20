@@ -4,7 +4,7 @@ module SearchableActivity
   included do
     include Elasticsearch::Model
     include Elasticsearch::Model::Callbacks
-
+    
     # Sync up Elasticsearch with PostgreSQL.
     after_commit :index_document, on: [:create, :update]
     after_commit :delete_document, on: [:destroy]

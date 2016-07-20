@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160715051043) do
+ActiveRecord::Schema.define(version: 20160718174228) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20160715051043) do
     t.string   "slug"
     t.integer  "category_id"
     t.integer  "destination_id"
+    t.datetime "published_at"
+    t.boolean  "featured"
   end
 
   add_index "activities", ["category_id"], name: "index_activities_on_category_id", using: :btree

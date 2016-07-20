@@ -67,6 +67,24 @@
 </div>
 <!-- Gallery End -->
 
+<% if @related_activities.any? %>
+  <div class="container">
+    <br><br>
+    <h5>Related Activities</h5>
+    <br>
+    <%= render 'related_activities' %>
+  </div>  
+<% end %>
+
+<% if @nearby_activities.any? %>
+  <div class="container">
+    <br><br>
+    <h5>Nearby Activities</h5>
+    <br>
+    <%= render 'nearby_activities' %>
+  </div>  
+<% end %>
+
 <div class='container'>
   <% if policy(:activity).edit? %>
     <%= link_to(edit_activity_path) do %>

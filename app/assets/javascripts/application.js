@@ -15,6 +15,9 @@
 //= require materialize-sprockets
 //= require materialize/extras/nouislider
 //= require photoswipe
+//= require react
+//= require react_ujs
+//= require components
 //= require_tree .
 
 $(document).ready(function() {

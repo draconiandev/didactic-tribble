@@ -7,9 +7,6 @@ class StaticPagesController < ApplicationController
   end
 
   def show
-    @activities = Activity.search(query_term).paginate(page: params[:page]).records
-    @categories = Category.search(query_term).records
-    @destinations = Destination.search(query_term).records
   end
 
   def about
