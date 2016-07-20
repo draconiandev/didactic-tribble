@@ -29,6 +29,7 @@ class CategoriesController < ApplicationController
 
   def show
     authorize @category
+    @activities = Activity.in_category(@category).includes(:category).paginate(page: params[:page], per_page: 12)
   end
 
   def edit

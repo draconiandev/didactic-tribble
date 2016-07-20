@@ -25,11 +25,13 @@ class Activity < ActiveRecord::Base
 
   mount_uploader :cover, CoverUploader
 
-  scope :recent,      -> { order(created_at: :desc) }
-  scope :latest,      ->(number) { recent.limit(number) }
-  scope :published,   -> { where.not(published_at: nil) }
-  scope :drafts,      -> { where(published_at: nil) }
-  scope :featured,    -> { where(featured: true) }
+  scope :recent,          -> { order(created_at: :desc) }
+  scope :latest,          ->(number) { recent.limit(number) }
+  scope :published,       -> { where.not(published_at: nil) }
+  scope :drafts,          -> { where(published_at: nil) }
+  scope :featured,        -> { where(featured: true) }
+  scope :in_destination,  lambda {|destination| joins(:destination).where(:destinations => { :name => destination.name })}
+  scope :in_category,     lambda { |category| joins(:category).where(:categories => { :name => category.name }) }
 
   def end_date_after_start_date
     return if end_date.blank? || start_date.blank?

@@ -29,7 +29,7 @@ class DestinationsController < ApplicationController
 
   def show
     authorize @destination
-    @activities = Activity.
+    @activities = Activity.in_destination(@destination).includes(:destination).paginate(page: params[:page], per_page: 12)
   end
 
   def edit
