@@ -7,7 +7,7 @@ class DestinationsController < ApplicationController
 
   def index
     authorize Destination
-    @destinations = Destination.all
+    @destinations = Destination.all.paginate(page: params[:page], per_page: 4)
   end
 
   def new
@@ -29,6 +29,7 @@ class DestinationsController < ApplicationController
 
   def show
     authorize @destination
+    @activities = Activity.
   end
 
   def edit

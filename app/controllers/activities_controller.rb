@@ -7,7 +7,7 @@ class ActivitiesController < ApplicationController
 
   def index
     authorize Activity
-    @activities = Activity.all.limit(24).includes(:destination, :category)
+    @activities = Activity.all.includes(:destination, :category).paginate(page: params[:page], per_page: 9)
   end
 
   def new
