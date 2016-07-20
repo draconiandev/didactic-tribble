@@ -16,6 +16,7 @@ module SearchableActivity
         indexes :itinerary, analyzer: 'english'
         indexes :difficulty
         indexes :slug
+        indexes :price
         indexes :category do
           indexes :name, analyzer: 'english'
         end
@@ -33,7 +34,7 @@ module SearchableActivity
               query: {
                 multi_match: {
                   query: term,
-                  fields: ['title^10', 'itinerary', 'overview', 'category.name^10', 'destination.name^10']
+                  fields: ['title^10', 'itinerary', 'overview', 'price^10', 'category.name^10', 'destination.name^10']
                 }
               }
             }
@@ -45,7 +46,7 @@ module SearchableActivity
 
   def as_indexed_json(options = {})
     self.as_json({
-      only: [:title, :itinerary, :overview, :slug],
+      only: [:title, :itinerary, :overview, :slug, :price],
       include: {
         destination: { only: :name },
         category: { only: :name }
