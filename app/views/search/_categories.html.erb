@@ -1,7 +1,7 @@
 <% if @categories.any? %>
   <h4 class="center">Categories</h4>
-  <h5><%= @categories.count %> results found</h5> 
-  
+  <h5><%= @category_records.count %> <%=  "category".pluralize(@category_records.count) %> found</h5>
+
   <% @categories.each do |category| %>
     <p><%=link_to category.name, category_path(category) %></p>
   <% end %>

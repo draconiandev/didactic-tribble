@@ -4,8 +4,10 @@ class SearchController < ApplicationController
   def show
     @activity_records = Activity.search(query_term).records
     @activities = @activity_records.to_a
-    @categories = Category.search(query_term).records.to_a
-    @destinations = Destination.search(query_term).records.to_a
+    @category_records = Category.search(query_term).records
+    @categories = @category_records.to_a
+    @destination_records = Destination.search(query_term).records
+    @destinations = @destination_records.to_a
   end
 
   private

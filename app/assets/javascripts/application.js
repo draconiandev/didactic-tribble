@@ -15,6 +15,7 @@
 //= require materialize-sprockets
 //= require materialize/extras/nouislider
 //= require photoswipe
+//= require medium-editor
 //= require react
 //= require react_ujs
 //= require components

@@ -11,12 +11,12 @@
       <div class='col s6'><%= f.input :difficulty %></div>
       <div class='col s6'><%= f.input :price, as: :decimal %></div>
       <hr><br><h5 class='center'>Brief</h5><hr><br>
-      <div class='col s12'>
-        <%= f.input :overview, input_html: { id: 'textarea1', class: 'materialize-textarea' } %>
-      </div>
-      <div class='col s12'>
-        <%= f.input :itinerary, input_html: { id: 'textarea1', class: 'materialize-textarea' } %>
-      </div>
+        <div class='col s12'><br>
+          <%= f.input :overview, input_html: { id: 'textarea1', class: 'editable' } %>
+        </div>
+        <div class='col s12'><br><br><br>
+          <%= f.input :itinerary, input_html: { id: 'textarea1', class: 'editable' } %>
+        </div>
       <hr><br><h5 class='center'>Associations</h5><hr><br>
       <div class='row'>
         <div class='col s6'><%= f.association :destination %></div>
@@ -88,3 +88,8 @@
     <%= f.submit 'Submit', class: 'center-align btn waves-effect waves-light' %>
   <% end %>
 </div>
+<script>
+  var editor = new MediumEditor('.editable', {
+    // options go here
+  });
+</script>
