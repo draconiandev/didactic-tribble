@@ -1,0 +1,102 @@
+<div class="container">
+  <div class="center-align">
+      <h4>Our Handpicked Categories</h4>
+      <h5>Something for everyone</h5>
+    </div>
+  <div class="row">
+      <div class="col s12 m6 l6">
+        <div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <%= image_tag('weekend-getaway-trekhub.jpg') %>
+          </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">
+            <%= link_to 'Weekend Getaways', static_pages_weekend_path %>
+            <i class="material-icons right">more_vert</i>
+          </span>
+          <p><%= @weekend_getaways %> <%= "activity".pluralize(@weekend_getaways) %> in this category</p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">
+            <p>
+              Don't plan weeks ahead to enjoy every moment on your precious trip.
+            </p>
+            <i class="material-icons right">close</i>
+          </span>
+        </div>
+        </div>
+      </div>
+ 
+      <div class="col s12 m6 l6">
+        <div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <%= image_tag('team-outing-trekhub.jpg') %>
+          </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">
+            <%= link_to 'Team Outing', static_pages_team_outing_path %>
+            <i class="material-icons right">more_vert</i>
+          </span>
+          <p><%= @team_outings %> <%= "activity".pluralize(@team_outings) %> in this category</p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">
+            <p>
+              Our team building activities are different from all of the others because of our two main priorities: making them FUN and ENGAGING.
+            </p>
+            <i class="material-icons right">close</i>
+          </span>
+        </div>
+        </div>
+      </div>
+ 
+      <div class="col s12 m6 l6">
+        <div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <%= image_tag('elderly-activities-trekhub.jpg') %>
+          </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">
+            <%= link_to 'Elderly Activities', static_pages_elderly_path %>
+            <i class="material-icons right">more_vert</i>
+          </span>
+          <p><%= @elderly_activities %> <%= "activity".pluralize(@elderly_activities) %> in this category</p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">
+            <p>
+              There are many fun activities elderly people can take part in to keep their minds sharp, bodies strong and spirits high
+            </p>
+            <i class="material-icons right">close</i>
+          </span>
+        </div>
+        </div>
+      </div>
+ 
+      <div class="col s12 m6 l6">
+        <div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <%= image_tag('women-special-trekhub.jpg') %>
+          </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">
+            <%= link_to 'Women Special Activities', static_pages_women_special_path %>
+            <i class="material-icons right">more_vert</i>
+          </span>
+         <p><%= @women_specials %> <%= "activity".pluralize(@women_specials) %> in this category</p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">
+            <p>
+              TrekHub provide adventure travel, tours, activities and events specifically for women. If you're looking to have fun in a safe and supportive environment, discover new places, try new things and meet new people, then take the next step and join us!
+            </p>
+            <i class="material-icons right">close</i>
+          </span>
+        </div>
+        </div>
+      </div>
+  </div>
+  <div class="right">
+    <%= link_to "See All Handcrafted Categories", static_pages_handcrafted_path %>
+  </div><br><br>
+</div>
