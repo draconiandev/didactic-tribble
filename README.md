@@ -1,4 +1,4 @@
-=**1. Latest Ruby**
+**1. Latest Ruby**
 
 ```
 rbenv install 2.3.1
@@ -6,12 +6,12 @@ rbenv rehash
 rbenv global 2.3.1
 ```
 
-=**2. Stable Rails Version**
+**2. Stable Rails Version**
 ```
 gem install rails -v 4.2.6
 ```
 
-=**3. ElasticSearch**
+**3. ElasticSearch**
 ```
 sudo apt-get update
 sudo apt-get upgrade
@@ -27,24 +27,26 @@ sudo dpkg -i elasticsearch-2.3.4.deb
 sudo update-rc.d elasticsearch defaults
 ```
 
-=**4. Edit ElasticSearch Configuration**
+**4. Edit ElasticSearch Configuration**
 ```
 sudo subl /etc/elasticsearch/elasticsearch.yml
 ```
 Uncomment node.name and cluster.name
 Save and close
 
-=**5. Start ElasticSearch**
+**5. Start ElasticSearch**
 ```
 sudo service elasticsearch start
 ```
 (Also, stop and restart are also available)
 
-=**6. Test ElasticSearch**
+**6. Test ElasticSearch**
 ```
 curl -X GET 'http://localhost:9200'
 ```
 Output should be something like following
+
+```
 {
   "name" : "node-1",
   "cluster_name" : "graylog2",
@@ -57,8 +59,9 @@ Output should be something like following
   },
   "tagline" : "You Know, for Search"
 }
+```
 
-=**7. Clone the app**
+**7. Clone the app**
 ```
 cd ~
 cd Documents/website
@@ -66,7 +69,7 @@ git clone git@github.com:draconiandev/didactic-tribble.git
 cd into the folder
 ```
 
-=**8. Start the app**
+**8. Start the app**
 ```
 bundle install
 bundle exec elastic search -q
@@ -78,7 +81,8 @@ rake elasticsearch:reindex
 rails server
 ```
 
-=**9. Create an Admin Account**
+**9. Create an Admin Account**
+
 Login through website
 Go to rails console
 ```
