@@ -17,6 +17,9 @@ gem 'react-rails', '~> 1.8'
 gem 'medium-editor-rails', '~> 2.2'
 gem 'lazyload-rails', '~> 0.3.1'
 
+# SEO
+gem 'meta-tags', '~> 2.1'
+
 #Authentication
 gem 'simple_form', '~> 3.2'
 gem 'devise', '~> 4.2'
