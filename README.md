@@ -36,7 +36,11 @@ rails -v
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install openjdk-9-jre
-java -version; To make sure it is installed properly
+java -version
+# java version "9-ea"
+# Java(TM) SE Runtime Environment (build 9-ea+126)
+# Java HotSpot(TM) 64-Bit Server VM (build 9-ea+126, mixed mode)
+
 sudo apt-get -y install oracle-java9-installer
 
 cd ~
