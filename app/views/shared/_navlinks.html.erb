@@ -1,7 +1,7 @@
 <li><a href="/activities">Activities</a></li>
 <li><a href="/destinations">Destinations</a></li>
 <li><a href="/categories">Categories</a></li>
-<li><a>Hand Crafted</a></li>
+<li><a href="/handcrafted">Hand Crafted</a></li>
 <% if person_signed_in? %>
   <li><%= link_to 'Log Out', destroy_person_session_path, :method => 'delete' %></li>
   <li class="name-display"><%= link_to "Hello, #{current_person.first_name}", edit_person_registration_path %></li>
