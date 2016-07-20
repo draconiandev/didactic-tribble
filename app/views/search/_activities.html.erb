@@ -2,7 +2,6 @@
   <h4 class="center">Activities</h4>
   <h5><%= @activity_records.count %> <%=  "activity".pluralize(@activity_records.count) %> found</h5>  
 <% end %>
-
 <div>
   <div class="row">
     <% @activities.each do |activity| %>
@@ -44,5 +43,5 @@
 </div>
 
 <div class="center">
-  <%#= will_paginate @activity_records %>
+  <%= will_paginate @activity_records %>
 </div>

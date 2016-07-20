@@ -36,10 +36,10 @@ class ActivitiesController < ApplicationController
     @galleries = @activity.galleries.all
     @related_activities = Activity.where("id != '#{@activity.id}'")
                                   .where("category_id = '#{@activity.category.id}'")
-                                  .limit(3)
+                                  .limit(3).includes(:destination, :category)
     @nearby_activities =  Activity.where("id != '#{@activity.id}'")
                                   .where("destination_id = '#{@activity.destination.id}'")
-                                  .limit(3)
+                                  .limit(3).includes(:destination, :category)
     authorize @activity
   end
 
