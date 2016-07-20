@@ -3,7 +3,10 @@
   <h5><%= @destination_records.count %> <%=  "destination".pluralize(@destination_records.count) %> found</h5>
   
   <% @destinations.each do |destination| %>
-    <p><%=link_to destination.name, destination_path(destination) %></p>
+    <p>
+      <%= image_tag destination.cover.thumb.url, class: 'circle responsive-img'  %>
+      <%=link_to destination.name, destination_path(destination) %> 
+    </p>
   <% end %>
 
 <% end %>

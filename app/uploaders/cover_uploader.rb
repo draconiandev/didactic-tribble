@@ -14,6 +14,10 @@ class CoverUploader < CarrierWave::Uploader::Base
 
   # process convert: 'png'
 
+  version :thumb do
+    process resize_to_fill: [50, 50]
+  end
+
   version :card do
     process resize_to_fill: [363, 363]
   end
