@@ -16,6 +16,7 @@
 //= require materialize/extras/nouislider
 //= require photoswipe
 //= require medium-editor
+//= require lazyload
 //= require react
 //= require react_ujs
 //= require components
@@ -30,11 +31,11 @@ $(document).ready(function() {
     $('select').material_select();
     $('.parallax').parallax();
     $('ul.tabs').tabs();
-    $('.materialboxed').materialbox();
-    $('#textarea1').trigger('autoresize');
-    $('#textarea2').trigger('autoresize');
     $(".dropdown-button").dropdown({
         hover: true,
         belowOrigin: true,
+      });
+    $("img").lazyload({
+        effect : "fadeIn"
       });
 });
