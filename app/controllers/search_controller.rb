@@ -2,7 +2,7 @@ class SearchController < ApplicationController
   before_action :beautify_url
 
   def show
-    @activity_records = Activity.search(query_term).records.paginate(page: params[:page])
+    @activity_records = Activity.search(query_term).records.paginate(page: params[:page], per_page: 4)
     @activities = @activity_records.to_a
     @category_records = Category.search(query_term).records
     @categories = @category_records.to_a

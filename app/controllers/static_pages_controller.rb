@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
 
   def home
-    @activities = Activity.limit(6).includes(:destination)
+    @activities = Activity.latest(6).includes(:destination)
     @destinations = Destination.order("created_at desc").limit(6)
   end
 
@@ -13,19 +13,19 @@ class StaticPagesController < ApplicationController
   end
 
   def weekend
-    @weekend_getaways = Activity.handcrafted(:weekend_getaway)
+    @weekend_getaways = Activity.handcrafted(:weekend_getaway).paginate(page: params[:page], per_page: 9)
   end
 
   def team_outing
-    @team_outings = Activity.handcrafted(:team_outing)
+    @team_outings = Activity.handcrafted(:team_outing).paginate(page: params[:page], per_page: 9)
   end
 
   def elderly
-    @elderly_activities = Activity.handcrafted(:elderly_activity)
+    @elderly_activities = Activity.handcrafted(:elderly_activity).paginate(page: params[:page], per_page: 9)
   end
 
   def women_special
-    @women_specials = Activity.handcrafted(:women_special)
+    @women_specials = Activity.handcrafted(:women_special).paginate(page: params[:page], per_page: 9)
   end
 
   def show
