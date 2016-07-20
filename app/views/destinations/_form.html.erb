@@ -12,7 +12,7 @@
 <div class="row">
 <%= simple_form_for @destination, html: { multipart: true, class: 'col s12' } do |f| %>
   <%= f.input :name, input_html: { class: 'row input-field col s12' } %> <br><br><br>
-  <%= f.input :description, input_html: { id: 'textarea1', class: 'materialize-textarea' } %>
+  <%= f.input :description, input_html: { id: 'textarea1', class: 'materialize-textarea', length: '160' } %>
   <%= f.input :brief, label: 'Meta description' %>
   <%= f.input :slug %>
   <div class=""><p>*Destination Cover Image</p></div>

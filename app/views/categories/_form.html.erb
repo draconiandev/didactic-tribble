@@ -20,7 +20,7 @@
     <%= f.input :cover, as: :file, label: '' %> <br>
     <%= f.input :slug %>
     <%= f.input :brief, label: 'Meta Description',
-                            input_html: { id: 'textarea1', class: 'materialize-textarea' } %>
+                            input_html: { id: 'textarea1', class: 'materialize-textarea', length: '160' } %>
 
     <%= f.submit "Submit", class: 'center-align btn waves-effect waves-light' %>
     <% end %>
