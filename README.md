@@ -32,6 +32,7 @@ sudo update-rc.d elasticsearch defaults
 sudo subl /etc/elasticsearch/elasticsearch.yml
 ```
 Uncomment node.name and cluster.name
+
 Save and close
 
 **5. Start ElasticSearch**
@@ -84,6 +85,7 @@ rails server
 **9. Create an Admin Account**
 
 Login through website
+
 Go to rails console
 ```
 rails console
