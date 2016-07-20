@@ -13,7 +13,7 @@ class SearchBar extends React.Component {
           value={this.props.term}
           onChange={(event) => {this.handleInputChange(event.target.value)}}
           placeholder="Search for activities, categories and destinations" 
-          autoComplete="off" 
+          autoComplete="on" 
           type="search" 
           name="search[q]" 
           id="search_q" />

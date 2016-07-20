@@ -7,7 +7,7 @@ class ActivitiesController < ApplicationController
 
   def index
     authorize Activity
-    @activities = Activity.all.limit(24)
+    @activities = Activity.all.limit(24).includes(:destination, :category)
   end
 
   def new

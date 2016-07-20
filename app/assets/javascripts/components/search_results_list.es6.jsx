@@ -7,7 +7,6 @@ class SearchResultsList extends React.Component {
         <span className="dropdown-arrow-bottom"></span>
         <li>
           <a href={`/search?q=${this.props.term}`}>
-            <i className="fa fa-search fa-2x"></i>Search for <strong>{this.props.term}</strong>
           </a>
         </li>
         {this.renderActivityHeading()}
@@ -41,18 +40,18 @@ class SearchResultsList extends React.Component {
   renderActivityHeading() {
     if (this.props.activities.length === 0) { return; }
 
-    return <li className="autocomplete-heading"><h4>Activities</h4></li>
+    return <li className="autocomplete-heading"><h6>Activities</h6></li>
   }
 
   renderCategoryHeading() {
     if (this.props.categories.length === 0) { return; }
 
-    return <li className="autocomplete-heading"><h4>Category</h4></li>
+    return <li className="autocomplete-heading"><h6>Categories</h6></li>
   }
 
   renderDestinationHeading() {
     if (this.props.destinations.length === 0) { return; }
 
-    return <li className="autocomplete-heading"><h4>Destinations</h4></li>
+    return <li className="autocomplete-heading"><h6>Destinations</h6></li>
   }
 }

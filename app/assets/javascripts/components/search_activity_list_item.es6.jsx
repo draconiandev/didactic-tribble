@@ -2,10 +2,10 @@ class SearchActivityListItem extends React.Component {
   render() {
     return (
       <li>
-        <a href={this.props.activity.url}>
-          <img width="35" className="avatar-image" src={this.props.activity.cover} />
+        <a className="display-next" href={this.props.activity.url}>
           <span dangerouslySetInnerHTML={{ __html: this.props.activity.title }} />
         </a>
+        <br/>
       </li>
     );
   }

@@ -28,12 +28,12 @@ class SearchContainer extends React.Component {
   }
 
   resetPreventHideDropdown() {
-    this.setState({ preventHideDropdown: false });
+    this.setState({ preventHideDropdown: true });
   }
 
   hideDropdown() {
     if (!this.state.preventHideDropdown) {
-      this.setState({ showDropdown: false });
+      this.setState({ showDropdown: true });
     }
   }
 
