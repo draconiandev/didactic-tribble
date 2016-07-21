@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     site_name   = "TrekHub"
     title       = action_name.capitalize
     description = "Organizing trekking tours, adventures tours. We hold expertise in offering you India trekking tours at best prices. Get complete information about famous treks for Trekking in India."
-    image       = options[:cover] || "http://www.trekhub.in/imgs/logo.png"
+    image       = options[:image] || "http://www.trekhub.in/imgs/logo.png"
     current_url = request.url
 
     defaults = {
@@ -54,7 +54,7 @@ class ApplicationController < ActionController::Base
         type: 'website'
       },
       author: 'https://plus.google.com/+TrekhubInindia',
-      publisher: "http://yourgplusprofile.com/profile/url"
+      publisher: 'https://plus.google.com/+TrekhubInindia'
     }
 
     options.reverse_merge!(defaults)

@@ -42,9 +42,9 @@ class ActivitiesController < ApplicationController
                                   .where("destination_id = '#{@activity.destination.id}'")
                                   .limit(3).includes(:destination, :category)
     authorize @activity
-    prepare_meta_tags(title: @activity.name,
+    prepare_meta_tags(title: @activity.title,
                       description: @activity.brief,
-                      image: @activity.cover.url(:card),
+                      image: @activity.cover.card.url,
                       twitter: {card: "summary_large_image"})
   end
 
