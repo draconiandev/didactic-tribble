@@ -8,6 +8,7 @@ class DestinationsController < ApplicationController
   def index
     authorize Destination
     @destinations = Destination.all.paginate(page: params[:page], per_page: 4)
+    prepare_meta_tags title: "Destinations", description: "Your next adventure could be in Mysore. Or Hyderabad. Perhaps in Jaipur. Or Delhi. And, of course, Goa. The world is waiting. Live the adventure you’ve always dreamt."
   end
 
   def new
@@ -29,7 +30,13 @@ class DestinationsController < ApplicationController
 
   def show
     authorize @destination
-    @activities = Activity.in_destination(@destination).includes(:destination).paginate(page: params[:page], per_page: 12)
+    @activities = Activity.in_destination(@destination).includes(:destination)
+                          .paginate(page: params[:page], per_page: 12)
+    prepare_meta_tags(title: @destination.name,
+                      description: @destination.brief,
+                      image: @destination.cover.card.url,
+                      twitter: {card: "summary_large_image",
+                                image: @destination.cover.card.url})
   end
 
   def edit
