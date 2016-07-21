@@ -29,7 +29,13 @@ class CategoriesController < ApplicationController
 
   def show
     authorize @category
-    @activities = Activity.in_category(@category).includes(:category).paginate(page: params[:page], per_page: 12)
+    @activities = Activity.in_category(@category).includes(:category)
+                          .paginate(page: params[:page], per_page: 12)
+    prepare_meta_tags(title: @category.name,
+                      description: @category.brief,
+                      image: @category.cover.card.url,
+                      twitter: {card: "summary_large_image",
+                                image: @category.cover.card.url})
   end
 
   def edit

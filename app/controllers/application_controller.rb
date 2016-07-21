@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
     defaults = {
       site:        site_name,
       title:       title,
+      reverse:     true,
       icon:        '/favicon.ico',
       image:       image,
       description: description,
@@ -53,7 +54,7 @@ class ApplicationController < ActionController::Base
         description: description,
         type: 'website'
       },
-      author: 'https://plus.google.com/+TrekhubInindia',
+      author: 'humans.txt',
       publisher: 'https://plus.google.com/+TrekhubInindia'
     }
 
