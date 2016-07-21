@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
     defaults = {
       site:        site_name,
       title:       title,
+      icon:        '/favicon.ico',
       image:       image,
       description: description,
       keywords:    %w[trekhub adventure tourism trekking India paraglide scuba diving skydiving team outings campsites corporate tours],
@@ -51,7 +52,9 @@ class ApplicationController < ActionController::Base
         image: image,
         description: description,
         type: 'website'
-      }
+      },
+      author: 'https://plus.google.com/+TrekhubInindia',
+      publisher: "http://yourgplusprofile.com/profile/url"
     }
 
     options.reverse_merge!(defaults)

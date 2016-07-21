@@ -40,6 +40,11 @@ a.footer-icons {
   padding-right: 1.5rem;
 }
 
+.pagination a li.active {
+  color: #fff;
+  width: 2rem;
+}
+
 .push-center {
   padding-left: 15%;
 }

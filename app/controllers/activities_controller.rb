@@ -7,7 +7,8 @@ class ActivitiesController < ApplicationController
 
   def index
     authorize Activity
-    @activities = Activity.all.includes(:destination, :category).paginate(page: params[:page], per_page: 9)
+    @activities = Activity.all.includes(:destination, :category).paginate(page: params[:page], per_page: 3)
+    prepare_meta_tags title: "Activities", description: "Experience 100+ activities from around the country"
   end
 
   def new
@@ -41,6 +42,10 @@ class ActivitiesController < ApplicationController
                                   .where("destination_id = '#{@activity.destination.id}'")
                                   .limit(3).includes(:destination, :category)
     authorize @activity
+    prepare_meta_tags(title: @activity.name,
+                      description: @activity.brief,
+                      image: @activity.cover.url(:card),
+                      twitter: {card: "summary_large_image"})
   end
 
   def edit
