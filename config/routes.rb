@@ -28,4 +28,5 @@ Rails.application.routes.draw do
   resources :categories
   resources :activities
   resources :galleries
+  resources :vendors
 end

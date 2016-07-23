@@ -32,9 +32,6 @@ class StaticPagesController < ApplicationController
     @women_specials = Activity.handcrafted(:women_special).paginate(page: params[:page], per_page: 9)
   end
 
-  def show
-  end
-
   def about
   end
 

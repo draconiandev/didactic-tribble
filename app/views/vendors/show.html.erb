@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="center">
+    <h4><%= @vendor.name %></h4>
+    <h5><%= @vendor.contact_person %></h5>
+    <p><%= @vendor.address %></p>
+    <p><%= @vendor.city %></p>
+    <p><%= @vendor.pincode %></p>
+    <p><%= @vendor.phone %></p>
+    <p><%= @vendor.email %></p>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m6 l6">
+      <table>
+        <thead>
+          <tr>
+            <th class="center">Categories</th>
+            <th colspan="1"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @vendor.categories.each do |category| %>
+          <tr>
+            <td class="center">
+              <%= link_to category.name, category_path(category) %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col s12 m6 l6">
+      <table>
+        <thead>
+          <tr>
+            <th class="center">Activities</th>
+            <th colspan="1"></th>
+          </tr>
+        </thead>
+        <tbody>
+           <% @activities.each do |activity| %>
+          <tr>
+            <td class="center">
+              <%= link_to activity.title, activity_path(activity) %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <% if policy(:vendor).edit? %>    
+    <%= link_to(edit_vendor_path) do %>
+      <div class="btn waves-effect waves-light">Edit Vendor<i class="material-icons right">mode_edit</i></div>
+    <% end %>
+  <% end %>
+  
+  <% if policy(:vendor).destroy? %>
+    <div style="float:right;">
+      <%= link_to vendor_path(@vendor), method: :delete, data: {confirm: "Do you really want to delete this vendor?"} do %>
+        <div class="btn waves-effect waves-light red">Delete Vendor<i class="material-icons right">delete</i></div>
+      <% end %>
+    </div>
+  <% end %>
+
+</div>
+
+<%#= render 'shared/activities' %>

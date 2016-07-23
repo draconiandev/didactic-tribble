@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160718174228) do
+ActiveRecord::Schema.define(version: 20160723212205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,11 +36,13 @@ ActiveRecord::Schema.define(version: 20160718174228) do
     t.integer  "destination_id"
     t.datetime "published_at"
     t.boolean  "featured"
+    t.integer  "vendor_id"
   end
 
   add_index "activities", ["category_id"], name: "index_activities_on_category_id", using: :btree
   add_index "activities", ["destination_id"], name: "index_activities_on_destination_id", using: :btree
   add_index "activities", ["title"], name: "index_activities_on_title", unique: true, using: :btree
+  add_index "activities", ["vendor_id"], name: "index_activities_on_vendor_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -49,11 +51,13 @@ ActiveRecord::Schema.define(version: 20160718174228) do
     t.text     "brief"
     t.string   "slug"
     t.string   "main_category"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "subscription_id"
   end
 
   add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
+  add_index "categories", ["subscription_id"], name: "index_categories_on_subscription_id", using: :btree
 
   create_table "destinations", force: :cascade do |t|
     t.string   "name"
@@ -104,6 +108,38 @@ ActiveRecord::Schema.define(version: 20160718174228) do
   add_index "people", ["name"], name: "index_people_on_name", using: :btree
   add_index "people", ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true, using: :btree
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer  "vendor_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "subscriptions", ["category_id"], name: "index_subscriptions_on_category_id", using: :btree
+  add_index "subscriptions", ["vendor_id"], name: "index_subscriptions_on_vendor_id", using: :btree
+
+  create_table "vendors", force: :cascade do |t|
+    t.string   "name"
+    t.string   "contact_person"
+    t.text     "address"
+    t.string   "city"
+    t.string   "pincode"
+    t.string   "email"
+    t.string   "phone"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "subscription_id"
+  end
+
+  add_index "vendors", ["email"], name: "index_vendors_on_email", unique: true, using: :btree
+  add_index "vendors", ["name"], name: "index_vendors_on_name", using: :btree
+  add_index "vendors", ["subscription_id"], name: "index_vendors_on_subscription_id", using: :btree
+
   add_foreign_key "activities", "categories"
   add_foreign_key "activities", "destinations"
+  add_foreign_key "activities", "vendors"
+  add_foreign_key "categories", "subscriptions"
+  add_foreign_key "subscriptions", "categories"
+  add_foreign_key "subscriptions", "vendors"
+  add_foreign_key "vendors", "subscriptions"
 end

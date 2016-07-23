@@ -7,54 +7,64 @@
         <li><%= msg %></li>
       <% end %>
     </ul>
-    <div class='row'><div class='col s12'><%= f.input :title %></div>
-      <div class='col s6'><%= f.input :difficulty %></div>
-      <div class='col s6'><%= f.input :price, as: :decimal %></div>
-      <hr><br><h5 class='center'>Brief</h5><hr><br>
-        <div class='col s12'><br>
-          <%= f.input :overview, input_html: { id: 'textarea1', class: 'editable' } %>
-        </div>
-        <div class='col s12'><br><br><br>
-          <%= f.input :itinerary, input_html: { id: 'textarea1', class: 'editable' } %>
-        </div>
+    <div class='row'><div class='input-field col s12'><%= f.input :title %></div>
+      <div class='input-field col s6'><%= f.input :difficulty %></div>
+      <div class='input-field col s6'><%= f.input :price, as: :decimal %></div>
       <hr><br><h5 class='center'>Associations</h5><hr><br>
       <div class='row'>
-        <div class='col s6'><%= f.association :destination %></div>
-        <div class='col s6'><%= f.association :category %></div>
-        <div class='col s6 left'><%= link_to 'New Destination', new_destination_path, target: '_blank' %></div>
-        <div class='col s6 right'><%= link_to 'New Category', new_category_path, target: '_blank' %></div>
+        <div class='input-field col s12 m4 l4'><%= f.association :destination %></div>
+        <div class='input-field col s12 m4 l4'><%= f.association :category %></div>
+        <div class='input-field col s12 m4 l4'><%= f.association :vendor %></div>
+        <div class='col s12 m4 l4'><%= link_to 'New Destination', new_destination_path, target: '_blank' %></div>
+        <div class='col s12 m4 l4'><%= link_to 'New Category', new_category_path, target: '_blank' %></div>
+        <div class='col s12 m4 l4'><%= link_to 'New Vendor', new_vendor_path, target: '_blank' %></div>
       </div>
-      <div class='row'>
       <hr><br><h5 class='center'>Dates</h5><hr><br>
       <!-- Datepicker works only with Jquery v1 -->
-      <div class='col s6'>
-        <%= f.label :start_date %>
-        <%= f.text_field :start_date, type: :date, class: 'datepicker', label: 'Start Date' %>
+      <div class='row'>
+        <div class='input-field col s6'>
+          <%= f.label :start_date %>
+          <%= f.text_field :start_date, type: :date, class: 'datepicker', label: 'Start Date' %>
+        </div>
+        <div class='input-field col s6'>
+          <%= f.label :end_date %>
+          <%= f.text_field :end_date, type: :date, class: 'datepicker', label: 'End Date' %>
+        </div>
       </div>
-      <div class='col s6'>
-        <%= f.label :end_date %>
-        <%= f.text_field :end_date, type: :date, class: 'datepicker', label: 'End Date' %>
-      </div>
-      </div>
+
       <hr><br><h5 class='center'>Special Category?</h5><hr><br>
       <div class='row'>
-      <div class='col s12 m6 l6'><br>
-      <%= f.input :handcrafted, label: 'Handcrafted?'%>
+        <div class='input-field col s12 m6 l4'><br>
+        <%= f.input :handcrafted, label: 'Handcrafted?'%>
+        </div>
+        <div class='input-field col s12 m6 l8'><br>
+          <%= f.input :handcrafted_category, prompt: 'Select only if the activity is handcrafted',
+                                           label: 'Handcrafted Categories', include_blank: true %>
+        </div>
       </div>
-      <div class='col s12 m6 l6'><br>
-        <%= f.input :handcrafted_category, prompt: 'Select only if the activity is handcrafted',
-                                         label: 'Handcrafted Categories', include_blank: true %>
+
+      <hr><br><h5 class='center'>Descriptions</h5><hr><br>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.input :itinerary, input_html: { class: 'editable' } %>
+        </div><br><br><hr><br>
+        <div class="input-field col s12">
+          <%= f.input :overview, input_html: { class: 'editable' } %>
+        </div>
       </div>
-      </div>
-      <hr><br><h5 class='center'>SEO</h5><hr><br>
-      <div class='col s12'><%= f.input :slug %></div>
-      <div class='col s12'>
-        <%= f.input :brief, label: 'Meta description',
-                            input_html: { id: 'textarea1', class: 'materialize-textarea', length: '160' } %>
+      <hr><br><h5 class='center'>SEO</h5><hr>
+      <div class="row">
+        <div class='input-field col s12'>
+          <%= f.input :slug %>
+        </div>
+        <div class='input-field col s12'>
+          <%= f.input :brief, label: 'Meta description',
+                              input_html: { id: 'textarea1', class: 'materialize-textarea', length: '160' } %>
+        </div>  
       </div>
       <hr><br>
       <hr><br><h5 class='center'>Images</h5><hr><br>
-      <div class='col s12'><br>
+      <div class='input-field col s12'><br>
         <div class='file-field input-field'>
           <div class='btn'>
             <span>*Cover Image</span>
@@ -67,7 +77,7 @@
         <%= @activity.cover? ? 'There is a file already' : '' %>
       </div>
 
-      <div class='col s12'><br>
+      <div class='input-field col s12'><br>
         <div class='file-field input-field'>
           <div class='btn'>
             <span>Gallery Images</span>
@@ -91,6 +101,10 @@
 </div>
 <script>
   var editor = new MediumEditor('.editable', {
-    // options go here
+    toolbar: {
+        buttons: ['bold', 'italic', 'quote', 'underline', 'anchor', 'h2', 'h3', 'h4', 'h5', 'quote'],
+        diffLeft: 25,
+        diffTop: 10,
+    }
   });
 </script>

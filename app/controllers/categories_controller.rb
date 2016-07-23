@@ -8,6 +8,7 @@ class CategoriesController < ApplicationController
   def index
     authorize Category
     @categories = Category.all.paginate(page: params[:page], per_page: 4)
+    prepare_meta_tags title: "Categories", description: "Your next adventure could be in Mysore. Or Hyderabad. Perhaps in Jaipur. Or Delhi. And, of course, Goa. The world is waiting. Live the adventure you’ve always dreamt."
   end
 
   def new
@@ -29,7 +30,7 @@ class CategoriesController < ApplicationController
 
   def show
     authorize @category
-    @activities = Activity.in_category(@category).includes(:category)
+    @activities = Activity.in_category(@category).includes(:category, :destination)
                           .paginate(page: params[:page], per_page: 12)
     prepare_meta_tags(title: @category.name,
                       description: @category.brief,

@@ -7,7 +7,7 @@ class ActivitiesController < ApplicationController
 
   def index
     authorize Activity
-    @activities = Activity.all.includes(:destination, :category).paginate(page: params[:page], per_page: 3)
+    @activities = Activity.latest(50).includes(:destination, :category).paginate(page: params[:page], per_page: 3)
     prepare_meta_tags title: "Activities", description: "Experience 100+ activities from around the country"
   end
 
@@ -83,7 +83,7 @@ class ActivitiesController < ApplicationController
                                      :price, :start_date, :end_date, :cover,
                                      :handcrafted, :handcrafted_category,
                                      :difficulty, :brief, :slug, :published_at, :featured,
-                                     :category_id, :destination_id,
+                                     :category_id, :destination_id, :vendor_id,
                                      galleries_attributes: [:id, :activity_id,
                                       :image, :alt_text])
   end

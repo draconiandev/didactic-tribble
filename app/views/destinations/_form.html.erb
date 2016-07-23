@@ -10,14 +10,44 @@
   </div>
 <% end %>
 <div class="row">
-<%= simple_form_for @destination, html: { multipart: true, class: 'col s12' } do |f| %>
-  <%= f.input :name, input_html: { class: 'row input-field col s12' } %> <br><br><br>
-  <%= f.input :description, input_html: { id: 'textarea1', class: 'materialize-textarea', length: '160' } %>
-  <%= f.input :brief, label: 'Meta description' %>
-  <%= f.input :slug %>
-  <div class=""><p>*Destination Cover Image</p></div>
-  <%= f.input :cover, as: :file, label: '' %><br><br>
-  <%#= f.association :state %>
+<%= simple_form_for @destination, html: { multipart: true } do |f| %>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.input :name %>
+    </div>
+    <div class="input-field col s12">
+      <%= f.input :description, input_html: { class: 'editable' } %> <br><br><hr><br><br>
+    </div>
+    <div class="input-field col s12">
+      <div class='file-field input-field'>
+        <div class='btn'>
+          <span>*Cover Image</span>
+          <%= f.file_field :cover, type: :file %>
+        </div>
+        <div class='file-path-wrapper'>
+            <input class='file-path validate' type='text'>
+        </div>
+      </div>
+      <%= @destination.cover? ? 'There is a file already' : '' %>
+    </div>
+  </div>
+  <div class="input-field col s12">
+      <%= f.input :slug %>
+  </div>
+  <div class="input-field col s12">
+    <%= f.input :brief, label: 'Meta Description',
+                        input_html: { id: 'textarea1', class: 'materialize-textarea', length: '160' } %>
+  </div>
   <%= f.submit "Submit", class: 'center-align btn waves-effect waves-light' %>
 <% end %>
 </div>
+
+<script>
+var editor = new MediumEditor('.editable', {
+  toolbar: {
+      buttons: ['bold', 'italic', 'quote', 'underline', 'anchor', 'h2', 'h3', 'h4', 'h5', 'quote'],
+      diffLeft: 25,
+      diffTop: 10,
+  }
+});
+</script>
