@@ -20,7 +20,9 @@
               <%= link_to destination.name, destination_path(destination) %>
               <i class="material-icons right">more_vert</i>
             </span>
-            <p><%= link_to 'Do something later', destination_path(destination) %></p>
+            <p>
+              <%= link_to "View All #{destination.activities.count} #{"activity".pluralize(destination.activities.count)} for this destination", destination_path(destination) %>
+            </p>
           </div>
 
           <div class="card-reveal">

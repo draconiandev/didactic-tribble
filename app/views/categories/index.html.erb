@@ -19,7 +19,9 @@
             <%= link_to category.name, category_path(category) %>
             <i class="material-icons right">more_vert</i>
           </span>
-          <p><%= link_to 'Do something later', category_path(category) %></p>
+          <p>
+            <%= link_to "View All #{category.activities.count} #{"activity".pluralize(category.activities.count)} for this category", category_path(category) %>
+          </p>
         </div>
         <div class="card-reveal">
           <span class="card-title grey-text text-darken-4">
