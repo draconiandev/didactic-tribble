@@ -3,11 +3,11 @@
     <div class="nav-wrapper">
       <form>
         <ul class="input-field">
-          <form class="col-12">
+          <div class="col-12 large-searchbar">
             <%= form_for :search, url: search_path, method: :get, class: "navbar-form navbar-right", role: "search" do |f| %>
               <%= f.search_field :q, value: params[:q], placeholder: 'Search for activities, categories and destinations', autofocus: true, autocomplete: 'off', onfocus: "this.value = this.value;" %>
             <% end %>
-          </form>
+          </div>
         </ul>
       </form>
     </div>

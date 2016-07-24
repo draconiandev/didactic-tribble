@@ -31,6 +31,7 @@ $(document).ready(function() {
     $('select').material_select();
     $('.parallax').parallax();
     $('ul.tabs').tabs();
+    $(".button-collapse").sideNav();
     $('input#input_text, textarea#textarea1').characterCounter();
     $(".dropdown-button").dropdown({
         hover: true,

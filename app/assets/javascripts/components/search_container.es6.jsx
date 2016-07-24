@@ -43,7 +43,7 @@ class SearchContainer extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className="boxed-result">
         <SearchBar 
           showDropdown={this.showDropdown}
           hideDropdown={this.hideDropdown}

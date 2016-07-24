@@ -1,7 +1,10 @@
-<% if @activities.any? %>
-  <h4 class="center">Activities</h4>
-  <h5><%= @activity_records.count %> <%=  "activity".pluralize(@activity_records.count) %> found</h5>  
-<% end %>
+<div class="center">
+  <% if @activities.any? %>
+    <h4>Activities</h4>
+    <h5><%= @activity_records.count %> <%=  "activity".pluralize(@activity_records.count) %> found</h5>  
+  <% end %>
+</div>
+  
 <div>
   <div class="row">
     <% @activities.each do |activity| %>
