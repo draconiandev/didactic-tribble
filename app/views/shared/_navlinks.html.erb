@@ -1,7 +1,16 @@
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="/weekend">Weekend Getaway</a></li>
+  <li><a href="/team_outing">Team Outing</a></li>
+  <li><a href="/elderly">Elderly Activities</a></li>
+  <li><a href="/women_special">Women Special</a></li>
+</ul>
+
 <li><a href="/activities">Activities</a></li>
 <li><a href="/destinations">Destinations</a></li>
 <li><a href="/categories">Categories</a></li>
-<li><a href="/handcrafted">Hand Crafted</a></li>
+<li>
+  <a class="dropdown-button" href="/handcrafted" data-activates="dropdown1">Hand Crafted</a>
+</li>
 <% if manager? %>
   <li><a href="/vendors">Vendors</a></li>
 <% end %>

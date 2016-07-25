@@ -1,5 +1,7 @@
 #
 class Destination < ActiveRecord::Base
+  geocoded_by :name
+  after_validation :geocode
   has_many :activities, dependent: :destroy
 
   validates :name, :description, :brief, :slug, presence: true

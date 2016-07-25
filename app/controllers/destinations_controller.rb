@@ -37,6 +37,10 @@ class DestinationsController < ApplicationController
                       image: @destination.cover.card.url,
                       twitter: {card: "summary_large_image",
                                 image: @destination.cover.card.url})
+    @hash = Gmaps4rails.build_markers(@destination) do |destination, marker|
+      marker.lat destination.latitude
+      marker.lng destination.longitude
+    end
   end
 
   def edit

@@ -16,6 +16,10 @@ gem 'font-awesome-rails', '~> 4.6'
 gem 'react-rails', '~> 1.8'
 gem 'medium-editor-rails', '~> 2.2'
 gem 'lazyload-rails', '~> 0.3.1'
+gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
+gem 'geocoder', '~> 1.3', '>= 1.3.7'
+gem 'coffee-script', '~> 2.4', '>= 2.4.1'
+gem 'underscore-rails', '~> 1.8', '>= 1.8.3'
 
 # SEO
 gem 'meta-tags', '~> 2.1'

@@ -19,6 +19,8 @@
 //= require lazyload
 //= require react
 //= require react_ujs
+// = require underscore
+//= require gmaps/google
 //= require components
 //= require_tree .
 
@@ -35,7 +37,7 @@ $(document).ready(function() {
     $('input#input_text, textarea#textarea1').characterCounter();
     $(".dropdown-button").dropdown({
         hover: true,
-        belowOrigin: true,
+        belowOrigin: true
       });
     $("img").lazyload({
         effect : "fadeIn"

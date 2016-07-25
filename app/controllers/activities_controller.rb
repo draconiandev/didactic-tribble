@@ -46,6 +46,10 @@ class ActivitiesController < ApplicationController
                       description: @activity.brief,
                       image: @activity.cover.card.url,
                       twitter: {card: "summary_large_image"})
+     @hash = Gmaps4rails.build_markers(@activity) do |activity, marker|
+      marker.lat activity.destination.latitude
+      marker.lng activity.destination.longitude
+    end
   end
 
   def edit
