@@ -15,7 +15,6 @@ RSpec.describe Activity, type: :model do
     it { expect(activity).to validate_presence_of(:price) }
     it { expect(activity).to validate_presence_of(:difficulty) }
     it { expect(activity).to validate_presence_of(:brief) }
-    it { expect(activity).to validate_presence_of(:slug) }
     it { expect(activity).to validate_numericality_of(:price) }
     it { expect(activity).to validate_uniqueness_of(:title).case_insensitive }
     #Format Validations

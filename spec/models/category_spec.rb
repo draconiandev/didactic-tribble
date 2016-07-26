@@ -11,7 +11,6 @@ RSpec.describe Category, type: :model do
     it { expect(category).to validate_presence_of(:name) }
     it { expect(category).to validate_presence_of(:description) }
     it { expect(category).to validate_presence_of(:brief) }
-    it { expect(category).to validate_presence_of(:slug) }
     it { expect(category).to validate_presence_of(:main_category) }
     it { expect(category).to validate_inclusion_of(:main_category).in_array(['air', 'water', 'land']) }
     #Format Validations

@@ -1,4 +1,4 @@
-RSpec.feature 'Admin can update a destinations' do
+RSpec.feature 'Admin' do
 
   let(:admin) { create(:person, :admin) }
 
@@ -10,7 +10,7 @@ RSpec.feature 'Admin can update a destinations' do
     click_link 'Edit Destination'
   end
 
-  scenario 'with valid attributes' do    
+  scenario 'can update destinations with valid attributes' do    
     fill_in 'Name', with: 'Mysuru'
     click_button 'Submit'
 
@@ -18,7 +18,7 @@ RSpec.feature 'Admin can update a destinations' do
     expect(page).to have_content 'Mysuru'
   end
 
-  scenario 'with invalid attributes' do
+  scenario 'cannot update destinations with invalid attributes' do
     fill_in 'Name', with: ''
     click_button 'Submit'
 

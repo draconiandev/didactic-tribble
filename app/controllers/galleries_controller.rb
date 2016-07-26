@@ -1,30 +1,37 @@
 class GalleriesController < ApplicationController
   before_action :set_gallery, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_manager!
+  before_action :authenticate_admin!, only: [:destroy]
 
   # GET /galleries
   # GET /galleries.json
   def index
+    authorize Gallery
     @galleries = Gallery.all
   end
 
   # GET /galleries/1
   # GET /galleries/1.json
   def show
+    authorize Gallery
   end
 
   # GET /galleries/new
   def new
     @gallery = Gallery.new
+    authorize @gallery
   end
 
   # GET /galleries/1/edit
   def edit
+    authorize @gallery
   end
 
   # POST /galleries
   # POST /galleries.json
   def create
     @gallery = Gallery.new(gallery_params)
+    authorize @gallery
 
     respond_to do |format|
       if @gallery.save
@@ -40,6 +47,7 @@ class GalleriesController < ApplicationController
   # PATCH/PUT /galleries/1
   # PATCH/PUT /galleries/1.json
   def update
+    authorize @gallery
     respond_to do |format|
       if @gallery.update(gallery_params)
         format.html { redirect_to @gallery, notice: 'Gallery was successfully updated.' }
@@ -54,6 +62,7 @@ class GalleriesController < ApplicationController
   # DELETE /galleries/1
   # DELETE /galleries/1.json
   def destroy
+    authorize @gallery
     @gallery.destroy
     respond_to do |format|
       format.html { redirect_to galleries_url, notice: 'Gallery was successfully destroyed.' }

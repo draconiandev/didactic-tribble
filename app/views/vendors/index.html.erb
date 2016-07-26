@@ -18,7 +18,7 @@
   <tbody>
     <% @vendors.each do |vendor| %>
       <tr>
-        <td><%= vendor.name %></td>
+        <td><%= link_to vendor.name, vendor %></td>
         <td><%= vendor.contact_person %></td>
         <td><%= vendor.city %></td>
         <td><%= vendor.phone %></td>

@@ -21,7 +21,7 @@ class VendorsController < ApplicationController
       flash[:success] = 'Vendor has been created.'
       redirect_to vendor_path(@vendor)
     else
-      flash.now[:alert] = 'Sorry! Vendor could not been created.'
+      flash.now[:alert] = 'Sorry! Vendor could not be created.'
       render 'new'
     end
   end
@@ -42,7 +42,7 @@ class VendorsController < ApplicationController
       flash[:success] = 'Vendor has been updated.'
       redirect_to vendor_path(@vendor)
     else
-      flash.now[:alert] = 'Vendor has not been updated.'
+      flash.now[:alert] = 'Sorry! Vendor could not be updated.'
       render 'edit'
     end
   end

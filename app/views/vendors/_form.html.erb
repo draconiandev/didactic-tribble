@@ -13,14 +13,41 @@
 
   <div class="row">
     <%= simple_form_for @vendor, html: { multipart: true, class: 'col s12' } do |f| %>
-    <%= f.input :name, input_html: { class: 'input-field col s12', placeholder: 'Name of the vendor' } %> <br><br><br>
+    <div class="input-field col s12">
+    <%= f.input :name, input_html: { class: 'input-field col s12', placeholder: 'Name of the vendor' } %>
+    </div>
+
     <h5>Contact Details</h5>
-    <%= f.input :contact_person %>
-    <%= f.input :address %> <br>
-    <%= f.input :city %> <br>
-    <%= f.input :phone %>
-    <%= f.input :email %>
-    <%=  f.collection_check_boxes :category_ids, Category.all, :id, :name %> <br><br><br>
+    <div class="input-field col s12">
+      <%= f.input :contact_person %>
+    </div>
+
+    <div class="input-field col s12">
+      <%= f.input :address, input_html: { class: 'materialize-textarea' } %> <br>
+    </div>
+
+    <div class="input-field col s12">
+     <%= f.input :city %> <br>
+    </div>
+
+    <div class="input-field col s12">
+      <%= f.input :pincode %> <br>
+    </div>
+
+    <div class="input-field col s12">
+      <%= f.input :phone %>
+    </div>
+
+    <div class="input-field col s12">
+      <%= f.input :email %>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <%=  f.collection_check_boxes :category_ids, Category.all, :id, :name %> <br><br><br>
+      </div>
+    </div>
+   
     
     <%= f.submit "Submit", class: 'center-align btn waves-effect waves-light' %>
     <% end %>

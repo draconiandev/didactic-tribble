@@ -1,28 +1,86 @@
 require 'rails_helper'
 
 RSpec.describe VendorPolicy do
-
-  let(:user) { User.new }
+  let (:visitor) { create :person }
+  let (:person) { create :person }
+  let (:admin) { create :person, :admin }
+  let (:editor) { create :person, :editor }
+  let(:vendor) { create :vendor }
 
   subject { described_class }
 
-  permissions ".scope" do
-    pending "add some examples to (or delete) #{__FILE__}"
+   permissions :index? do
+    it 'does not grant access to a visitor' do
+      expect(VendorPolicy).to_not permit(visitor, vendor)
+    end
+    it 'does not grant access to a person' do
+      expect(VendorPolicy).to_not permit(person, vendor)
+    end
+    it 'grants access to an editor' do
+      expect(VendorPolicy).to permit(editor, vendor)
+    end
+    it 'grants access to an admin' do
+      expect(VendorPolicy).to permit(admin, vendor)
+    end
   end
 
   permissions :show? do
-    pending "add some examples to (or delete) #{__FILE__}"
+     it 'does not grant access to a visitor' do
+      expect(VendorPolicy).to_not permit(visitor, vendor)
+    end
+    it 'does not grant access to a person' do
+      expect(VendorPolicy).to_not permit(person, vendor)
+    end
+    it 'grants access to an editor' do
+      expect(VendorPolicy).to permit(editor, vendor)
+    end
+    it 'grants access to an admin' do
+      expect(VendorPolicy).to permit(admin, vendor)
+    end
   end
 
-  permissions :create? do
-    pending "add some examples to (or delete) #{__FILE__}"
+  permissions :new?, :create? do
+    it 'does not grant access to a visitor' do
+      expect(VendorPolicy).to_not permit(visitor, vendor)
+    end
+    it 'does not grant access to a person' do
+      expect(VendorPolicy).to_not permit(person, vendor)
+    end
+    it 'grants access to an editor' do
+      expect(VendorPolicy).to permit(editor, vendor)
+    end
+    it 'grants access to an admin' do
+      expect(VendorPolicy).to permit(admin, vendor)
+    end
   end
 
-  permissions :update? do
-    pending "add some examples to (or delete) #{__FILE__}"
+  permissions :edit?, :update? do
+    it 'does not grant access to a visitor' do
+      expect(VendorPolicy).to_not permit(visitor, vendor)
+    end
+    it 'does not grant access to a person' do
+      expect(VendorPolicy).to_not permit(person, vendor)
+    end
+    it 'grants access to an editor' do
+      expect(VendorPolicy).to permit(editor, vendor)
+    end
+    it 'grants access to an admin' do
+      expect(VendorPolicy).to permit(admin, vendor)
+    end
   end
 
   permissions :destroy? do
-    pending "add some examples to (or delete) #{__FILE__}"
+    it 'does not grant access to a visitor' do
+      expect(VendorPolicy).to_not permit(visitor, vendor)
+    end
+    it 'does not grant access to a person' do
+      expect(VendorPolicy).to_not permit(person, vendor)
+    end
+    it 'does not grant access to an editor' do
+      expect(VendorPolicy).to_not permit(editor, vendor)
+    end
+    it 'grants access to an admin' do
+      expect(VendorPolicy).to permit(admin, vendor)
+    end
   end
 end

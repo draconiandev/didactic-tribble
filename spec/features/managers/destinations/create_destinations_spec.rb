@@ -9,7 +9,7 @@ feature 'Managers' do
   scenario 'can create new destinations with valid attributes' do
 
     fill_in             'Name', with: 'Ramanagara'
-    fill_in             'Description', with: 'An awesome place'
+    fill_in             'destination[description]', with: 'An awesome place'
     fill_in             'destination[brief]', with: 'An awesome description'
     fill_in             'destination[slug]', with: 'An awesome description'
     # page.attach_file('destination_cover', 'spec/fixtures/files/card.jpg')
