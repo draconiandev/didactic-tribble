@@ -71,23 +71,15 @@
 <%= render 'shared/maps' %>
 <!-- Map End -->
 
-<% if @related_activities.any? %>
-  <div class="container">
-    <br><br>
-    <h5>Related Activities</h5>
-    <br>
-    <%= render 'related_activities' %>
-  </div>  
-<% end %>
+<!-- Comments Begin -->
+<div class="container">
+  <div id="disqus_thread"></div>
+</div>
+<!-- Comments End -->
 
-<% if @nearby_activities.any? %>
-  <div class="container">
-    <br><br>
-    <h5>Nearby Activities</h5>
-    <br>
-    <%= render 'nearby_activities' %>
-  </div>  
-<% end %>
+<%= render 'related_activities' %>
+
+<%= render 'nearby_activities' %>
 
 <div class='container'>
   <% if policy(:activity).edit? %>
@@ -106,6 +98,20 @@
 </div>
 
 <%= render 'gallery' %>
+<%= render 'shared/mapscript' %>
 
-
-  
+<script>
+  var disqus_config = function () {
+      this.page.url = '<%= request.original_url %>';
+      this.page.identifier = '<%= @activity.id %>';
+      this.page.title = '<%= @activity.title %>';
+  };
+  (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = '//trekhubdev.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+  })();
+</script>
+<script id="dsq-count-scr" src="//trekhubdev.disqus.com/count.js" async></script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>

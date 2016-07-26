@@ -1,6 +1,11 @@
-  <div class="row">
+<% if @related_activities.any? %>
+  <div class="container">
+    <br><br>
+    <h5>Related Activities</h5>
+    <br>
+    <div class="row">
     <% @related_activities.each do |activity| %>
-      <div class="col s12 m6 l4">
+      <div class="col s12 m4 l3">
         <div class="card hoverable">
           <div class="card-image waves-effect waves-block waves-light">
             <%= image_tag activity.cover.card.url %>
@@ -30,5 +35,6 @@
         </div>
       </div>
     <% end %>
-
   </div>
+ </div>  
+<% end %>
