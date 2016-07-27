@@ -10,7 +10,7 @@
             <%= image_tag activity.cover.card.url %>
           </div>
           <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4"><%= link_to activity.title, activity_path(activity) %><i class="material-icons right">more_vert</i></span>
+            <span class="card-title activator grey-text text-darken-4"><%= link_to truncate(activity.title, length: 21), activity_path(activity) %><i class="material-icons right">more_vert</i></span>
             <p><%= number_to_currency(activity.price, :unit => '₹ ') %></p>
             <p><%= link_to 'Do something later', activity_path(activity) %></p>
           </div>

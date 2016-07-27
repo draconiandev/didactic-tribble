@@ -17,7 +17,7 @@
 
           <div class="card-content">
             <span class="card-title activator grey-text text-darken-4">
-              <%= link_to destination.name, destination_path(destination) %>
+              <%= link_to truncate(destination.name, length: 21), destination_path(destination) %>
               <i class="material-icons right">more_vert</i>
             </span>
             <p>
