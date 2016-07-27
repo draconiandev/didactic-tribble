@@ -8,11 +8,8 @@
 	<h4><%= @destination.name %></h4>
 	<p><%= @destination.description %></p>
 	<br><br>
-</div>
 
-<%= render 'shared/maps' %>
-
-<div class="container">
+	<%= render 'shared/maps' %>
 
 	<% if policy(:destination).edit? %>
 		<%= link_to(edit_destination_path) do %>
@@ -27,7 +24,6 @@
 			<% end %>
 		</div>
 	<% end %>
-	
 </div>
 
 <%= render 'shared/activities' %>

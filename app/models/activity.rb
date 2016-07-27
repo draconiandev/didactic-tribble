@@ -6,7 +6,7 @@ class Activity < ActiveRecord::Base
   belongs_to :vendor
   has_many :galleries
 
-  accepts_nested_attributes_for :galleries
+  accepts_nested_attributes_for :galleries, reject_if: :all_blank, allow_destroy: true
 
   validates :title, :overview, :itinerary, :price, :start_date,
             :difficulty, :brief, :slug, :destination_id, :category_id, presence: true

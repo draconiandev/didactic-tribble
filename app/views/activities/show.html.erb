@@ -3,12 +3,16 @@
     <%= image_tag @activity.cover.cover.url, class:'col s12 materialboxed' %>
   </div>
 </div>
+
 <!-- Card Begin -->
 <div class='card teal hoverable'>
+  <div class="container">
     <div class='row'>
-      <div class='col s12 m6 l6 push-m1 push-l2'>
+      <div class='col s12 m6 l6'>
         <h4 class='white-text'><%= @activity.title %></h4>
       </div>
+    </div>
+    <div class="row">
       <div class="col s12 m6 l6">
         <h4 class='white-text'>
           <%= l @activity.start_date, format: :customformat %>
@@ -17,89 +21,91 @@
       </div>
     </div>
     <div class='row'>
-      <div class='col s6 m6 l6 push-m1 push-l2'>
-        <h5 class='white-text'><%= @activity.destination.name if @activity.destination %></h5>
+      <div class='col s6 m6 l6'>
+        <h5 class='white-text'><i class="fa fa-map-marker" aria-hidden="true"></i> <%= @activity.destination.name if @activity.destination %></h5>
       </div>
       <div class='col s6 m6 l6'>
         <h5 class='white-text'><%= number_to_currency(@activity.price, unit: '₹ ') %></h5>
       </div>
     </div>
     <div class='row'>
-      <div class='col s6 m6 l6 left-align push-m1 push-l2' >
+      <div class='col s6 m6 l6' >
         <h5 class='white-text'><%= @activity.category.name if @activity.category %></h5>
       </div>
       <div class='col s6 m6 l6'>
-        <h5 class='white-text'><%= @activity.difficulty.humanize %></h5>
+        <h5 class='white-text'><i class="material-icons">warning</i> <%= @activity.difficulty.humanize %></h5>
       </div>
     </div>
+  </div>
 </div>
-
 <!-- Card End -->
+
 <!-- Content Begin -->
-<div class='container'>
-    <div class='section scrollspy'>
+<div class="row">
+  <div class="col s12 m10 l10">
+    <div class='container'><!-- Container Begin -->
       <h3>Overview</h3>
       <p><%= @activity.overview.html_safe %></p>
-    </div>
-    <div class='section scrollspy'>
       <h3>Itinerary</h3>
       <p><%= @activity.itinerary.html_safe %></p>
-    </div>
-</div>
-<!-- Content End -->
+    <!-- Content End -->
 
-<!-- Gallery Begin -->
-<div class="container">
-  <h3>Gallery</h3>
-  <div class="row">
-  <div class="picture" itemscope="" itemtype="http://schema.org/ImageGallery">
-    <% @activity.galleries.each_with_index do |gal| %>
-      <% if gal.activity_id == @activity.id %>
-        <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-          <a data-size="<%= gal.width %> x <%= gal.height %>" href="<%= gal.image.medium.url %>" itemprop='contentUrl'>
-            <%= image_tag gal.image.card.url, class: 'row col s12 m6 l4', lazy:true %>
-          </a>
-        </figure>
-      <% end %>
-    <% end %>
+    <!-- Gallery Begin -->
+      <h3>Gallery</h3>
+      <div class="row">
+      <div class="picture" itemscope="" itemtype="http://schema.org/ImageGallery">
+        <% @activity.galleries.each_with_index do |gal| %>
+          <% if gal.activity_id == @activity.id %>
+            <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+              <a data-size="<%= gal.width %> x <%= gal.height %>" href="<%= gal.image.medium.url %>" itemprop='contentUrl'>
+                <%= image_tag gal.image.card.url, class: 'row col s12 m6 l4', lazy:true %>
+              </a>
+            </figure>
+          <% end %>
+        <% end %>
+      </div>
+      </div>
+    <!-- Gallery End -->
+
+    <!-- Map Begin -->
+      <%= render 'shared/maps' %>
+    <!-- Map End -->
+
+    <!-- Comments Begin -->
+      <div id="disqus_thread"></div>
+    <!-- Comments End -->
+
+      <%= render 'related_activities' %>
+
+      <%= render 'nearby_activities' %>
+
+      <div class='row'>
+        <div class="col s6">
+          <% if policy(:activity).edit? %>
+            <%= link_to(edit_activity_path) do %>
+              <div class='btn waves-effect waves-light'>Edit Activity<i class='material-icons right'>mode_edit</i></div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col s6">
+          <% if policy(:activity).destroy? %>
+            <div style='float:right;'>
+              <%= link_to activity_path(@activity), method: :delete, data: {confirm: 'Do you really want to delete this activity?'} do %>
+                <div class='btn waves-effect waves-light red'>Delete Activity<i class='material-icons right'>delete</i></div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+    </div><!-- Container End -->
   </div>
-  </div>
 </div>
-<!-- Gallery End -->
-
-<!-- Map Begin -->
-<%= render 'shared/maps' %>
-<!-- Map End -->
-
-<!-- Comments Begin -->
-<div class="container">
-  <div id="disqus_thread"></div>
-</div>
-<!-- Comments End -->
-
-<%= render 'related_activities' %>
-
-<%= render 'nearby_activities' %>
-
-<div class='container'>
-  <% if policy(:activity).edit? %>
-    <%= link_to(edit_activity_path) do %>
-      <div class='btn waves-effect waves-light'>Edit Activity<i class='material-icons right'>mode_edit</i></div>
-    <% end %>
-  <% end %>
-
-  <% if policy(:activity).destroy? %>
-    <div style='float:right;'>
-      <%= link_to activity_path(@activity), method: :delete, data: {confirm: 'Do you really want to delete this activity?'} do %>
-        <div class='btn waves-effect waves-light red'>Delete Activity<i class='material-icons right'>delete</i></div>
-      <% end %>
-    </div>
-  <% end %>
-</div>
-
 <%= render 'gallery' %>
 <%= render 'shared/mapscript' %>
 
+<!-- Keep the disqus script in the same file. It is not working from a partial -->
+<!-- FIXME -->
 <script>
   var disqus_config = function () {
       this.page.url = '<%= request.original_url %>';

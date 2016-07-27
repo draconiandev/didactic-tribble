@@ -21,6 +21,7 @@
 //= require react_ujs
 // = require underscore
 //= require gmaps/google
+//= require cocoon
 //= require components
 //= require_tree .
 

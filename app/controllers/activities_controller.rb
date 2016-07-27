@@ -21,9 +21,6 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
     authorize @activity
     if @activity.publish
-      params[:galleries]['image'].each do |a|
-        @gallery = @activity.galleries.create!(image: a, activity_id: @activity.id)
-      end
       flash[:success] = 'Activity has been created.'
       redirect_to activity_path(@activity)
     else
@@ -89,6 +86,6 @@ class ActivitiesController < ApplicationController
                                      :difficulty, :brief, :slug, :published_at, :featured,
                                      :category_id, :destination_id, :vendor_id,
                                      galleries_attributes: [:id, :activity_id,
-                                      :image, :alt_text])
+                                      :image, :alt_text, :done, :_destroy])
   end
 end
