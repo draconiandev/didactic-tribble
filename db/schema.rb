@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160728114331) do
+ActiveRecord::Schema.define(version: 20160728120324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20160728114331) do
 
   add_index "activities", ["categorization_id"], name: "index_activities_on_categorization_id", using: :btree
   add_index "activities", ["destination_id"], name: "index_activities_on_destination_id", using: :btree
+  add_index "activities", ["slug"], name: "index_activities_on_slug", unique: true, using: :btree
   add_index "activities", ["title"], name: "index_activities_on_title", unique: true, using: :btree
   add_index "activities", ["vendor_id"], name: "index_activities_on_vendor_id", using: :btree
 
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(version: 20160728114331) do
 
   add_index "categories", ["categorization_id"], name: "index_categories_on_categorization_id", using: :btree
   add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
+  add_index "categories", ["slug"], name: "index_categories_on_slug", unique: true, using: :btree
   add_index "categories", ["subscription_id"], name: "index_categories_on_subscription_id", using: :btree
 
   create_table "categorizations", force: :cascade do |t|
@@ -84,6 +86,7 @@ ActiveRecord::Schema.define(version: 20160728114331) do
   end
 
   add_index "destinations", ["name"], name: "index_destinations_on_name", unique: true, using: :btree
+  add_index "destinations", ["slug"], name: "index_destinations_on_slug", unique: true, using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -129,11 +132,13 @@ ActiveRecord::Schema.define(version: 20160728114331) do
     t.string   "provider"
     t.string   "uid"
     t.string   "role",                   default: "user", null: false
+    t.string   "slug"
   end
 
   add_index "people", ["email"], name: "index_people_on_email", unique: true, using: :btree
   add_index "people", ["name"], name: "index_people_on_name", using: :btree
   add_index "people", ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true, using: :btree
+  add_index "people", ["slug"], name: "index_people_on_slug", unique: true, using: :btree
 
   create_table "subscriptions", force: :cascade do |t|
     t.integer  "vendor_id"
@@ -156,10 +161,12 @@ ActiveRecord::Schema.define(version: 20160728114331) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "subscription_id"
+    t.string   "slug"
   end
 
   add_index "vendors", ["email"], name: "index_vendors_on_email", unique: true, using: :btree
   add_index "vendors", ["name"], name: "index_vendors_on_name", using: :btree
+  add_index "vendors", ["slug"], name: "index_vendors_on_slug", unique: true, using: :btree
   add_index "vendors", ["subscription_id"], name: "index_vendors_on_subscription_id", using: :btree
 
   add_foreign_key "activities", "categorizations"

@@ -15,4 +15,11 @@ class Person < ActiveRecord::Base
 
   enumerize :role, in: [:user, :editor, :admin],
                    default: :user, predicates: true
+
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders, :history]
+
+  def should_generate_new_friendly_id?
+    name.blank? || name_changed?
+  end
 end
