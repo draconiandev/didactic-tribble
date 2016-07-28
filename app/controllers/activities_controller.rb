@@ -7,7 +7,7 @@ class ActivitiesController < ApplicationController
 
   def index
     authorize Activity
-    @activities = Activity.latest(500).includes(:destination).paginate(page: params[:page], per_page: 3)
+    @activities = Activity.recent.includes(:destination, :categories).paginate(page: params[:page], per_page: 15)
     prepare_meta_tags title: "Activities", description: "Experience 100+ activities from around the country"
   end
 
@@ -20,20 +20,21 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Activity.new(activity_params)
     authorize @activity
-    if @activity.publish
-      flash[:success] = 'Activity has been created.'
-      redirect_to activity_path(@activity)
-    else
-      @activity.unpublish
-      flash.now[:alert] = 'Sorry! Activity could not been created.'
-      render 'new'
+    respond_to do |format|
+      if @activity.save
+        format.html { redirect_to @activity, notice: 'Activity has been created.' }
+        format.json { render :show, status: :created, location: @activity }
+      else
+        format.html { render :new }
+        format.json { render json: @activity.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def show
     @galleries = @activity.galleries.all
     @related_activities = Activity.where("id != '#{@activity.id}'")
-                                  .limit(3).includes(:destination)
+                                  .limit(3).includes(:destination, :categories)
     @nearby_activities =  Activity.where("id != '#{@activity.id}'")
                                   .where("destination_id = '#{@activity.destination.id}'")
                                   .limit(3).includes(:destination)
@@ -57,14 +58,14 @@ class ActivitiesController < ApplicationController
 
   def update
     authorize @activity
-    @activity.assign_attributes(activity_params)
-    if @activity.publish
-      flash[:success] = 'Activity has been updated.'
-      redirect_to activity_path(@activity)
-    else
-      @activity.unpublish
-      flash.now[:alert] = 'Sorry! Activity has not been updated.'
-      render 'new'
+    respond_to do |format|
+      if @activity.update(activity_params)
+        format.html { redirect_to :back, notice: 'Activity has been updated.' }
+        format.json { render :show, status: :ok, location: @activity }
+      else
+        format.html { render :edit }
+        format.json { render json: @activity.errors, status: :unprocessable_entity }
+      end
     end
   end
 

@@ -19,7 +19,7 @@ class GalleriesController < ApplicationController
   # GET /galleries/new
   def new
     @gallery = Gallery.new
-    authorize @gallery
+    authorize Gallery
   end
 
   # GET /galleries/1/edit
