@@ -5,7 +5,7 @@ gem 'rails', '4.2.6'
 gem 'pg', '~> 0.15'
 gem 'jbuilder', '~> 2.0'
 gem 'enumerize', '~> 1.1'
-gem 'friendly_id', '~> 5.1'
+gem 'mail_form', '~> 1.5'
 
 #Frontend
 gem 'sass-rails', '~> 5.0'
@@ -22,6 +22,7 @@ gem 'coffee-script', '~> 2.4'
 gem 'underscore-rails', '~> 1.8'
 gem 'simple_form', '~> 3.2'
 gem 'cocoon', '~> 1.2'
+gem 'friendly_id', '~> 5.1'
 
 # SEO
 gem 'meta-tags', '~> 2.1'
