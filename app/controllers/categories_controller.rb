@@ -30,13 +30,17 @@ class CategoriesController < ApplicationController
 
   def show
     authorize @category
-    @activities = Activity.in_category(@category).includes(:category, :destination)
+    @activities = Activity.in_category(@category).includes(:destination)
                           .paginate(page: params[:page], per_page: 12)
     prepare_meta_tags(title: @category.name,
                       description: @category.brief,
                       image: @category.cover.card.url,
                       twitter: {card: "summary_large_image",
                                 image: @category.cover.card.url})
+    
+    if request.path != category_path(@category)
+      redirect_to @category, status: 301
+    end
   end
 
   def edit
@@ -65,9 +69,6 @@ class CategoriesController < ApplicationController
 
   def set_category
     @category = Category.find(params[:id])
-    if request.path != category_path(@category)
-      redirect_to @category, status: 301
-    end
   end
 
   def category_params

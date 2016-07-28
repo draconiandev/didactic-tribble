@@ -12,6 +12,9 @@ class PeopleController < ApplicationController
 
   def show
     authorize @person
+    if request.path != person_path(@person)
+      redirect_to @person, status: 301
+    end
   end
 
   def destroy

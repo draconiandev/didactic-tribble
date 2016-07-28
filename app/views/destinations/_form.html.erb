@@ -16,7 +16,8 @@
       <%= f.input :name %>
     </div>
     <div class="input-field col s12">
-      <%= f.input :description, input_html: { class: 'editable' } %> <br><br><hr><br><br>
+      <label>Description</label><br><br>
+      <%= f.input :description, label: '', input_html: { class: 'editable' } %> <br><br><hr>
     </div>
     <div class="input-field col s12">
       <div class='file-field input-field'>
@@ -27,8 +28,8 @@
         <div class='file-path-wrapper'>
             <input class='file-path validate' type='text'>
         </div>
-      </div>
       <%= @destination.cover? ? 'There is a file already' : '' %>
+      </div>
     </div>
   </div>
   <div class="input-field col s12">

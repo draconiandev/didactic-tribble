@@ -41,6 +41,9 @@ class DestinationsController < ApplicationController
       marker.lat destination.latitude
       marker.lng destination.longitude
     end
+    if request.path != destination_path(@destination)
+      redirect_to @destination, status: 301
+    end
   end
 
   def edit
@@ -69,9 +72,6 @@ class DestinationsController < ApplicationController
 
   def set_destination
     @destination = Destination.find(params[:id])
-    if request.path != destination_path(@destination)
-      redirect_to @destination, status: 301
-    end
   end
 
   def destination_params

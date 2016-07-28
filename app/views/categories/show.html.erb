@@ -6,27 +6,31 @@
 
 <div class="container">
 	<h4><%= @category.name %></h4>
-	<h5><%= @category.main_category.humanize %></h5>
-	<p><%= @category.description %></p>
+	<h5>(<%= @category.main_category.humanize %>)</h5>
+	<p><%= @category.description.html_safe %></p>
 	
-<% if manager? %>
-	<div class="row">
-    <div class="col s12 m6 l6">
-    	<h5>Vendors for this category</h5>
-				<div class="row">
-					<% @category.vendors.each do |vendor| %>
-						<div class="col s6">
-							<p>
-								<%= link_to vendor.name, vendor_path(vendor) %>
-								(<%= vendor.city %>)
-							</p>
-						</div>
-			  	<% end %>
-				</div>
+	<% if manager? && @category.vendors.any? %>
+		<div class="row">
+	    <div class="col s12 m6 l6">
+	    	<h5>Vendors for this category</h5>
+					<div class="row">
+						<% @category.vendors.each do |vendor| %>
+							<div class="col s6">
+								<p>
+									<%= link_to vendor.name, vendor_path(vendor) %>
+									(<%= vendor.city %>)
+								</p>
+							</div>
+				  	<% end %>
+					</div>
+			</div>
 		</div>
-	</div>
-<% end %>
+	<% end %>
 	
+	<% if @activities.any? %>
+		<%= render 'shared/activities' %>		
+	<% end %>
+
 	<% if policy(:category).edit? %>		
 		<%= link_to(edit_category_path) do %>
 			<div class="btn waves-effect waves-light">Edit Category<i class="material-icons right">mode_edit</i></div>
@@ -40,7 +44,4 @@
 			<% end %>
 		</div>
 	<% end %>
-
 </div>
-
-<%= render 'shared/activities' %>

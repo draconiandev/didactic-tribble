@@ -16,9 +16,10 @@
       <%= f.input :name %>
     </div>
     <div class="input-field col s12">
-      <%= f.input :description, input_html: { class: 'editable' } %> <br><br><hr><br><br>
+      <label>Description</label><br><br>
+      <%= f.input :description, label: '', input_html: { class: 'editable' } %> <br><hr>
     </div>
-    <div class="input-field col s12">
+    <div class="col s12">
       <%= f.input :main_category %><br>
     </div>
     <div class="input-field col s12">

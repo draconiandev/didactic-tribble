@@ -1,47 +1,45 @@
-<div class="container">
-  <div class="center-align">
-    <h4>Outstanding Experiences</h4>
-    <h5>You have to do it. At least, once.</h5>
-  </div>
-  <div class="row">
-    <% @activities.each do |activity| %>
-      <div class="col s12 m6 l4">
-        <div class="card">
-          <div class="card-image waves-effect waves-block waves-light">
-            <%= image_tag activity.cover.card.url %>
-          </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4"><%= link_to truncate(activity.title, length: 21), activity_path(activity) %><i class="material-icons right">more_vert</i></span>
-          <p><%= number_to_currency(activity.price, :unit => '₹ ') %></p>
-          <p><%= link_to activity.destination.name, destination_path(activity.destination) %></p>
+<div class="center-align">
+  <h4>Outstanding Experiences</h4>
+  <h5>You have to do it. At least, once.</h5>
+</div>
+<div class="row">
+  <% @activities.each do |activity| %>
+    <div class="col s12 m6 l4">
+      <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <%= image_tag activity.cover.card.url %>
         </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">
-              <%= activity.title %><i class="material-icons right">close</i>
-            </span>
-            <p>
-              <span class="grey-text text-darken-2">Destination: </span>
-              <%= activity.destination.name %>
-            </p>
-            <p>
-              <span class="grey-text text-darken-2">Categories: </span>
-              <%= activity.categories.map(&:name).to_sentence %>
-            </p>
-            <p>
-              <span class="grey-text text-darken-2">Difficulty: </span>
-              <%= activity.difficulty.humanize %>
-            </p>
-            <p>
-              <%= activity.brief %>
-            </p>
-        </div>
-        </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4"><%= link_to truncate(activity.title, length: 21), activity_path(activity) %><i class="material-icons right">more_vert</i></span>
+        <p><%= number_to_currency(activity.price, :unit => '₹ ') %></p>
+        <p><%= link_to activity.destination.name, destination_path(activity.destination) %></p>
       </div>
-    <% end %>
-  </div>
-  <div class="right">
-    <%= link_to "See All Activities", activities_path %>
-  </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">
+            <%= activity.title %><i class="material-icons right">close</i>
+          </span>
+          <p>
+            <span class="grey-text text-darken-2">Destination: </span>
+            <%= activity.destination.name %>
+          </p>
+          <p>
+            <span class="grey-text text-darken-2">Categories: </span>
+            <%= activity.categories.map(&:name).to_sentence %>
+          </p>
+          <p>
+            <span class="grey-text text-darken-2">Difficulty: </span>
+            <%= activity.difficulty.humanize %>
+          </p>
+          <p>
+            <%= activity.brief %>
+          </p>
+      </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="right">
+  <%= link_to "See All Activities", activities_path %>
 </div>
 
 <br><br>

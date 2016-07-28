@@ -33,7 +33,7 @@ class Activity < ActiveRecord::Base
   scope :drafts,          -> { where(published_at: nil) }
   scope :featured,        -> { where(featured: true) }
   scope :in_destination,  lambda { |destination| joins(:destination).where(destinations: { name: destination.name }) }
-  scope :in_category,     lambda { |category| joins(:category).where(categories: { name: category.name }) }
+  scope :in_category,     lambda { |category| joins(:categories).where("categories.name = ?", category.name) }
   scope :in_vendor,       lambda { |vendor| joins(:vendor).where(vendors: { name: vendor.name }) }
 
   def end_date_after_start_date

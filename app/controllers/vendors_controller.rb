@@ -30,6 +30,10 @@ class VendorsController < ApplicationController
     authorize @vendor
     @activities = Activity.in_vendor(@vendor).includes(:vendor)
                           .paginate(page: params[:page], per_page: 12)
+
+    if request.path != vendor_path(@vendor)
+      redirect_to @vendor, status: 301
+    end
   end
 
   def edit

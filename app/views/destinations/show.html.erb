@@ -6,7 +6,7 @@
 
 <div class="container">
 	<h4><%= @destination.name %></h4>
-	<p><%= @destination.description %></p>
+	<p><%= @destination.description.html_safe %></p>
 	<br><br>
 
 	<%= render 'shared/maps' %>
