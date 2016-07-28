@@ -45,6 +45,13 @@ class Activity < ActiveRecord::Base
   #   Activity.includes(self.category_id = category.id)
   # end
 
+  def categories_attributes=(category_attributes)
+    category_attributes.values.each do |category_attribute|
+      category = Category.find_or_create_by(category_attribute)
+      self.categorizations.build(category: category)
+    end
+  end
+
   def publish
     self.published_at = Time.zone.now
     self.slug = nil # let FriendlyId generate slug
