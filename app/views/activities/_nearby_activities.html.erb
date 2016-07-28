@@ -23,8 +23,8 @@
               <%= activity.destination.name if activity.destination %>
             </p>
             <p>
-              <span class="grey-text text-darken-2">Category: </span>
-              <%= activity.category.name if activity.category %>
+              <span class="grey-text text-darken-2">Categories: </span>
+              <%= activity.categories.map(&:name).to_sentence %>
             </p>
             <p>
               <span class="grey-text text-darken-2">Difficulty: </span>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725170643) do
+ActiveRecord::Schema.define(version: 20160728092219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,8 +37,10 @@ ActiveRecord::Schema.define(version: 20160725170643) do
     t.datetime "published_at"
     t.boolean  "featured"
     t.integer  "vendor_id"
+    t.integer  "categorization_id"
   end
 
+  add_index "activities", ["categorization_id"], name: "index_activities_on_categorization_id", using: :btree
   add_index "activities", ["category_id"], name: "index_activities_on_category_id", using: :btree
   add_index "activities", ["destination_id"], name: "index_activities_on_destination_id", using: :btree
   add_index "activities", ["title"], name: "index_activities_on_title", unique: true, using: :btree
@@ -51,13 +53,25 @@ ActiveRecord::Schema.define(version: 20160725170643) do
     t.text     "brief"
     t.string   "slug"
     t.string   "main_category"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "subscription_id"
+    t.integer  "categorization_id"
   end
 
+  add_index "categories", ["categorization_id"], name: "index_categories_on_categorization_id", using: :btree
   add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
   add_index "categories", ["subscription_id"], name: "index_categories_on_subscription_id", using: :btree
+
+  create_table "categorizations", force: :cascade do |t|
+    t.integer  "activity_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "categorizations", ["activity_id"], name: "index_categorizations_on_activity_id", using: :btree
+  add_index "categorizations", ["category_id"], name: "index_categorizations_on_category_id", using: :btree
 
   create_table "destinations", force: :cascade do |t|
     t.string   "name"
@@ -138,9 +152,13 @@ ActiveRecord::Schema.define(version: 20160725170643) do
   add_index "vendors", ["subscription_id"], name: "index_vendors_on_subscription_id", using: :btree
 
   add_foreign_key "activities", "categories"
+  add_foreign_key "activities", "categorizations"
   add_foreign_key "activities", "destinations"
   add_foreign_key "activities", "vendors"
+  add_foreign_key "categories", "categorizations"
   add_foreign_key "categories", "subscriptions"
+  add_foreign_key "categorizations", "activities"
+  add_foreign_key "categorizations", "categories"
   add_foreign_key "subscriptions", "categories"
   add_foreign_key "subscriptions", "vendors"
   add_foreign_key "vendors", "subscriptions"

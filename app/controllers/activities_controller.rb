@@ -7,7 +7,7 @@ class ActivitiesController < ApplicationController
 
   def index
     authorize Activity
-    @activities = Activity.latest(50).includes(:destination, :category).paginate(page: params[:page], per_page: 3)
+    @activities = Activity.latest(50).includes(:destination, :categories).paginate(page: params[:page], per_page: 3)
     prepare_meta_tags title: "Activities", description: "Experience 100+ activities from around the country"
   end
 
@@ -33,11 +33,10 @@ class ActivitiesController < ApplicationController
   def show
     @galleries = @activity.galleries.all
     @related_activities = Activity.where("id != '#{@activity.id}'")
-                                  .where("category_id = '#{@activity.category.id}'")
-                                  .limit(3).includes(:destination, :category)
+                                  .limit(3).includes(:destination)
     @nearby_activities =  Activity.where("id != '#{@activity.id}'")
                                   .where("destination_id = '#{@activity.destination.id}'")
-                                  .limit(3).includes(:destination, :category)
+                                  .limit(3).includes(:destination)
     authorize @activity
     prepare_meta_tags(title: @activity.title,
                       description: @activity.brief,
@@ -84,8 +83,9 @@ class ActivitiesController < ApplicationController
                                      :price, :start_date, :end_date, :cover,
                                      :handcrafted, :handcrafted_category,
                                      :difficulty, :brief, :slug, :published_at, :featured,
-                                     :category_id, :destination_id, :vendor_id,
+                                     :destination_id, :vendor_id,
                                      galleries_attributes: [:id, :activity_id,
-                                      :image, :alt_text, :done, :_destroy])
+                                      :image, :alt_text, :done, :_destroy],
+                                      category_ids:[], categories_attributes: [:name])
   end
 end

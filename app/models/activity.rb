@@ -2,14 +2,15 @@
 class Activity < ActiveRecord::Base
 
   belongs_to :destination
-  belongs_to :category
   belongs_to :vendor
+  has_many :categorizations
+  has_many :categories, through: :categorizations
   has_many :galleries
 
   accepts_nested_attributes_for :galleries, reject_if: :all_blank, allow_destroy: true
 
   validates :title, :overview, :itinerary, :price, :start_date,
-            :difficulty, :brief, :slug, :destination_id, :category_id, presence: true
+            :difficulty, :brief, :slug, :destination_id, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0 }
   validates :title, uniqueness: { case_sensitive: false }
   validate :end_date_after_start_date

@@ -1,6 +1,6 @@
 #
 class Category < ActiveRecord::Base
-  has_many :activities, dependent: :destroy
+  has_many :activities
   has_many :subscriptions
   has_many :vendors, through: :subscriptions
 

@@ -12,11 +12,23 @@
       </div>
       <div class="card-reveal">
         <span class="card-title grey-text text-darken-4">
-          <%= activity.title %><i class="material-icons right">close</i>
-        </span>
-        <p><%= number_to_currency(activity.price, :unit => '₹ ') %></p>
-        <p><%= activity.destination.name if activity.destination %></p>
-        <p><%= activity.difficulty.humanize %></p>
+              <%= activity.title %><i class="material-icons right">close</i>
+            </span>
+            <p>
+              <span class="grey-text text-darken-2">Destination: </span>
+              <%= activity.destination.name %>
+            </p>
+            <p>
+              <span class="grey-text text-darken-2">Categories: </span>
+              <%= activity.categories.map(&:name).to_sentence %>
+            </p>
+            <p>
+              <span class="grey-text text-darken-2">Difficulty: </span>
+              <%= activity.difficulty.humanize %>
+            </p>
+            <p>
+              <%= activity.brief %>
+            </p>
       </div>
       </div>
     </div>

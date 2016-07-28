@@ -8,7 +8,7 @@
 <div class='card teal hoverable'>
   <div class="container">
     <div class='row'>
-      <div class='col s12 m6 l6'>
+      <div class='col s12 m10 l10'>
         <h4 class='white-text'><%= @activity.title %></h4>
       </div>
     </div>
@@ -22,7 +22,7 @@
     </div>
     <div class='row'>
       <div class='col s6 m6 l6'>
-        <h5 class='white-text'><i class="fa fa-map-marker" aria-hidden="true"></i> <%= @activity.destination.name if @activity.destination %></h5>
+        <h5 class='white-text'><i class="fa fa-location-arrow" aria-hidden="true"></i> <%= @activity.destination.name if @activity.destination %></h5>
       </div>
       <div class='col s6 m6 l6'>
         <h5 class='white-text'><%= number_to_currency(@activity.price, unit: '₹ ') %></h5>
@@ -30,10 +30,10 @@
     </div>
     <div class='row'>
       <div class='col s6 m6 l6' >
-        <h5 class='white-text'><%= @activity.category.name if @activity.category %></h5>
+        <h5 class='white-text'><i class="fa fa-object-group" aria-hidden="true"></i> <%= @activity.categories.map(&:name).to_sentence %></h5>
       </div>
       <div class='col s6 m6 l6'>
-        <h5 class='white-text'><i class="material-icons">warning</i> <%= @activity.difficulty.humanize %></h5>
+        <h5 class='white-text'><i class="fa fa-exclamation" aria-hidden="true"></i> <%= @activity.difficulty.humanize %></h5>
       </div>
     </div>
   </div>

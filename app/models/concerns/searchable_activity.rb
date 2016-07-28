@@ -17,7 +17,7 @@ module SearchableActivity
         indexes :difficulty
         indexes :slug
         indexes :price
-        indexes :category do
+        indexes :categories do
           indexes :name, analyzer: 'english'
         end
         indexes :destination do
@@ -49,7 +49,7 @@ module SearchableActivity
       only: [:title, :itinerary, :overview, :slug, :price],
       include: {
         destination: { only: :name },
-        category: { only: :name }
+        categories: { only: :name }
       }
     })
   end
