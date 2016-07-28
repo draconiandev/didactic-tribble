@@ -65,6 +65,9 @@ class CategoriesController < ApplicationController
 
   def set_category
     @category = Category.find(params[:id])
+    if request.path != category_path(@category)
+      redirect_to @category, status: 301
+    end
   end
 
   def category_params

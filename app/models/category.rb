@@ -12,20 +12,13 @@ class Category < ActiveRecord::Base
   enumerize :main_category, in: [:air, :water, :land]
 
   extend FriendlyId
-  friendly_id :slug_candidates, use: [:slugged, :finders]
+  friendly_id :slug, use: [:slugged, :finders, :history]
 
   include SearchableCategory
 
   mount_uploader :cover, CoverUploader
 
   def should_generate_new_friendly_id?
-    slug.blank? || name_changed?
-  end
-
-  def slug_candidates
-    [
-      :slug,
-      [:slug, :name]
-    ]
+    slug.blank? || slug_changed?
   end
 end
