@@ -16,7 +16,7 @@ class Activity < ActiveRecord::Base
   validate :end_date_after_start_date
 
   extend FriendlyId
-  friendly_id :slug, use: [:slugged, :finders, :history]
+  friendly_id :title, use: [:slugged, :finders, :history]
   
   extend Enumerize
   enumerize :difficulty, in: [:easy, :moderate, :challenging]
