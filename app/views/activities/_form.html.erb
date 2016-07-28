@@ -1,6 +1,5 @@
 <div class='container'>
-  <%= simple_form_for @activity, remote: true, authenticity_token: true,
-                                 html: { multipart: true } do |f| %>
+  <%= simple_form_for @activity do |f| %>
     <%= f.error_notification %>
     <ul>
       <% @activity.errors.full_messages.each do |msg| %>
