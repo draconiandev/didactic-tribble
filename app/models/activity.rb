@@ -16,7 +16,7 @@ class Activity < ActiveRecord::Base
   validate :end_date_after_start_date
 
   extend FriendlyId
-  friendly_id :slug_candidates, use: [:slugged, :finders]
+  friendly_id :slug, use: [:slugged, :finders, :history]
   
   extend Enumerize
   enumerize :difficulty, in: [:easy, :moderate, :challenging]
@@ -28,11 +28,11 @@ class Activity < ActiveRecord::Base
   mount_uploader :cover, CoverUploader
 
   scope :recent,          -> { order(created_at: :desc) }
-  scope :latest,          ->(number) { recent.limit(number) }
+  scope :latest,          -> (number) { recent.limit(number) }
   scope :published,       -> { where.not(published_at: nil) }
   scope :drafts,          -> { where(published_at: nil) }
   scope :featured,        -> { where(featured: true) }
-  scope :in_destination,  lambda {|destination| joins(:destination).where(destinations: { name: destination.name })}
+  scope :in_destination,  lambda { |destination| joins(:destination).where(destinations: { name: destination.name }) }
   scope :in_category,     lambda { |category| joins(:category).where(categories: { name: category.name }) }
   scope :in_vendor,       lambda { |vendor| joins(:vendor).where(vendors: { name: vendor.name }) }
 
@@ -67,14 +67,5 @@ class Activity < ActiveRecord::Base
 
   def should_generate_new_friendly_id?
     slug.blank? || title_changed?
-  end
-
-  def slug_candidates
-    [
-      :slug,
-      [:slug, :start_date],
-      [:slug, :start_date, :end_date],
-      [:slug, :start_date, :end_date, :price]
-    ]
   end
 end

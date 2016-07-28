@@ -76,6 +76,9 @@ class ActivitiesController < ApplicationController
 
   def set_activity
     @activity = Activity.find(params[:id])
+    if request.path != activity_path(@activity)
+      redirect_to @activity, status: 301
+    end
   end
 
   def activity_params
