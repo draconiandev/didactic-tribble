@@ -30,7 +30,7 @@ class CategoriesController < ApplicationController
 
   def show
     authorize @category
-    @activities = Activity.in_category(@category).recent.includes(:destination, :categories)
+    @activities = Activity.categories.map(&:name).first.recent.includes(:destination, :categories)
                           .paginate(page: params[:page], per_page: 12)
     prepare_meta_tags(title: @category.name,
                       description: @category.brief,

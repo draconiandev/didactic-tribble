@@ -5,22 +5,21 @@ class Category < ActiveRecord::Base
   has_many :vendors, through: :subscriptions
   has_many :activities, through: :categorizations
   
-  validates :name, :description, :brief, :main_category,
-            :slug, presence: true
+  validates :name, :description, :brief, :main_category, presence: true
   validates :name, uniqueness: true
 
   extend Enumerize
   enumerize :main_category, in: [:air, :water, :land]
 
   extend FriendlyId
-  friendly_id :slug, use: [:slugged, :finders, :history]
+  friendly_id :name, use: [:slugged, :finders, :history]
 
   include SearchableCategory
 
   mount_uploader :cover, CoverUploader
 
   def should_generate_new_friendly_id?
-    slug.blank? || slug_changed?
+    slug.blank? || name_changed?
   end
 
   # def activities_attributes=(activity_attributes)

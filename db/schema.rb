@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160728225839) do
+ActiveRecord::Schema.define(version: 20160728231511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,9 +89,12 @@ ActiveRecord::Schema.define(version: 20160728225839) do
   add_index "destinations", ["slug"], name: "index_destinations_on_slug", unique: true, using: :btree
 
   create_table "enquiries", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "activity_id"
   end
+
+  add_index "enquiries", ["activity_id"], name: "index_enquiries_on_activity_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -181,6 +184,7 @@ ActiveRecord::Schema.define(version: 20160728225839) do
   add_foreign_key "categories", "subscriptions"
   add_foreign_key "categorizations", "activities"
   add_foreign_key "categorizations", "categories"
+  add_foreign_key "enquiries", "activities"
   add_foreign_key "subscriptions", "categories"
   add_foreign_key "subscriptions", "vendors"
   add_foreign_key "vendors", "subscriptions"

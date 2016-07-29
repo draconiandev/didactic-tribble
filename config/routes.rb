@@ -27,8 +27,10 @@ Rails.application.routes.draw do
   resources :people, only: [:index, :show, :destroy]
   resources :destinations
   resources :categories
-  resources :activities
   resources :galleries
   resources :vendors
-  resources :enquiries, only: [:new, :create]
+
+  resources :activities do
+    resources :enquiries, only: [:new, :create]  
+  end
 end

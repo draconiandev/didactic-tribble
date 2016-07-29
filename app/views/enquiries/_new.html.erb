@@ -1,0 +1,30 @@
+<div id="enquiry" class="modal bottom-sheet">
+  <div class="container">
+      <div class="modal-content">
+        <h4 class="center">Send an enquiry about this activity to us</h4>
+      <%= simple_form_for [@activity, @enquiry] do |f| %>
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.input :name, required: true %>
+          </div>
+          <div class="input-field col s12">
+            <%= f.input :phone, required: true %>
+          </div>
+          <div class="input-field col s12">
+            <%= f.input :email, required: true %>
+          </div>
+          <div class="input-field col s12">
+            <%= f.input :message, as: :text, label: 'Your Message',
+                          input_html: { class: 'materialize-textarea' } %>
+          </div>
+          <div class= "hide">
+            <%= f.input :nickname, hint: 'Leave this field blank!' %>
+          </div>  
+        </div>
+      </div>
+      <div class="modal-footer">
+        <%= f.submit "Submit", class: 'btn' %>        
+      </div>
+      <% end %>
+  </div>
+</div>

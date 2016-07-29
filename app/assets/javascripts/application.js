@@ -43,4 +43,13 @@ $(document).ready(function() {
     $("img").lazyload({
         effect : "fadeIn"
       });
+    $('.modal-trigger').leanModal({
+      dismissible: true,
+      opacity: .85,
+      in_duration: 300,
+      out_duration: 200,
+      starting_top: '4%',
+      ending_top: '10%'
+    });
+   $('.tooltipped').tooltip({delay: 50});
 });

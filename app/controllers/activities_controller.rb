@@ -33,6 +33,8 @@ class ActivitiesController < ApplicationController
 
   def show
     @galleries = @activity.galleries.all
+    @enquiry = @activity.enquiries.build
+    session[:current_activity_id] = @activity.id
     @related_activities = Activity.where("id != '#{@activity.id}'")
                                   .limit(3).includes(:destination, :categories)
     @nearby_activities =  Activity.where("id != '#{@activity.id}'")
@@ -60,7 +62,7 @@ class ActivitiesController < ApplicationController
     authorize @activity
     respond_to do |format|
       if @activity.update(activity_params)
-        format.html { redirect_to :back, notice: 'Activity has been updated.' }
+        format.html { redirect_to activity_path(@activity), notice: 'Activity has been updated.' }
         format.json { render :show, status: :ok, location: @activity }
       else
         format.html { render :edit }

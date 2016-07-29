@@ -111,8 +111,8 @@ a.footer-icons {
   border: 0.1rem solid $primary-color;
 }
 
-.hidden{
-  display: none;
+.modal.bottom-sheet{
+  max-height: 85%;
 }
 
 #autocomplete-items {
