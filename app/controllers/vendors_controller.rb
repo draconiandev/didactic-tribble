@@ -6,7 +6,7 @@ class VendorsController < ApplicationController
 
   def index
     authorize Vendor
-    @vendors = Vendor.all.paginate(page: params[:page], per_page: 25)
+    @vendors = Vendor.order(:name).paginate(page: params[:page], per_page: 50)
   end
 
   def new
@@ -28,8 +28,9 @@ class VendorsController < ApplicationController
 
   def show
     authorize @vendor
-    @activities = Activity.in_vendor(@vendor).includes(:vendor)
-                          .paginate(page: params[:page], per_page: 12)
+    
+    @activities = Activity.by_vendor(@vendor).includes(:vendor).order(created_at: :desc)
+    @categories = @vendor.categories.order(created_at: :desc)
 
     if request.path != vendor_path(@vendor)
       redirect_to @vendor, status: 301

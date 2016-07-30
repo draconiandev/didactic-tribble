@@ -31,6 +31,10 @@
 		<%= render 'shared/activities' %>		
 	<% end %>
 
+	<div id="infinite-scrolling">
+	  <%= will_paginate @activities %>
+	</div>
+
 	<% if policy(:category).edit? %>		
 		<%= link_to(edit_category_path) do %>
 			<div class="btn waves-effect waves-light">Edit Category<i class="material-icons right">mode_edit</i></div>

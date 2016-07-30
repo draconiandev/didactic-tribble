@@ -8,15 +8,6 @@ class Enquiry < ActiveRecord::Base
   attribute :message
   attribute :nickname,  captcha: true
 
-  # def activity_title
-  #   self.all { |activity| title = activity.title }
-  #   title
-  # end
-
-  # def activity_id
-  #   self.activity.title
-  # end
-
   def headers
     {
       subject: "Enquiry for #{activity.title}",

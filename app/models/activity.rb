@@ -6,10 +6,10 @@ class Activity < ActiveRecord::Base
 
   belongs_to :destination
   belongs_to :vendor
-  has_many :categorizations
+  has_many :categorizations, dependent: :destroy
   has_many :categories, through: :categorizations
   has_many :galleries
-  has_many :enquiries
+  has_many :enquiries, dependent: :destroy
 
   accepts_nested_attributes_for :galleries, reject_if: :all_blank, allow_destroy: true
 
@@ -36,8 +36,8 @@ class Activity < ActiveRecord::Base
   scope :latest,          -> (number) { recent.limit(number) }
   scope :featured,        -> { where(featured: true) }
   scope :in_destination,  lambda { |destination| joins(:destination).where(destinations: { name: destination.name }) }
-  scope :in_category,     lambda { |category| joins(:categorizations).where(category: category.name) }
-  scope :in_vendor,       lambda { |vendor| joins(:vendor).where(vendors: { name: vendor.name }) }
+  # scope :in_category,     lambda { |category| joins(:categorizations).where(categorizations: activity.title) }
+  scope :by_vendor,       lambda { |vendor| joins(:vendor).where(vendors: { name: vendor.name }) }
 
   protected 
   
@@ -48,7 +48,7 @@ class Activity < ActiveRecord::Base
 
   def categories_attributes=(category_attributes)
     category_attributes.values.each do |category_attribute|
-      category = Category.find_or_create_by(category_attribute)
+      category = Category.find(category_attribute)
       self.categorizations.build(category: category)
     end
   end

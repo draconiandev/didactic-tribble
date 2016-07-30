@@ -34,17 +34,20 @@ class ActivitiesController < ApplicationController
   def show
     @galleries = @activity.galleries.all
     @enquiry = @activity.enquiries.build
-    session[:current_activity_id] = @activity.id
+
     @related_activities = Activity.where("id != '#{@activity.id}'")
+                                  .where("#{@activity.categories.first.id} = '#{@activity.categories.first.id}'")
                                   .limit(3).includes(:destination, :categories)
     @nearby_activities =  Activity.where("id != '#{@activity.id}'")
                                   .where("destination_id = '#{@activity.destination.id}'")
-                                  .limit(3).includes(:destination)
+                                  .limit(3).includes(:destination, :categories)
     authorize @activity
+
     prepare_meta_tags(title: @activity.title,
                       description: @activity.brief,
                       image: @activity.cover.card.url,
                       twitter: {card: "summary_large_image"})
+    
      @hash = Gmaps4rails.build_markers(@activity) do |activity, marker|
       marker.lat activity.destination.latitude
       marker.lng activity.destination.longitude

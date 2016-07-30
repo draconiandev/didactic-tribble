@@ -24,7 +24,13 @@
 			<% end %>
 		</div>
 	<% end %>
+	
+	<%= render 'shared/activities' %>
+
+	<div id="infinite-scrolling">
+	  <%= will_paginate @activities %>
+	</div>
+
 </div>
 
-<%= render 'shared/activities' %>
 <%= render 'shared/mapscript' %>

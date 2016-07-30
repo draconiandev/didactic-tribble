@@ -30,13 +30,12 @@ class CategoriesController < ApplicationController
 
   def show
     authorize @category
-    @activities = Activity.categories.map(&:name).first.recent.includes(:destination, :categories)
-                          .paginate(page: params[:page], per_page: 12)
-    prepare_meta_tags(title: @category.name,
-                      description: @category.brief,
-                      image: @category.cover.card.url,
-                      twitter: {card: "summary_large_image",
-                                image: @category.cover.card.url})
+    @activities = @category.activities
+                           .includes(:destination, :categories)
+                           .uniq.sort_by(&:id)
+                           .paginate(page: params[:page], per_page: 12)
+
+    meta_tags_for(@category)
     
     if request.path != category_path(@category)
       redirect_to @category, status: 301

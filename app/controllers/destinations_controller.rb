@@ -30,17 +30,18 @@ class DestinationsController < ApplicationController
 
   def show
     authorize @destination
-    @activities = Activity.in_destination(@destination).includes(:destination)
+    @activities = Activity.in_destination(@destination)
+                          .includes(:destination, :categories)
+                          .shuffle
                           .paginate(page: params[:page], per_page: 12)
-    prepare_meta_tags(title: @destination.name,
-                      description: @destination.brief,
-                      image: @destination.cover.card.url,
-                      twitter: {card: "summary_large_image",
-                                image: @destination.cover.card.url})
+
+    meta_tags_for(@destination)
+
     @hash = Gmaps4rails.build_markers(@destination) do |destination, marker|
       marker.lat destination.latitude
       marker.lng destination.longitude
     end
+
     if request.path != destination_path(@destination)
       redirect_to @destination, status: 301
     end
