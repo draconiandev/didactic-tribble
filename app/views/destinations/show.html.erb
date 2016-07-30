@@ -6,7 +6,7 @@
 
 <div class="container">
 	<h4><%= @destination.name %></h4>
-	<p><%= @destination.description.html_safe %></p>
+	<p><%= sanitize @destination.description, tags: %w(p b i u h2 h3 h4 h5 h6 blockquote), attributes: %w(href) %></p>
 	<br><br>
 
 	<%= render 'shared/maps' %>

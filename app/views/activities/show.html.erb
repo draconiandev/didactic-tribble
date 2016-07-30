@@ -45,9 +45,9 @@
 <div class="row">
   <div class="col s12 m10 l10">
       <h3>Overview</h3>
-      <p><%= @activity.overview.html_safe %></p>
+      <p><%= sanitize @activity.overview, tags: %w(p b i u h2 h3 h4 h5 h6 blockquote), attributes: %w(href) %></p>
       <h3>Itinerary</h3>
-      <p><%= @activity.itinerary.html_safe %></p>
+      <p><%= sanitize @activity.itinerary, tags: %w(p b i u h2 h3 h4 h5 h6 blockquote), attributes: %w(href) %></p>
     <!-- Content End -->
 
     <!-- Gallery Begin -->

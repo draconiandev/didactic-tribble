@@ -7,7 +7,7 @@
 <div class="container">
 	<h4><%= @category.name %></h4>
 	<h5>(<%= @category.main_category.humanize %>)</h5>
-	<p><%= @category.description.html_safe %></p>
+	<p><%= sanitize @category.description, tags: %w(p b i u h2 h3 h4 h5 h6 blockquote), attributes: %w(href) %></p>
 	
 	<% if manager? && @category.vendors.any? %>
 		<div class="row">
