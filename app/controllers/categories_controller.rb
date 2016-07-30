@@ -31,7 +31,7 @@ class CategoriesController < ApplicationController
   def show
     authorize @category
     @activities = @category.activities
-                           .includes(:destination, :categories)
+                           .includes(:destination)
                            .uniq.sort_by(&:id)
                            .paginate(page: params[:page], per_page: 12)
 

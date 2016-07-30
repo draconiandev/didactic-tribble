@@ -6,8 +6,8 @@ class Activity < ActiveRecord::Base
 
   belongs_to :destination
   belongs_to :vendor
-  has_many :categorizations, dependent: :destroy
-  has_many :categories, through: :categorizations
+  has_many :categorizations, dependent: :delete_all
+  has_many :categories, through: :categorizations, dependent: :destroy
   has_many :galleries
   has_many :enquiries, dependent: :destroy
 
@@ -32,14 +32,18 @@ class Activity < ActiveRecord::Base
   mount_uploader :cover, CoverUploader
 
   # Maybe published should also be scoped if and when implemented.
-  scope :recent,          -> { order(created_at: :desc) }
-  scope :latest,          -> (number) { recent.limit(number) }
-  scope :featured,        -> { where(featured: true) }
-  scope :in_destination,  lambda { |destination| joins(:destination).where(destinations: { name: destination.name }) }
-  # scope :in_category,     lambda { |category| joins(:categorizations).where(categorizations: activity.title) }
-  scope :by_vendor,       lambda { |vendor| joins(:vendor).where(vendors: { name: vendor.name }) }
+  scope :recent,              -> { order(created_at: :desc) }
+  scope :latest,              -> (number) { recent.limit(number) }
+  scope :featured,            -> { where(featured: true) }
+  scope :in_destination,      lambda { |destination| joins(:destination).where(destinations: { name: destination.name }) }
+  scope :by_vendor,           lambda { |vendor| joins(:vendor).where(vendors: { name: vendor.name }) }
+  scope :related_activities,  lambda { |activity| joins(:categorizations)
+                                                 .where(categorizations: { category_id: activity.category_ids })
+                                                 .where('activities.id != ?', activity.id)
+                                                 .order("RANDOM()").limit(3).includes(:destination)
+                                     }
 
-  protected 
+  protected
   
   def end_date_after_start_date
     return if end_date.blank? || start_date.blank?

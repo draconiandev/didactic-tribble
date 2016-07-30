@@ -37,10 +37,7 @@ class DestinationsController < ApplicationController
 
     meta_tags_for(@destination)
 
-    @hash = Gmaps4rails.build_markers(@destination) do |destination, marker|
-      marker.lat destination.latitude
-      marker.lng destination.longitude
-    end
+    build_map
 
     if request.path != destination_path(@destination)
       redirect_to @destination, status: 301
@@ -73,6 +70,13 @@ class DestinationsController < ApplicationController
 
   def set_destination
     @destination = Destination.find(params[:id])
+  end
+
+  def build_map
+    @hash = Gmaps4rails.build_markers(@destination) do |destination, marker|
+      marker.lat destination.latitude
+      marker.lng destination.longitude
+    end
   end
 
   def destination_params

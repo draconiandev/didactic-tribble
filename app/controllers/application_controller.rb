@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   # FIXME: Change default image url after the website is up
   def prepare_meta_tags(options={})
     site_name   = 'TrekHub'
-    title       = action_name.capitalize
+    title       = options[:title] || action_name.capitalize
     description = 'Organizing trekking tours, adventures tours. We hold expertise in offering you India trekking tours at best prices. Get complete information about famous treks for Trekking in India.'
     image       = options[:image] || 'http://www.trekhub.in/imgs/logo.png'
     current_url = request.url
@@ -41,6 +41,7 @@ class ApplicationController < ActionController::Base
       YahooSeeker: 'index, follow',
       twitter: {
         site_name: site_name,
+        title: title,
         site: '@TrekHubIN',
         card: 'summary',
         description: description,
@@ -64,7 +65,7 @@ class ApplicationController < ActionController::Base
   end
 
   def meta_tags_for(obj)
-    prepare_meta_tags(title:obj.name,
+    prepare_meta_tags(title:(obj.try(:name) ? obj.name : obj.title),
                       description:obj.brief,
                       image:obj.cover.card.url,
                       twitter: {card: 'summary_large_image',

@@ -1,9 +1,9 @@
 #
 class Category < ActiveRecord::Base
   has_many :subscriptions
-  has_many :categorizations
+  has_many :categorizations, dependent: :destroy
   has_many :vendors, through: :subscriptions
-  has_many :activities, through: :categorizations
+  has_many :activities, through: :categorizations, dependent: :destroy
   
   validates :name, :description, :brief, :main_category, presence: true
   validates :name, uniqueness: true
@@ -21,11 +21,4 @@ class Category < ActiveRecord::Base
   def should_generate_new_friendly_id?
     slug.blank? || name_changed?
   end
-
-  # def activities_attributes=(activity_attributes)
-  #   activity_attributes.values.each do |activity_attribute|
-  #     activity = Activity.find_or_create_by(activity_attribute)
-  #     self.categorizations.build(activity: activity)
-  #   end
-  # end
 end

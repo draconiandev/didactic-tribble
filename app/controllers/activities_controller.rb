@@ -7,7 +7,7 @@ class ActivitiesController < ApplicationController
 
   def index
     authorize Activity
-    @activities = Activity.recent.includes(:destination, :categories).paginate(page: params[:page], per_page: 15)
+    @activities = Activity.recent.includes(:destination).paginate(page: params[:page], per_page: 15)
     prepare_meta_tags title: "Activities", description: "Experience 100+ activities from around the country"
   end
 
@@ -32,26 +32,19 @@ class ActivitiesController < ApplicationController
   end
 
   def show
+    authorize @activity
     @galleries = @activity.galleries.all
     @enquiry = @activity.enquiries.build
 
-    @related_activities = Activity.where("id != '#{@activity.id}'")
-                                  .where("#{@activity.categories.first.id} = '#{@activity.categories.first.id}'")
-                                  .limit(3).includes(:destination, :categories)
+    @related_activities = Activity.related_activities(@activity)
+    # Refactor later
     @nearby_activities =  Activity.where("id != '#{@activity.id}'")
-                                  .where("destination_id = '#{@activity.destination.id}'")
-                                  .limit(3).includes(:destination, :categories)
-    authorize @activity
+                                  .limit(3).includes(:destination)
 
-    prepare_meta_tags(title: @activity.title,
-                      description: @activity.brief,
-                      image: @activity.cover.card.url,
-                      twitter: {card: "summary_large_image"})
-    
-     @hash = Gmaps4rails.build_markers(@activity) do |activity, marker|
-      marker.lat activity.destination.latitude
-      marker.lng activity.destination.longitude
-    end
+    meta_tags_for(@activity)
+
+    build_map
+
     if request.path != activity_path(@activity)
       redirect_to @activity, status: 301
     end
@@ -85,6 +78,13 @@ class ActivitiesController < ApplicationController
 
   def set_activity
     @activity = Activity.find(params[:id])
+  end
+
+  def build_map
+    @hash = Gmaps4rails.build_markers(@activity) do |activity, marker|
+      marker.lat activity.destination.latitude
+      marker.lng activity.destination.longitude
+    end
   end
 
   def activity_params
