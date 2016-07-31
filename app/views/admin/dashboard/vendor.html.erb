@@ -1,27 +1,34 @@
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Contact Person</th>
-      <th>City</th>
-      <th>Phone</th>
-      <th>Email</th>
-      <th colspan="5"></th>
-    </tr>
-  </thead>
+<div class="container">
+  <h1 class='center'>Vendors</h1>
+  <% if policy(:vendor).new? %>
+    <%= link_to "New Vendor", new_vendor_path, class:'right' %>
+  <% end %>
 
-  <tbody>
-    <% @vendors.each do |vendor| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= link_to vendor.name, vendor %></td>
-        <td><%= vendor.contact_person %></td>
-        <td><%= vendor.city %></td>
-        <td><%= vendor.phone %></td>
-        <td><%= vendor.email %></td>
-        <td><%= link_to 'Show', vendor %></td>
-        <td><%= link_to 'Edit', edit_vendor_path(vendor) %></td>
-        <td><%= link_to 'Destroy', vendor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Contact Person</th>
+        <th>City</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th colspan="5"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @vendors.each do |vendor| %>
+        <tr>
+          <td><%= link_to vendor.name, vendor %></td>
+          <td><%= vendor.contact_person %></td>
+          <td><%= vendor.city %></td>
+          <td><%= vendor.phone %></td>
+          <td><%= vendor.email %></td>
+          <td><%= link_to 'Show', vendor %></td>
+          <td><%= link_to 'Edit', edit_vendor_path(vendor) %></td>
+          <td><%= link_to 'Destroy', vendor, method: :delete, data: { confirm: 'Are you sure?' } if policy(:vendor).destroy? %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

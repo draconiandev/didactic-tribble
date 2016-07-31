@@ -129,6 +129,22 @@ a.footer-icons {
   width: 100%;
 }
 
+.pin-top {
+  position: relative;
+}
+
+// Class for when element is below threshold
+.pin-bottom {
+  position: relative;
+  padding: 100px;
+}
+
+// Class for when element is pinned
+.pinned {
+  position: fixed !important;
+  padding: 100px;
+}
+
 #autocomplete-items {
   list-style: none;
   // padding: 6px 8px;

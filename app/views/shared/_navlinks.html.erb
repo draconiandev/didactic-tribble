@@ -12,7 +12,7 @@
   <a class="dropdown-button" href="/handcrafted" data-activates="dropdown1">Hand Crafted</a>
 </li>
 <% if manager? %>
-  <li><a href="/vendors">Vendors</a></li>
+  <li><a href="/admin/dashboard">Dashboard</a></li>
 <% end %>
 <% if person_signed_in? %>
   <li><%= link_to 'Log Out', destroy_person_session_path, :method => 'delete' %></li>

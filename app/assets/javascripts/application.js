@@ -30,7 +30,7 @@ $(document).ready(function() {
       selectMonths: true,
       format: 'You selecte!d: dddd, dd mmm, yyyy',
     });
-   $('.tabs-wrapper .row').pushpin();
+    $('.tabs-wrapper .row').pushpin();
     $('select').material_select();
     $('.parallax').parallax();
     $('ul.tabs').tabs();
@@ -44,12 +44,14 @@ $(document).ready(function() {
         effect : "fadeIn"
       });
     $('.modal-trigger').leanModal({
-      dismissible: true,
-      opacity: .85,
-      in_duration: 300,
-      out_duration: 200,
-      starting_top: '4%',
-      ending_top: '10%'
-    });
-   $('.tooltipped').tooltip({delay: 50});
+        dismissible: true,
+        opacity: .85,
+        in_duration: 300,
+        out_duration: 200,
+        starting_top: '4%',
+        ending_top: '10%'
+      });
+    $('.tooltipped').tooltip({delay: 50});
+    $('.scrollspy').scrollSpy();
+    $('.tabs-wrapper .row').pushpin({ top: $('.tabs-wrapper').offset().top });
 });

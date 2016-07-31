@@ -1,1 +1,161 @@
-<h2>Activities</h2>
+<div class="container">
+  <div class="row">
+      <div class="col s12 m10 l10">
+        
+        <div id="activity" class="section scrollspy">
+          <h1 class='center'>Activities</h1>
+          <% if policy(:activity).new? %>
+            <%= link_to "New Activity", new_activity_path, class:'right' %>
+          <% end %>
+          <%= link_to 'View all activities', admin_dashboard_activity_path %>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Destination</th>
+              <th>Categories</th>
+              <th>Vendor</th>
+              <th colspan="4"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @activities.each do |activity| %>
+              <tr>
+                <td><%= link_to activity.title, activity %></td>
+                <td><%= activity.destination.name %></td>
+                <td><%= activity.categories.map(&:name).to_sentence(last_word_connector: ' and ') %></td>
+                <td><%= activity.vendor.name %></td>
+                <td><%= link_to 'Show', activity %></td>
+                <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
+                <td>
+                  <%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } if policy(:activity).destroy? %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <br>
+
+        <div id="destination" class="section scrollspy">
+          <h1 class='center'>Destinations</h1>
+          <% if policy(:destination).new? %>
+            <%= link_to "New Destination", new_destination_path, class:'right' %>
+          <% end %>
+          <%= link_to 'View all destinations', admin_dashboard_destination_path %>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Latitude</th>
+              <th>Longitude</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @destinations.each do |destination| %>
+              <tr>
+                <td><%= link_to destination.name, destination %></td>
+                <td><%= destination.latitude %></td>
+                <td><%= destination.longitude %></td>
+                <td><%= link_to 'Show', destination %></td>
+                <td><%= link_to 'Edit', edit_destination_path(destination) %></td>
+                <td>
+                  <%= link_to 'Destroy', destination, method: :delete, data: { confirm: 'Are you sure?' } if policy(:destination).destroy? %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <div id="category" class="section scrollspy">
+          <h1 class='center'>Categories</h1>
+          <% if policy(:category).new? %>
+            <%= link_to "New Category", new_category_path, class:'right' %>
+          <% end %>
+          <%= link_to 'View all categories', admin_dashboard_category_path %>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Main Category</th>
+              <th colspan="2"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @categories.each do |category| %>
+              <tr>
+                <td><%= link_to category.name, category %></td>
+                <td><%= category.main_category %></td>
+                <td><%= link_to 'Show', category %></td>
+                <td><%= link_to 'Edit', edit_category_path(category) %></td>
+                <td>
+                  <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } if policy(:category).destroy? %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <div id="vendor" class="section scrollspy">
+          <h1 class='center'>Vendors</h1>
+          <% if policy(:vendor).new? %>
+            <%= link_to "New Vendor", new_vendor_path, class:'right' %>
+          <% end %>
+          <%= link_to 'View all vendors', admin_dashboard_vendor_path %>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Contact Person</th>
+              <th>City</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th colspan="5"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @vendors.each do |vendor| %>
+              <tr>
+                <td><%= link_to vendor.name, vendor %></td>
+                <td><%= vendor.contact_person %></td>
+                <td><%= vendor.city %></td>
+                <td><%= vendor.phone %></td>
+                <td><%= vendor.email %></td>
+                <td><%= link_to 'Show', vendor %></td>
+                <td><%= link_to 'Edit', edit_vendor_path(vendor) %></td>
+                <td>
+                  <%= link_to 'Destroy', vendor, method: :delete, data: { confirm: 'Are you sure?' } if policy(:vendor).destroy? %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col hide-on-small-only m2 l2">
+        <div class="tabs-wrapper">
+          <div class="row">
+            <ul class="section table-of-contents right">
+              <li><a href="#activity">Activity</a></li>
+              <li><a href="#destination">Destination</a></li>
+              <li><a href="#category">Category</a></li>
+              <li><a href="#vendor">Vendor</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+  </div>
+</div>
