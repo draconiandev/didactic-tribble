@@ -23,6 +23,14 @@ Rails.application.routes.draw do
   namespace :api do
     get 'autocomplete' => 'search_autocomplete#index'    
   end
+
+  namespace :admin do
+    get 'dashboard' => 'dashboard#index'
+    get 'dashboard/activity'
+    get 'dashboard/category'
+    get 'dashboard/destination'
+    get 'dashboard/vendor'
+  end
   
   resources :people, only: [:index, :show, :destroy]
   resources :destinations

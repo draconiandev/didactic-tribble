@@ -1,38 +1,57 @@
 <div class="row">
-	<div class="col s12">
+	<div class="container">
 		<%= image_tag @category.cover.cover.url, class:'col s12 materialboxed' %>
 	</div>
 </div>
 
 <div class="container">
-	<h4><%= @category.name %></h4>
-	<h5>(<%= @category.main_category.humanize %>)</h5>
-	<p><%= sanitize @category.description, tags: %w(p b i u h2 h3 h4 h5 h6 blockquote), attributes: %w(href) %></p>
+	<div class="row center">
+	  <h4><%= @category.name %></h4>
+		<div class="big-chip"><%= @category.main_category.humanize %></div>
+	</div>
+
+	<div class="row">
+		<div class="col s12">
+			<div class="card">
+				<div class="card-content">
+					<h3 class="card-title">Description</h3>
+					<p>
+						<%= sanitize @category.description, tags: %w(p b i u h2 h3 h4 h5 h6 blockquote), attributes: %w(href) %>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
 	
 	<% if manager? && @category.vendors.any? %>
-		<div class="row">
-	    <div class="col s12 m6 l6">
-	    	<h5>Vendors for this category</h5>
-					<div class="row">
-						<% @category.vendors.each do |vendor| %>
-							<div class="col s6">
-								<p>
-									<%= link_to vendor.name, vendor_path(vendor) %>
-									(<%= vendor.city %>)
-								</p>
-							</div>
-				  	<% end %>
-					</div>
+		<div class="card-panel">
+			<div class="row">
+		    <div class="col s12 m6 l6">
+		    	<h5>Vendors for this category</h5>
+						<div class="row">
+							<% @category.vendors.each do |vendor| %>
+								<div class="col s6">
+									<p>
+										<%= link_to vendor.name, vendor_path(vendor) %>
+										(<%= vendor.city %>)
+									</p>
+								</div>
+					  	<% end %>
+						</div>
+				</div>
 			</div>
 		</div>
 	<% end %>
 	
-	<% if @activities.any? %>
-		<%= render 'shared/activities' %>		
-	<% end %>
-
-	<div id="infinite-scrolling">
-	  <%= will_paginate @activities %>
+	<div class="card-panel">
+		<% if @activities.any? %>
+		  <h5>Activities in this category</h5>
+			<%= render 'shared/activities' %>		
+		<% end %>
+	
+		<div id="infinite-scrolling">
+		  <%= will_paginate @activities %>
+		</div>
 	</div>
 
 	<% if policy(:category).edit? %>		

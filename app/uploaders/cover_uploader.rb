@@ -13,6 +13,7 @@ class CoverUploader < CarrierWave::Uploader::Base
   end
 
   # process convert: 'png'
+  process quality: 85
 
   version :thumb do
     process resize_to_fill: [50, 50]
@@ -23,6 +24,6 @@ class CoverUploader < CarrierWave::Uploader::Base
   end
 
   version :cover do
-    process resize_to_fill: [1600, 400]
+    process resize_to_fill: [1024, 512]
   end
 end

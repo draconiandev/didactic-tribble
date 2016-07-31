@@ -7,7 +7,7 @@ class ActivitiesController < ApplicationController
 
   def index
     authorize Activity
-    @activities = Activity.recent.includes(:destination).paginate(page: params[:page], per_page: 15)
+    @activities = Activity.recent.includes(:destination, :categories).paginate(page: params[:page], per_page: 15)
     prepare_meta_tags title: "Activities", description: "Experience 100+ activities from around the country"
   end
 

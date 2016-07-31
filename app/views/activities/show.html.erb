@@ -1,19 +1,19 @@
-<div class='row'>
-  <div class='col s12'>
+<div class="row">
+  <div class="container">
     <%= image_tag @activity.cover.cover.url, class:'col s12 materialboxed' %>
   </div>
 </div>
 
 <!-- Card Begin -->
-<div class='card teal hoverable'>
   <div class="container">
+<div class='card-panel teal'>
     <div class='row'>
-      <div class='col s12 m9 l9'>
+      <div class='col s12'>
         <h4 class='white-text'><%= @activity.title %></h4>
       </div>
     </div>
     <div class="row">
-      <div class="col s12 m6 l6">
+      <div class="col s12">
         <h4 class='white-text'>
           <%= l @activity.start_date, format: :customformat %>
           <%= @activity.end_date? ? "to #{l(@activity.end_date, format: :customformat)}" : '' %>
@@ -21,19 +21,28 @@
       </div>
     </div>
     <div class='row'>
-      <div class='col s6 m6 l6'>
-        <h5 class='white-text'><i class="fa fa-location-arrow" aria-hidden="true"></i> <%= @activity.destination.name if @activity.destination %></h5>
+      <div class='col s12 m6 l6'>
+        <h5 class='white-text'>
+          <i class="fa fa-location-arrow" aria-hidden="true"></i> 
+          <%= @activity.destination.name if @activity.destination %>
+        </h5>
       </div>
-      <div class='col s6 m6 l6'>
+      <div class='col s12 m6 l6'>
         <h5 class='white-text'><%= number_to_currency(@activity.price, unit: '₹ ') %></h5>
       </div>
     </div>
     <div class='row'>
-      <div class='col s6 m6 l6' >
-        <h5 class='white-text'><i class="fa fa-object-group" aria-hidden="true"></i> <%= @activity.categories.map(&:name).to_sentence %></h5>
+      <div class='col s12 m6 l6' >
+        <h5 class='white-text'>
+          <i class="fa fa-object-group" aria-hidden="true"></i> 
+          <%= @activity.categories.map(&:name).to_sentence(last_word_connector: ' and ') %>
+        </h5>
       </div>
-      <div class='col s6 m6 l6'>
-        <h5 class='white-text'><i class="fa fa-exclamation" aria-hidden="true"></i> <%= @activity.difficulty.humanize %></h5>
+      <div class='col s12 m6 l6'>
+        <h5 class='white-text'>
+          <i class="fa fa-exclamation" aria-hidden="true"></i> 
+          <%= @activity.difficulty.humanize %>
+        </h5>
       </div>
     </div>
   </div>
@@ -43,41 +52,76 @@
 <!-- Content Begin -->
 <div class='container'><!-- Container Begin -->
 <div class="row">
-  <div class="col s12 m10 l10">
-      <h3>Overview</h3>
-      <p><%= sanitize @activity.overview, tags: %w(p b i u h2 h3 h4 h5 h6 blockquote), attributes: %w(href) %></p>
-      <h3>Itinerary</h3>
-      <p><%= sanitize @activity.itinerary, tags: %w(p b i u h2 h3 h4 h5 h6 blockquote), attributes: %w(href) %></p>
+  <div class="col s12">
+    <div class="row">
+      
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <h3 class="card-title">OVERVIEW</h3>
+              <p>
+                <%= sanitize @activity.overview, tags: %w(p b i u h2 h3 h4 h5 h6 blockquote), attributes: %w(href) %>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">ITINERARY</span>
+              <p>
+                <%= sanitize @activity.itinerary, tags: %w(p b i u h2 h3 h4 h5 h6 blockquote), attributes: %w(href) %>
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
     <!-- Content End -->
 
     <!-- Gallery Begin -->
-      <h3>Gallery</h3>
-      <div class="row">
-      <div class="picture" itemscope="" itemtype="http://schema.org/ImageGallery">
-        <% @activity.galleries.each_with_index do |gal| %>
-          <% if gal.activity_id == @activity.id %>
-            <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-              <a data-size="<%= gal.width %> x <%= gal.height %>" href="<%= gal.image.medium.url %>" itemprop='contentUrl'>
-                <%= image_tag gal.image.card.url, class: 'row col s12 m6 l4', lazy:true %>
-              </a>
-            </figure>
-          <% end %>
-        <% end %>
-      </div>
+      <div class="card-panel">
+        <div class="row">
+          <div class="picture" itemscope="" itemtype="http://schema.org/ImageGallery">
+            <% @activity.galleries.each_with_index do |gal| %>
+              <% if gal.activity_id == @activity.id %>
+                <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                <a data-size="<%= gal.width %> x <%= gal.height %>" href="<%= gal.image.medium.url %>" itemprop='contentUrl'>
+                  <%= image_tag gal.image.card.url, class: 'row col s12 m6 l4', lazy: true %>
+                </a>
+                </figure>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
     <!-- Gallery End -->
 
     <!-- Map Begin -->
-      <%= render 'shared/maps' %>
+      <div class="card-panel">
+        <div id="map"></div>
+      </div>
+
     <!-- Map End -->
 
     <!-- Comments Begin -->
-      <div id="disqus_thread"></div>
+    <div class="row">
+      <div class="col s12">
+        <div class="card-panel">
+          <div id="disqus_thread"></div>
+        </div>
+      </div>
+    </div>
     <!-- Comments End -->
 
-      <%= render 'related_activities' %>
+      <div class="card-panel">
+        <%= render 'related_activities' %>
+      </div>
 
-      <%= render 'nearby_activities' %>
+      <div class="card-panel">
+        <%= render 'nearby_activities' %>
+      </div>
 
       <div class='row'>
         <div class="col s6">
@@ -100,18 +144,14 @@
 
     </div><!-- Container End -->
 
-    <!-- Enquiry modal begin -->
-    <div class="row">
-      <div class="col s6">
-        <div class="fixed-action-btn left">
-          <a class="btn-floating btn-large waves-effect waves-light modal-trigger red tooltipped" data-position="left" data-delay="50" data-tooltip="Enquire about this activity" href="#enquiry">
-            <i class="material-icons right">create</i>
-            Enquire
-          </a>
-        </div>
-      </div>      
+<!-- Enquiry modal begin -->
+    <div class="fixed-action-btn left">
+      <a class="btn-floating btn-large waves-effect waves-light modal-trigger red tooltipped" data-position="left" data-delay="50" data-tooltip="Enquire about this activity" href="#enquiry">
+        <i class="material-icons right">create</i>
+        Enquire
+      </a>
     </div>
-    <!-- Enquiry modal end -->
+<!-- Enquiry modal end -->
   </div>  
 </div>
 <%= render 'shared/mapscript' %>

@@ -115,6 +115,20 @@ a.footer-icons {
   max-height: 85%;
 }
 
+.big-chip{
+  @extend .chip;
+  height: 3rem;
+  font-size: 1.2rem;
+  line-height: 3rem;
+}
+
+.div, #map {
+  margin: 0;
+  padding: 0;
+  height: 30rem;
+  width: 100%;
+}
+
 #autocomplete-items {
   list-style: none;
   // padding: 6px 8px;
