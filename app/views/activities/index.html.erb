@@ -12,7 +12,7 @@
       <div class="col s12 m6 l4">
         <div class="card hoverable">
           <div class="card-image waves-effect waves-block waves-light">
-            <%= image_tag activity.cover.card.url %>
+            <%= link_to image_tag(activity.cover.card.url), activity_path(activity) %>
           </div>
           <div class="card-content">
             <span class="card-title activator grey-text text-darken-4"><%= link_to truncate(activity.title, length: 21), activity_path(activity) %><i class="material-icons right">more_vert</i></span>
