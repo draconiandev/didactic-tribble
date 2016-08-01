@@ -15,7 +15,6 @@ module SearchableActivity
         indexes :overview, analyzer: 'english'
         indexes :itinerary, analyzer: 'english'
         indexes :difficulty
-        indexes :slug
         indexes :price
         indexes :categories do
           indexes :name, analyzer: 'english'
@@ -46,7 +45,7 @@ module SearchableActivity
 
   def as_indexed_json(options = {})
     self.as_json({
-      only: [:title, :itinerary, :overview, :slug, :price],
+      only: [:title, :itinerary, :overview, :price],
       include: {
         destination: { only: :name },
         categories: { only: :name }

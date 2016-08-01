@@ -1,12 +1,16 @@
 class EnquiriesController < ApplicationController
   def new
-    @activity = Activity.find_by_id(session[:current_activity_id])
+    @activity = Activity.find(params[:activity_id])
     @enquiry = Enquiry.new
   end
 
   def create
-    @activity = Activity.find_by_id(session[:current_activity_id])
+    @activity = Activity.find(params[:activity_id])
     @enquiry = @activity.enquiries.build(enquiry_params)
+    if person_signed_in?
+      @enquiry.name = current_person.name
+      @enquiry.email = current_person.email
+   end
     @enquiry.request = request
     if @enquiry.deliver
       flash[:success] = 'Thank you for your enquiry. We will get back soon to help you in your plans!'

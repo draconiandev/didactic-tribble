@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :category do
-    name            Faker::Commerce.product_name
+    name            Faker::Lorem.name
     description     Faker::Lorem.paragraph(2)
     brief           Faker::Lorem.sentence
     slug            Faker::Internet.slug

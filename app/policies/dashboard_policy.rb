@@ -1,5 +1,5 @@
 class DashboardPolicy < ApplicationPolicy
-  attr_reader :person, :activity
+  attr_reader :person, :model
 
   def initialize(person, record)
     @person = person

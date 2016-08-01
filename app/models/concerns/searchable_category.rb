@@ -13,7 +13,6 @@ module SearchableCategory
       mappings dynamic: 'false' do
         indexes :name, analyzer: 'autocomplete'
         indexes :description, analyzer: 'english'
-        indexes :slug
       end
     end
 
@@ -23,7 +22,7 @@ module SearchableCategory
           query: {
             multi_match: {
               query: term,
-              fields: ['name', 'description', 'slug']
+              fields: ['name', 'description']
             }
           }
         }
@@ -33,7 +32,7 @@ module SearchableCategory
 
   def as_indexed_json(options ={})
     self.as_json({
-      only: [:name, :slug]
+      only: [:name]
     })
   end
 

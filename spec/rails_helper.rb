@@ -6,7 +6,7 @@ require 'spec_helper'
 require 'rspec/rails'
 
 ActiveRecord::Migration.maintain_test_schema!
-Capybara.javascript_driver = :poltergeist
+Capybara.javascript_driver = :webkit
 OmniAuth.config.test_mode = true
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
@@ -37,6 +37,7 @@ RSpec.configure do |config|
   config.include Omniauth::SessionHelpers,                type: :feature
   config.include Features,                                type: :feature
   config.include Devise::Test::ControllerHelpers,         type: :controller
+  config.extend ControllerMacros,                         type: :controller
 
   config.before :suite do
     Warden.test_mode!
@@ -47,5 +48,13 @@ RSpec.configure do |config|
       with.test_framework :rspec
       with.library :rails
     end
+  end
+
+  Capybara::Webkit.configure do |config|
+    config.allow_unknown_urls
+  end
+
+  Capybara.register_driver :poltergeist do |app|
+    Capybara::Poltergeist::Driver.new(app, {js_errors: false})
   end
 end

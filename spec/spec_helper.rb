@@ -3,6 +3,7 @@ require 'simplecov'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
 require 'pundit/rspec'
+require 'devise'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

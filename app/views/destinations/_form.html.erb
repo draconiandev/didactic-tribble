@@ -17,13 +17,13 @@
     </div>
     <div class="input-field col s12">
       <label>Description</label><br><br>
-      <%= f.input :description, label: '', input_html: { class: 'editable' } %> <br><br><hr>
+      <%= f.input :description, input_html: { class: 'editable' } %> <br><br><hr>
     </div>
     <div class="input-field col s12">
       <div class='file-field input-field'>
         <div class='btn'>
           <span>*Cover Image</span>
-          <%= f.file_field :cover, type: :file %>
+          <%= f.file_field :cover, type: :file, label: 'Cover' %>
         </div>
         <div class='file-path-wrapper'>
             <input class='file-path validate' type='text'>
@@ -33,8 +33,7 @@
     </div>
   </div>
   <div class="input-field col s12">
-    <%= f.input :brief, label: 'Meta Description',
-                        input_html: { id: 'textarea1', class: 'materialize-textarea', length: '160' } %>
+    <%= f.input :brief, input_html: { id: 'textarea1', class: 'materialize-textarea', length: '160' } %>
   </div>
   <%= f.submit "Submit", class: 'center-align btn waves-effect waves-light' %>
 <% end %>

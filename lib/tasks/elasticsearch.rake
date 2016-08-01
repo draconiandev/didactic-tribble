@@ -11,11 +11,7 @@ namespace :elasticsearch do
         body: { settings: klass.settings.to_hash, mappings: klass.mappings.to_hash }
 
       # Index all records from the DB to Elasticsearch
-      if klass == Activity
-        klass.all.published.import
-      else
-        klass.import
-      end
+      klass.import
     end
   end
 end

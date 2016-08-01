@@ -7,7 +7,7 @@ class ActivitiesController < ApplicationController
 
   def index
     authorize Activity
-    @activities = Activity.recent.includes(:destination, :categories).paginate(page: params[:page], per_page: 15)
+    @activities = Activity.recent.includes(:destination, :categories).paginate(page: params[:page], per_page: 2)
     prepare_meta_tags title: "Activities", description: "Experience 100+ activities from around the country"
   end
 
@@ -25,7 +25,7 @@ class ActivitiesController < ApplicationController
         format.html { redirect_to @activity, notice: 'Activity has been created.' }
         format.json { render :show, status: :created, location: @activity }
       else
-        format.html { render :new }
+        format.html { render :new, notice: 'Activity has not been created.' }
         format.json { render json: @activity.errors, status: :unprocessable_entity }
       end
     end
@@ -37,6 +37,7 @@ class ActivitiesController < ApplicationController
     @enquiry = @activity.enquiries.build
 
     @related_activities = Activity.related_activities(@activity)
+                                  .includes(:categories)
     # Refactor later
     @nearby_activities =  Activity.where("id != '#{@activity.id}'")
                                   .limit(3).includes(:destination)
@@ -61,7 +62,7 @@ class ActivitiesController < ApplicationController
         format.html { redirect_to activity_path(@activity), notice: 'Activity has been updated.' }
         format.json { render :show, status: :ok, location: @activity }
       else
-        format.html { render :edit }
+        format.html { render :edit, notice: 'Activity has not been updated.' }
         format.json { render json: @activity.errors, status: :unprocessable_entity }
       end
     end
@@ -72,6 +73,12 @@ class ActivitiesController < ApplicationController
     @activity.destroy
     flash[:notice] = 'Activity has been deleted'
     redirect_to activities_path
+  end
+
+  def enquiries
+    authorize Activity
+    @activity = Activity.find(params[:activity_id])
+    @enquiries = @activity.enquiries.order('created_at DESC')
   end
 
   private

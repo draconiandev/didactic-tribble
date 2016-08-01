@@ -142,6 +142,36 @@
             <% end %>
           </tbody>
         </table>
+
+        <div id="enquiry" class="section scrollspy">
+          <h1 class='center'>Enquiries</h1>
+          <%= link_to 'View all enquiries', admin_dashboard_enquiry_path %>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Activity Title</th>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th>Message</th>
+              <th colspan="5"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @enquiries.each do |enquiry| %>
+              <tr>
+                <td><%= enquiry.activity.title %></td>
+                <td><%= enquiry.name %></td>
+                <td><%= enquiry.phone %></td>
+                <td><%= enquiry.email %></td>
+                <td><%= enquiry.message %></td>
+             </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
 
       <div class="col hide-on-small-only m2 l2">
@@ -152,6 +182,7 @@
               <li><a href="#destination">Destination</a></li>
               <li><a href="#category">Category</a></li>
               <li><a href="#vendor">Vendor</a></li>
+              <li><a href="#enquiry">Enquiry</a></li>
             </ul>
           </div>
         </div>

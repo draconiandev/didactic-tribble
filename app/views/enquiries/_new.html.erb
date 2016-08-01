@@ -4,14 +4,16 @@
         <h4 class="center">Send an enquiry about this activity to us</h4>
       <%= simple_form_for [@activity, @enquiry] do |f| %>
         <div class="row">
-          <div class="input-field col s12">
-            <%= f.input :name, required: true %>
-          </div>
+          <% if !person_signed_in? %>
+            <div class="input-field col s12">
+              <%= f.input :name, required: true %>
+            </div>
+            <div class="input-field col s12">
+              <%= f.input :email, required: true %>
+            </div>
+          <% end %>
           <div class="input-field col s12">
             <%= f.input :phone, required: true %>
-          </div>
-          <div class="input-field col s12">
-            <%= f.input :email, required: true %>
           </div>
           <div class="input-field col s12">
             <%= f.input :message, as: :text, label: 'Your Message',

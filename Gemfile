@@ -22,10 +22,10 @@ gem 'coffee-script', '~> 2.4'
 gem 'underscore-rails', '~> 1.8'
 gem 'simple_form', '~> 3.2'
 gem 'cocoon', '~> 1.2'
-gem 'friendly_id', '~> 5.1'
 
 # SEO
 gem 'meta-tags', '~> 2.1'
+gem 'friendly_id', '~> 5.1'
 
 #Authentication
 gem 'devise', '~> 4.2'
@@ -76,6 +76,7 @@ end
 group :test do
   gem 'capybara', '~> 2.7'
   gem 'selenium-webdriver', '~> 2.53'
+  gem 'capybara-webkit', '~> 1.11'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'database_cleaner', '~> 1.5'
   gem 'factory_girl_rails', '~> 4.7'

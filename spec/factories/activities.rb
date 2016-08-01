@@ -1,7 +1,7 @@
 #
 FactoryGirl.define do
   factory :activity do
-    title                   Faker::Commerce.product_name
+    title                   Faker::Lorem.word
     price                   Faker::Commerce.price
     start_date              Faker::Date.backward(14)
     end_date                Faker::Date.forward(23)
@@ -9,12 +9,12 @@ FactoryGirl.define do
     itinerary               Faker::Lorem.paragraph(2)
     cover                   { File.open("#{Rails.root}/spec/fixtures/files/card.jpg") }
     difficulty              'easy'
-    handcrafted             false
+    handcrafted             true
     handcrafted_category    'weekend_getaway'
-    slug                    Faker::Internet.slug
     brief                   Faker::Lorem.sentence
     association             :destination, factory: :destination
-    association             :category, factory: :category
+    association             :vendor, factory: :vendor
+    # association             :categories, factory: :category
   end
 
   factory :invalid_activity do
@@ -27,8 +27,6 @@ FactoryGirl.define do
     cover                   Faker::Lorem.sentence
     difficulty              'easy'
     handcrafted             false
-    handcrafted_category    'weekend_getaway'
-    slug                    Faker::Internet.slug
     brief                   Faker::Lorem.sentence
   end
 end
