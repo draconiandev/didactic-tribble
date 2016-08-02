@@ -81,6 +81,7 @@
     <!-- Content End -->
 
     <!-- Gallery Begin -->
+    <% if @activity.galleries.present? %>
       <div class="card-panel">
         <div class="row">
           <div class="picture" itemscope="" itemtype="http://schema.org/ImageGallery">
@@ -96,6 +97,8 @@
           </div>
         </div>
       </div>
+    <% end %>
+      
     <!-- Gallery End -->
 
     <!-- Map Begin -->
@@ -114,14 +117,17 @@
       </div>
     </div>
     <!-- Comments End -->
-
+    <% if @related_activities.any? %>
       <div class="card-panel">
         <%= render 'related_activities' %>
       </div>
+    <% end %>
 
+    <% if @nearby_activities.any? %>
       <div class="card-panel">
         <%= render 'nearby_activities' %>
       </div>
+    <% end %>
 
       <div class='row'>
         <div class="col s12 m4 l4">

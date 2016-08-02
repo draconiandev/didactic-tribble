@@ -33,7 +33,7 @@ module SearchableActivity
               query: {
                 multi_match: {
                   query: term,
-                  fields: ['title^10', 'itinerary', 'overview', 'price^10', 'categories.name^10', 'destination.name^10']
+                  fields: ['title^10', 'itinerary', 'overview', 'price^10', 'categories.map(&:name)^10', 'destination.name^10']
                 }
               }
             }

@@ -39,9 +39,9 @@ class ActivitiesController < ApplicationController
     @related_activities = Activity.related_activities(@activity)
                                   .includes(:categories)
     # Refactor later
-    @nearby_activities =  Activity.where("id != '#{@activity.id}'")
-                                  .limit(3).includes(:destination)
-
+    # @nearby_activities =  Activity.where("id != '#{@activity.id}'")
+    #                               .limit(3).includes(:destination, :categories)
+    @nearby_activities = Activity.nearby_activities(@activity)
     meta_tags_for(@activity)
 
     build_map

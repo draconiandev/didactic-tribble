@@ -57,6 +57,13 @@ class Activity < ActiveRecord::Base
     .where('activities.id != ?', activity.id)
     .order("RANDOM()").limit(3).includes(:destination)
   end
+
+  def self.nearby_activities(activity)
+    joins(:destination)
+    .where(destinations: { name: activity.destination.name })
+    .where('activities.id != ?', activity.id)
+    .order("RANDOM()").limit(3).includes(:destination, :categories)
+  end
   
   def end_date_after_start_date
     return if end_date.blank? || start_date.blank?
