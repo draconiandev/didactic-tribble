@@ -54,4 +54,5 @@ $(document).ready(function() {
     $('.tooltipped').tooltip({delay: 50});
     $('.scrollspy').scrollSpy();
     $('.tabs-wrapper .row').pushpin({ top: $('.tabs-wrapper').offset() });
+    $('.slider').slider({full_width: true});
 });
