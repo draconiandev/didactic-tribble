@@ -37,11 +37,11 @@ module SearchableDestination
   end
 
   def index_document
-    ElasticsearchIndexJob.perform_later('index', 'Destination', self.id)
+    __elasticsearch__.index_document if Destination.present?
   end
 
   def delete_document
-    ElasticsearchIndexJob.perform_later('delete', 'Destination', self.id)
+    __elasticsearch__.delete_document if Destination.present?
   end
 
   INDEX_OPTIONS =

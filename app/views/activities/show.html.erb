@@ -88,7 +88,7 @@
               <% if gal.activity_id == @activity.id %>
                 <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
                 <a data-size="<%= gal.width %> x <%= gal.height %>" href="<%= gal.image.medium.url %>" itemprop='contentUrl'>
-                  <%= image_tag gal.image.card.url, class: 'row col s12 m6 l4', lazy: true %>
+                  <%= image_tag gal.image.card.url, class: 'row col s12 m6 l4', lazy: true, alt: "#{@activity.title} #{gal.id}" %>
                 </a>
                 </figure>
               <% end %>

@@ -13,6 +13,9 @@ module SearchableCategory
       mappings dynamic: 'false' do
         indexes :name, analyzer: 'autocomplete'
         indexes :description, analyzer: 'english'
+        indexes :activity do
+          indexes :title, analyzer: 'autocomplete'
+        end
       end
     end
 
@@ -22,7 +25,7 @@ module SearchableCategory
           query: {
             multi_match: {
               query: term,
-              fields: ['name', 'description']
+              fields: ['name', 'description', 'activity.title']
             }
           }
         }
@@ -37,11 +40,13 @@ module SearchableCategory
   end
 
   def index_document
-    ElasticsearchIndexJob.perform_later('index', 'Category', self.id)
+    # ElasticsearchIndexJob.perform_later('index', 'Category', self.id)
+    __elasticsearch__.index_document if Category.present?
   end
 
   def delete_document
-    ElasticsearchIndexJob.perform_later('delete', 'Category', self.id)
+    # ElasticsearchIndexJob.perform_later('delete', 'Category', self.id)
+    __elasticsearch__.delete_document if Category.present?
   end
 
   INDEX_OPTIONS =

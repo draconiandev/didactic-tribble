@@ -17,10 +17,10 @@ module SearchableActivity
         indexes :difficulty
         indexes :price
         indexes :categories do
-          indexes :name, analyzer: 'english'
+          indexes :name, analyzer: 'autocomplete'
         end
         indexes :destination do
-          indexes :name, analyzer: 'english'
+          indexes :name, analyzer: 'autocomplete'
         end
       end
     end
@@ -33,7 +33,7 @@ module SearchableActivity
               query: {
                 multi_match: {
                   query: term,
-                  fields: ['title^10', 'itinerary', 'overview', 'price^10', 'category.name^10', 'destination.name^10']
+                  fields: ['title^10', 'itinerary', 'overview', 'price^10', 'categories.name^10', 'destination.name^10']
                 }
               }
             }
@@ -54,11 +54,13 @@ module SearchableActivity
   end
 
   def index_document
-    ElasticsearchIndexJob.perform_later('index', 'Activity', self.id)
+    # ElasticsearchIndexJob.perform_later('index', 'Activity', self.id)
+    __elasticsearch__.index_document if Activity.present?
   end
 
   def delete_document
-    ElasticsearchIndexJob.perform_later('delete', 'Activity', self.id)
+    # ElasticsearchIndexJob.perform_later('delete', 'Activity', self.id)
+    __elasticsearch__.delete_document if Activity.present?
   end
 
   INDEX_OPTIONS =
