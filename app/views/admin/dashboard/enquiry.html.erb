@@ -1,0 +1,26 @@
+<div class="container">
+  <table>
+    <thead>
+      <tr>
+        <th>Activity Title</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Message</th>
+        <th colspan="5"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @enquiries.each do |enquiry| %>
+        <tr>
+          <td><%= enquiry.activity.title %></td>
+          <td><%= enquiry.name %></td>
+          <td><%= tel_to enquiry.phone %></td>
+          <td><%= mail_to enquiry.email %></td>
+          <td><%= enquiry.message %></td>
+       </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

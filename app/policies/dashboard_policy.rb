@@ -26,6 +26,10 @@ class DashboardPolicy < ApplicationPolicy
     manager?
   end
 
+  def enquiry?
+    manager?
+  end
+
   private
 
   def manager?

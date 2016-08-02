@@ -30,4 +30,9 @@ class Admin::DashboardController < ApplicationController
     authorize :dashboard, :vendor?
     @vendors = Vendor.all.order('created_at DESC')
   end
+
+  def enquiry
+    authorize :dashboard, :enquiry?
+    @enquiries = Enquiry.all.order('created_at DESC').includes(:activity)
+  end
 end
