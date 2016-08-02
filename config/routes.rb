@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get 'static_pages/terms',           path: '/terms'
   get 'static_pages/policies',        path: '/policies'
   get 'static_pages/help',            path: '/help'
-  get 'static_pages/trust',           path: '/trust'
   get 'static_pages/handcrafted',     path: '/handcrafted'
   get 'static_pages/weekend',         path: '/weekend'
   get 'static_pages/team_outing',     path: '/team_outing'
