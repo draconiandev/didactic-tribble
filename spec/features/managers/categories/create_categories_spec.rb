@@ -6,18 +6,16 @@ feature 'Managers' do
   end
 
   scenario 'can create new categories with valid attributes' do
-    fill_in       'Name', with: 'Trekking'
-    fill_in       'Description', with: 'An awesome adventure', match: :first
-    select        'Land', from: 'category_main_category'
-    fill_in       'category[brief]', with: 'An awesome description'
-    fill_in       'category[slug]', with: 'An awesome description'
-    page.attach_file('category_cover', 'spec/fixtures/files/card.jpg')
-    click_button  'Submit'
-
-    expect(page).to have_content 'Category has been created'
+    fill_in         'Name',                   with: 'Trekking'
+    fill_in         'category[description]',            with: 'An awesome adventure'
+    select          'Land',                   from: 'category[main_category]',  visible: false
+    fill_in         'category[brief]',        with: 'An awesome description'
+    page.attach_file('category_cover',        'spec/fixtures/files/card.jpg')
+    click_button    'Submit'
+    expect(page).to have_content('Category has been created')
 
     category = Category.find_by(name: 'Trekking')
-    expect(page.current_url).to eq category_url(category)
+    expect(page.current_path).to eq category_path(category)
   end
 
   scenario 'cannot create new categories without valid attributes' do

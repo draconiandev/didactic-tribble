@@ -81,6 +81,7 @@
     <!-- Content End -->
 
     <!-- Gallery Begin -->
+    <% if @activity.galleries.present? %>
       <div class="card-panel">
         <div class="row">
           <div class="picture" itemscope="" itemtype="http://schema.org/ImageGallery">
@@ -88,7 +89,7 @@
               <% if gal.activity_id == @activity.id %>
                 <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
                 <a data-size="<%= gal.width %> x <%= gal.height %>" href="<%= gal.image.medium.url %>" itemprop='contentUrl'>
-                  <%= image_tag gal.image.card.url, class: 'row col s12 m6 l4', lazy: true %>
+                  <%= image_tag gal.image.card.url, class: 'row col s12 m6 l4', lazy: true, alt: "#{@activity.title} #{gal.id}" %>
                 </a>
                 </figure>
               <% end %>
@@ -96,6 +97,8 @@
           </div>
         </div>
       </div>
+    <% end %>
+      
     <!-- Gallery End -->
 
     <!-- Map Begin -->
@@ -114,42 +117,48 @@
       </div>
     </div>
     <!-- Comments End -->
-
+    <% if @related_activities.any? %>
       <div class="card-panel">
         <%= render 'related_activities' %>
       </div>
+    <% end %>
 
+    <% if @nearby_activities.any? %>
       <div class="card-panel">
         <%= render 'nearby_activities' %>
       </div>
+    <% end %>
 
       <div class='row'>
-        <div class="col s6">
+        <div class="col s12 m4 l4">
           <% if policy(:activity).edit? %>
             <%= link_to(edit_activity_path) do %>
               <div class='btn waves-effect waves-light'>Edit Activity<i class='material-icons right'>mode_edit</i></div>
             <% end %>
           <% end %>
         </div>
-        <div class="col s6">
+        <div class="col s12 m4 l4">
           <% if policy(:activity).destroy? %>
-            <div style='float:right;'>
               <%= link_to activity_path(@activity), method: :delete, data: {confirm: 'Do you really want to delete this activity?'} do %>
                 <div class='btn waves-effect waves-light red'>Delete Activity<i class='material-icons right'>delete</i></div>
               <% end %>
-            </div>
+          <% end %>
+        </div>
+        <div class="col s12 m4 l4">
+          <% if policy(:activity).enquiries? %>
+              <%= link_to activity_queries_path(@activity) do %>
+                <div class='btn waves-effect waves-light teal'> Enquiries <i class="material-icons">email</i></div>
+              <% end %>
           <% end %>
         </div>
       </div>
-
     </div><!-- Container End -->
 
 <!-- Enquiry modal begin -->
     <div class="fixed-action-btn left">
-      <a class="btn-floating btn-large waves-effect waves-light modal-trigger red tooltipped" data-position="left" data-delay="50" data-tooltip="Enquire about this activity" href="#enquiry">
-        <i class="material-icons right">create</i>
+      <button class="big-btn-floating btn-large waves-effect waves-light modal-trigger red tooltipped" data-position="left" data-delay="50" data-tooltip="Enquire about this activity" href="#enquiry">
         Enquire
-      </a>
+      </button>
     </div>
 <!-- Enquiry modal end -->
   </div>  

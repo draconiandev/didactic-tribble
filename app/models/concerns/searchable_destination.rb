@@ -13,7 +13,6 @@ module SearchableDestination
       mappings dynamic: 'false' do
         indexes :name, analyzer: 'autocomplete'
         indexes :description, analyzer: 'english'
-        indexes :slug
       end
     end
 
@@ -23,7 +22,7 @@ module SearchableDestination
           query: {
             multi_match: {
               query: term,
-              fields: ['name', 'description', 'slug']
+              fields: ['name', 'description']
             }
           }
         }
@@ -33,16 +32,16 @@ module SearchableDestination
 
   def as_indexed_json(options ={})
     self.as_json({
-      only: [:name, :slug, :description]
+      only: [:name]
     })
   end
 
   def index_document
-    ElasticsearchIndexJob.perform_later('index', 'Destination', self.id)
+    __elasticsearch__.index_document if Destination.present?
   end
 
   def delete_document
-    ElasticsearchIndexJob.perform_later('delete', 'Destination', self.id)
+    __elasticsearch__.delete_document if Destination.present?
   end
 
   INDEX_OPTIONS =

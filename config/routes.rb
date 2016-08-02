@@ -19,25 +19,27 @@ Rails.application.routes.draw do
   get 'search' => 'search#show',      as: :search
   get 'enquiries/new',                path: '/enquiries'
 
-  namespace :api do
-    get 'autocomplete' => 'search_autocomplete#index'    
-  end
-
   namespace :admin do
     get 'dashboard' => 'dashboard#index'
     get 'dashboard/activity'
     get 'dashboard/category'
     get 'dashboard/destination'
     get 'dashboard/vendor'
+    get 'dashboard/enquiry'
   end
-  
-  resources :people, only: [:index, :show, :destroy]
-  resources :destinations
+
+  namespace :api do
+    get 'autocomplete' => 'search_autocomplete#index'    
+  end
+
   resources :categories
+  resources :destinations
   resources :galleries
+  resources :people, only: [:index, :show, :destroy]
   resources :vendors
 
   resources :activities do
-    resources :enquiries, only: [:new, :create]  
+    resources :enquiries, only: [:new, :create]
+    get 'enquiries', as: :queries
   end
 end

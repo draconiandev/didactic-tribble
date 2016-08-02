@@ -18,6 +18,8 @@ class Category < ActiveRecord::Base
 
   mount_uploader :cover, CoverUploader
 
+  private
+
   def should_generate_new_friendly_id?
     slug.blank? || name_changed?
   end

@@ -35,6 +35,10 @@ class ActivityPolicy < ApplicationPolicy
     person.try(:admin?)
   end
 
+  def enquiries?
+    manager?
+  end
+
   private
 
   def manager?

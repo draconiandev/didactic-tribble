@@ -11,7 +11,7 @@ feature 'Admins can edit activities' do
 
   scenario 'can update an activity with valid attributes' do    
     fill_in 'Title', with: 'Kunthi Hills'
-    click_button 'Submit'
+    click_button 'Update'
 
     expect(page).to have_content 'Activity has been updated'
     expect(page).to have_content 'Kunthi Hills'
@@ -19,8 +19,8 @@ feature 'Admins can edit activities' do
 
   scenario 'cannot update an activity with invalid attributes' do
     fill_in 'Title', with: ''
-    click_button 'Submit'
+    click_button 'Update'
 
-    expect(page).to have_content 'Activity has not been updated'
+    expect(page).to have_content "Title can't be blank"
   end  
 end

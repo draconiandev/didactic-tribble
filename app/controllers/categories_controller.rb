@@ -30,13 +30,8 @@ class CategoriesController < ApplicationController
 
   def show
     authorize @category
-    @activities = @category.activities
-                           .includes(:destination, :categories)
-                           .uniq.sort_by(&:id)
-                           .paginate(page: params[:page], per_page: 12)
-
+    @activities = Activity.in_category(@category).paginate(page: params[:page], per_page: 12)
     meta_tags_for(@category)
-    
     if request.path != category_path(@category)
       redirect_to @category, status: 301
     end

@@ -9,6 +9,7 @@ $secondary-color: color('orange', 'base') !default;
 $link-color: color('blue', 'darken-2') !default;
 $bg-color: color('teal', 'lighten-2') !default;
 $medium-editor-bgcolor: #57ad68 !important;
+$button-floating-size: 4rem !default;
 @import 'materialize';
 @import 'materialize/extras/nouislider';
 @import 'font-awesome';
@@ -43,6 +44,12 @@ a.footer-icons {
 .pagination a li.active {
   color: #fff;
   width: 2rem;
+}
+
+.pagination li{
+  border-radius: 2rem;
+  line-height: 2rem;
+  padding: 0 0.8rem;
 }
 
 .push-center {
@@ -112,7 +119,7 @@ a.footer-icons {
 }
 
 .modal.bottom-sheet{
-  max-height: 85%;
+  max-height: 65%;
 }
 
 .big-chip{
@@ -120,6 +127,12 @@ a.footer-icons {
   height: 3rem;
   font-size: 1.2rem;
   line-height: 3rem;
+}
+
+.big-btn-floating{
+  @extend .btn-floating;
+  line-height: 6rem;
+  font-size: 1.2rem;
 }
 
 .div, #map {

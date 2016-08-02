@@ -17,6 +17,7 @@ module TrekHub
     config.active_record.raise_in_transactional_callbacks = true
     config.time_zone = 'Chennai'
     config.action_controller.action_on_unpermitted_parameters = :raise
+    config.active_job.queue_adapter = :active_job
     config.generators do |generate|
       generate.test_framework :rspec
       generate.helper false

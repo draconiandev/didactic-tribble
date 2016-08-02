@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col s1">.</div>
+  <div class="col s10">
+    <h5><%= @activity.enquiries.count %> enquiries for this activity</h5>
+    <table class="highlight bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Message</th>
+          <th>Enquired At</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @enquiries.each do |enquiry| %>
+          <tr>
+            <td><%= enquiry.name %></td>
+            <td><%= tel_to enquiry.phone %></td>
+            <td><%= mail_to enquiry.email %></td>
+            <td><%= enquiry.message %></td>
+            <td><%= l enquiry.created_at, format: :customformat %></td>
+         </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col s1">.</div>
+</div>

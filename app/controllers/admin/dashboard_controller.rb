@@ -8,7 +8,7 @@ class Admin::DashboardController < ApplicationController
     @categories = Category.limit(100).order('created_at DESC')
     @destinations = Destination.limit(100).order('created_at DESC')
     @vendors = Vendor.limit(100).order('created_at DESC')
-    @enquiries = Enquiry.limit(100).order('created_at DESC')
+    @enquiries = Enquiry.limit(100).order('created_at DESC').includes(:activity)
   end
 
   def activity

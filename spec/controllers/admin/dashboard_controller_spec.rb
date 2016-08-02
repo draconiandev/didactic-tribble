@@ -1,6 +1,5 @@
-require 'rails_helper'
-
-RSpec.describe Admin::DashboardController, type: :controller do
+describe Admin::DashboardController, type: :controller do
+  login_admin 
 
   describe "GET #index" do
     it "returns http success" do

@@ -30,9 +30,7 @@ feature 'Managers' do
   end
 
   scenario 'cannot create a new activity without valid attributes' do
-    click_button 'Submit'
-    
-    expect(page).to have_content 'Activity could not been created.'
+    click_button 'Update'
     expect(page).to have_content "can't be blank"
   end
 end

@@ -1,42 +1,39 @@
-<% if @nearby_activities.any? %>
-  <h5>Nearby Activities</h5>
-  <br>
-    <div class="row">
-    <% @nearby_activities.each do |activity| %>
-      <div class="col s12 m4 l4">
-        <div class="card medium hoverable">
-          <div class="card-image waves-effect waves-block waves-light">
-            <%= link_to image_tag(activity.cover.card.url), activity_path(activity) %>
-          </div>
-          <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4"><%= link_to truncate(activity.title, length: 17), activity_path(activity) %><i class="material-icons right">more_vert</i></span>
-            <p><%= number_to_currency(activity.price, :unit => '₹ ') %></p>
-            <p><%= link_to activity.destination.name, destination_path(activity.destination) %></p>
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">
-              <%= activity.title %><i class="material-icons right">close</i>
-            </span>
-            <p>
-              <span class="grey-text text-darken-2">Destination: </span>
-              <%= activity.destination.name %>
-            </p>
-            <p>
-              <span class="grey-text text-darken-2">Categories: </span>
-              <%= activity.categories.map(&:name).to_sentence %>
-            </p>
-            <p>
-              <span class="grey-text text-darken-2">Difficulty: </span>
-              <%= activity.difficulty.humanize %>
-            </p>
-            <p>
-              <%= activity.brief %>
-            </p>
-          </div>
+<h5>Nearby Activities</h5>
+<br>
+  <div class="row">
+  <% @nearby_activities.each do |activity| %>
+    <div class="col s12 m4 l4">
+      <div class="card medium hoverable">
+        <div class="card-image waves-effect waves-block waves-light">
+          <%= link_to image_tag(activity.cover.card.url), activity_path(activity) %>
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4"><%= link_to truncate(activity.title, length: 17), activity_path(activity) %><i class="material-icons right">more_vert</i></span>
+          <p><%= number_to_currency(activity.price, :unit => '₹ ') %></p>
+          <p><%= link_to activity.destination.name, destination_path(activity.destination) %></p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">
+            <%= activity.title %><i class="material-icons right">close</i>
+          </span>
+          <p>
+            <span class="grey-text text-darken-2">Destination: </span>
+            <%= activity.destination.name %>
+          </p>
+          <p>
+            <span class="grey-text text-darken-2">Categories: </span>
+            <%= activity.categories.map(&:name).to_sentence %>
+          </p>
+          <p>
+            <span class="grey-text text-darken-2">Difficulty: </span>
+            <%= activity.difficulty.humanize %>
+          </p>
+          <p>
+            <%= activity.brief %>
+          </p>
         </div>
       </div>
-    <% end %>
+    </div>
+  <% end %>
 
-  </div>
-<% end %>
-
+</div>

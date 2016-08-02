@@ -1,11 +1,5 @@
 RSpec.feature 'Everyone can view all destinations' do
 
-  let(:admin) { create(:person, :admin) }
-
-  before do
-    login_as(admin)
-  end
-
   scenario 'with the destination description' do
     destination = create(:destination)
     visit destinations_path

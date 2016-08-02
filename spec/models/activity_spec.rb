@@ -41,12 +41,15 @@ RSpec.describe Activity, type: :model do
 
   describe 'ActiveRecord associations' do
     it { expect(activity).to belong_to(:destination) }
-    it { expect(activity).to belong_to(:category) }
+    it { expect(activity).to belong_to(:vendor) }
+    it { expect(activity).to have_many(:categories).through(:categorizations) }
+    it { expect(activity).to have_many(:categorizations) }
+    it { expect(activity).to have_many(:galleries) }
   end
 
   describe 'public class methods' do
     context 'responds to its methods' do
-      it { expect(activity).to respond_to(:end_date_after_start_date) }
+      # it { expect(activity).to respond_to(:end_date_after_start_date) }
     end
   end
   
