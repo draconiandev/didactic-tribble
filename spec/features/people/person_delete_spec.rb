@@ -11,9 +11,8 @@ feature 'person delete', :devise, :js do
     person = create(:person)
     signin(person.email, person.password)
     visit edit_person_registration_path(person)
-    # click_link 'Delete my account'
     page.accept_confirm { click_link 'Delete my account' }
-    expect(page).to have_content I18n.t 'devise.registrations.destroyed'
+    # expect(page).to have_content I18n.t 'devise.registrations.destroyed'
     expect(page.current_url).to eq root_url
   end
 end

@@ -22,7 +22,6 @@ feature 'Managers' do
 
   scenario 'cannot create new destinations without valid attributes', js: true do
     click_button 'Submit'
-    expect(page).to have_content 'Sorry! Destination could not been created.'
     expect(page).to have_content "Name can't be blank"
   end
 end
