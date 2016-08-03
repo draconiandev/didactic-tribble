@@ -10,7 +10,7 @@ class EnquiriesController < ApplicationController
     if person_signed_in?
       @enquiry.name = current_person.name
       @enquiry.email = current_person.email
-   end
+    end
     @enquiry.request = request
     if @enquiry.deliver
       flash[:success] = 'Thank you for your enquiry. We will get back soon to help you in your plans!'

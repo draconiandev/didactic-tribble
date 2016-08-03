@@ -14,4 +14,6 @@ RSpec.configure do |config|
   end
 end
 
-SimpleCov.start 'rails'
+SimpleCov.start 'rails' do
+   add_filter 'policy/application_policy.rb'
+end
