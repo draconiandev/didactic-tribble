@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
   get 'static_pages/about',           path: '/about'
-  get 'static_pages/contact',         path: '/contact'
   get 'static_pages/terms',           path: '/terms'
   get 'static_pages/policies',        path: '/policies'
   get 'static_pages/help',            path: '/help'
@@ -42,4 +41,7 @@ Rails.application.routes.draw do
     resources :enquiries, only: [:new, :create]
     get 'enquiries', as: :queries
   end
+
+  match '/contact', to: 'contacts#new', via: 'get'
+  resources "contacts", only: [:new, :create]
 end

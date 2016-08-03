@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801210449) do
+ActiveRecord::Schema.define(version: 20160803131706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 20160801210449) do
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
     t.string   "slug"
-    t.integer  "category_id"
     t.integer  "destination_id"
     t.datetime "published_at"
     t.boolean  "featured"
@@ -41,7 +40,6 @@ ActiveRecord::Schema.define(version: 20160801210449) do
   end
 
   add_index "activities", ["categorization_id"], name: "index_activities_on_categorization_id", using: :btree
-  add_index "activities", ["category_id"], name: "index_activities_on_category_id", using: :btree
   add_index "activities", ["destination_id"], name: "index_activities_on_destination_id", using: :btree
   add_index "activities", ["slug"], name: "index_activities_on_slug", unique: true, using: :btree
   add_index "activities", ["title"], name: "index_activities_on_title", unique: true, using: :btree
@@ -74,6 +72,11 @@ ActiveRecord::Schema.define(version: 20160801210449) do
 
   add_index "categorizations", ["activity_id"], name: "index_categorizations_on_activity_id", using: :btree
   add_index "categorizations", ["category_id"], name: "index_categorizations_on_category_id", using: :btree
+
+  create_table "contacts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "destinations", force: :cascade do |t|
     t.string   "name"
@@ -183,7 +186,6 @@ ActiveRecord::Schema.define(version: 20160801210449) do
   add_index "vendors", ["slug"], name: "index_vendors_on_slug", unique: true, using: :btree
   add_index "vendors", ["subscription_id"], name: "index_vendors_on_subscription_id", using: :btree
 
-  add_foreign_key "activities", "categories"
   add_foreign_key "activities", "categorizations"
   add_foreign_key "activities", "destinations"
   add_foreign_key "activities", "vendors"

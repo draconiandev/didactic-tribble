@@ -13,7 +13,7 @@ class Enquiry < ActiveRecord::Base
   def headers
     {
       subject: "Enquiry for #{activity.title}",
-      to: "abhishek.trek@gmail.com", 
+      to: 'abhishek.trek@gmail.com', 
       cc: activity.vendor.email,
       from: %("#{name}" <#{email}>)
     }

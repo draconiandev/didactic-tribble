@@ -1,0 +1,57 @@
+<div class="row">
+  <%= image_tag 'Contact-Us.jpg', class: 'col s12' %>
+</div>
+<h4 class="center">Contact us</h4>
+<div class="container">
+  <div class="row">
+    
+    <div class="col s12 m6 l6">
+      <div class="card-panel">
+        <h5>#402, Pyramid Green Palms, Jaraganahalli,</h5>
+        <h5>J.P Nagar 6th Phase, Bangalore - 560078</h5>
+      </div>
+    </div>
+    
+    <div class="col s12 m6 l6">
+      <div class="card-panel">
+        <h5 class="center">+91-9611201234</h5>
+        <h5 class="center"><a href="mailto:info@trekhub.in" target="_blank">  info@trekhub.in</a></h5>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <div class="card-panel valign-wrapper">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3898.104738985671!2d76.64543901495615!3d12.30873293240574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baf700c0e667325%3A0x2cf457fb748f0e75!2sTrekhub+Adventures!5e0!3m2!1sen!2s!4v1470231560829" width="100%;" height="400vh" class="valign" frameborder="0" style="border:0; position:relative" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="col s12">
+      <div class="card-panel">
+        <h5 class="center">Contact Form</h5>
+          <%= simple_form_for @contact do |f| %>
+            <div class="row">
+              <% if !person_signed_in? %>
+                <div class="input-field col s12">
+                  <%= f.input :name, required: true %>
+                </div>
+                <div class="input-field col s12">
+                  <%= f.input :email, required: true %>
+                </div>
+              <% end %>
+              <div class="input-field col s12">
+                <%= f.input :phone, required: true %>
+              </div>
+              <div class="input-field col s12">
+                <%= f.input :message, as: :text, label: 'Your Message',
+                              input_html: { class: 'materialize-textarea' } %>
+              </div>
+              <div class= "hide">
+                <%= f.input :nickname, hint: 'Leave this field blank!' %>
+              </div>  
+            </div>
+            <%= f.submit "Submit", class: 'btn' %>
+          <% end %>
+        </div>
+      </div>
+  </div>
+</div>
