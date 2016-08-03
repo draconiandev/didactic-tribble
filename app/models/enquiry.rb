@@ -4,9 +4,9 @@ class Enquiry < ActiveRecord::Base
 
   before_save :save_attributes
 
-  attribute :name,      validate: true
+  attribute :name,      validate: /\A[a-zA-Z. ]*\z/
   attribute :email,     validate: /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i
-  attribute :phone,     validate: true
+  attribute :phone,     validate: /([0]|\+91)?[789]\d{9}/
   attribute :message
   attribute :nickname,  captcha: true
 
@@ -22,7 +22,7 @@ class Enquiry < ActiveRecord::Base
   private
 
   def save_attributes
-    # name = self.name
+    name = self.name
     email = self.email
     phone = self.phone
     message = self.message

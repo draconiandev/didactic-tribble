@@ -72,13 +72,13 @@ class ApplicationController < ActionController::Base
                                 image:obj.cover.card.url})
   end
 
-  def authenticate_manager!
-    redirect_to new_person_session_path unless admin? || editor?
-  end
-
   def person_not_authorized
     flash[:error] = 'Restricted Access.'
     redirect_to(request.referrer || root_path)
+  end
+
+  def authenticate_manager!
+    redirect_to new_person_session_path unless admin? || editor?
   end
 
   def authenticate_admin!

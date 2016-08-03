@@ -1,4 +1,4 @@
-RSpec.feature 'Admins can delete an activity' do  
+feature 'Admins can delete an activity' do  
   before do
     login_as(create(:person, :admin))
   end

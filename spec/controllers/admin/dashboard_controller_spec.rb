@@ -6,6 +6,7 @@ describe Admin::DashboardController, type: :controller do
       get :index
       expect(response).to have_http_status(:success)
     end
+    
   end
 
   describe "GET #activity" do
@@ -32,6 +33,13 @@ describe Admin::DashboardController, type: :controller do
   describe "GET #vendor" do
     it "returns http success" do
       get :vendor
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "GET #enquiry" do
+    it "returns http success" do
+      get :enquiry
       expect(response).to have_http_status(:success)
     end
   end

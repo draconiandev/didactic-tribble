@@ -16,12 +16,16 @@ RSpec.describe Destination, type: :model do
     it { expect(destination).to allow_value('Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.').for(:description) }
   end
 
-  describe 'ActiveRecord associations' do
+  describe 'ActiveRecord db columns' do
     it { expect(destination).to have_db_column(:name).of_type(:string) }
     it { expect(destination).to have_db_column(:description).of_type(:text) }
     it { expect(destination).to have_db_column(:brief).of_type(:text) }
     it { expect(destination).to have_db_column(:cover).of_type(:string) }
     it { expect(destination).to have_db_index(:name).unique(:true) }
+  end
+
+  describe 'ActiveRecord associations' do
+    it { expect(destination).to have_many(:activities) }
   end
 
   describe 'public class methods' do

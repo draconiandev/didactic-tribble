@@ -56,3 +56,16 @@ $(document).ready(function() {
     $('.tabs-wrapper .row').pushpin({ top: $('.tabs-wrapper').offset() });
     $('.slider').slider({full_width: true});
 });
+
+$(document).ready(function(){
+  $('#showPassword').on('click', function(){
+    var passwordField = $('#password');
+    var passwordFieldType = passwordField.attr('type');
+    if(passwordFieldType == 'password')
+    {
+        passwordField.attr('type', 'text');
+    } else {
+        passwordField.attr('type', 'password');
+    }
+  });
+});

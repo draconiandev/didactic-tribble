@@ -1,4 +1,4 @@
-RSpec.feature 'Admins can delete a person' do  
+feature 'Admins can delete a person' do  
   before do
     person = create(:person, :admin)
     random = create(:person, email: 'random@example.com')

@@ -16,12 +16,23 @@
     <br><br>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= f.error_notification %>
-        <%= f.input :name, required: true, autofocus: true, class: "white-text" %>
-        <%= f.input :email, required: true %>
-        <%= f.input :password, required: true, :input_html => { :class => 'estimate-password' } %>
-        <%= f.input :password_confirmation, autocomplete: "off", required: true %>
-        <div class="row">
-          <div class="col s6">
+      <div class="row">
+        <div class="col s12">
+          <%= f.input :name, required: true, autofocus: true, class: "white-text" %>        
+        </div>
+        <div class="col s12">
+          <%= f.input :email, required: true %>          
+        </div>
+        <div class="col s12">
+          <%= f.input :password, required: true,
+                                input_html: { id: 'password', placeholder: 'Click the Show button to reveal the password' } %>
+          <input type="checkbox" id="showPassword" class="right" />
+          <label for="showPassword" id="showPassword">Show Password</label>
+        </div>
+      </div>
+<%#= f.input :password_confirmation, autocomplete: "off", required: true %>
+        <div class="row"><br>
+          <div class="left">
             <%= f.button :submit, "Sign Up" %>
           </div>
           <div class="right">

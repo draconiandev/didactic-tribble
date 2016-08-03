@@ -13,8 +13,9 @@
         <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
       <% end %>
       <%# if !resource.provider %>
-        <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-        <%= f.input :password_confirmation, required: false %>
+        <%= f.input :password, autocomplete: "off", placeholder: "leave it blank if you don't want to change it", required: false, label: 'New Password', input_html: { id: 'password' } %>
+        <input type="checkbox" id="showPassword" class="right" />
+        <label for="showPassword" id="showPassword">Show Password</label>
         <%= f.input :current_password, required: true %>
       <%# end  %>
       </div>

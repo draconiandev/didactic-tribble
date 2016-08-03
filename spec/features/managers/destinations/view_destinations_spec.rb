@@ -1,4 +1,4 @@
-RSpec.feature 'Everyone can view all destinations' do
+feature 'Everyone can view all destinations' do
 
   scenario 'with the destination description' do
     destination = create(:destination)

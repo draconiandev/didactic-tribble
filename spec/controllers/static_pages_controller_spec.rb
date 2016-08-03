@@ -1,6 +1,4 @@
-require 'rails_helper'
-
-RSpec.describe StaticPagesController, type: :controller do
+describe StaticPagesController, type: :controller do
 
   describe "GET #home" do
     it "returns http success" do
@@ -44,11 +42,38 @@ RSpec.describe StaticPagesController, type: :controller do
     end
   end
 
-  describe "GET #trust" do
+  describe "GET #handcrafted" do
     it "returns http success" do
-      get :trust
+      get :handcrafted
       expect(response).to have_http_status(:success)
     end
   end
 
+  describe "GET #weekend" do
+    it "returns http success" do
+      get :weekend
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "GET #team_outing" do
+    it "returns http success" do
+      get :team_outing
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "GET #elderly" do
+    it "returns http success" do
+      get :elderly
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "GET #women_special" do
+    it "returns http success" do
+      get :women_special
+      expect(response).to have_http_status(:success)
+    end
+  end
 end

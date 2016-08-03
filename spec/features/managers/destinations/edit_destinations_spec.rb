@@ -1,4 +1,4 @@
-RSpec.feature 'Admin' do
+feature 'Admin' do
 
   let(:admin) { create(:person, :admin) }
 
