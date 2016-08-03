@@ -15,8 +15,8 @@ development:
 
 test:
   <<: *default
-  username:
-  password:
+  username: <%= ENV["DB_USERNAME"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
   database: trekhub_test
 
 production:

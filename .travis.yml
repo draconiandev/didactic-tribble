@@ -3,12 +3,16 @@ cache: bundler
 sudo: false
 env: 
   - RAILS_ENV=test
+services:
+  - elasticsearch
+  - postgresql
 before_install:
   - "echo '--colour' > ~/.rspec"
   - git config --global user.name 'Travis CI'
   - git config --global user.email 'travis-ci@example.com'
 before_script:
   - rake db:create:all
+  - sleep 10
 bundler_args: --without production
 install: bundle install
 script: xvfb-run bundle exec rake
