@@ -1,6 +1,7 @@
 class ContactsController < ApplicationController
   def new
     @contact = Contact.new
+    prepare_meta_tags title: 'Contact Us', description: 'TrekHub Contact Page'
   end
 
   def create

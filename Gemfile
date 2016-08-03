@@ -61,6 +61,7 @@ group :development, :test do
   gem 'poltergeist', '~> 1.10'
   gem 'faker', '~> 1.6'
   gem 'shoulda-callback-matchers', '~> 1.1'
+  gem 'codeclimate-test-reporter', '~> 0.6.0', require: nil
 end
 
 group :development do

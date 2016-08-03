@@ -28,7 +28,7 @@
 $(document).ready(function() {
     $('input.datepicker').pickadate({
       selectMonths: true,
-      format: 'You selecte!d: dddd, dd mmm, yyyy',
+      format: 'You selecte!d: dddd, dd mmm, yyyy'
     });
     $('.tabs-wrapper .row').pushpin();
     $('select').material_select();
@@ -61,7 +61,7 @@ $(document).ready(function(){
   $('#showPassword').on('click', function(){
     var passwordField = $('#password');
     var passwordFieldType = passwordField.attr('type');
-    if(passwordFieldType == 'password')
+    if(passwordFieldType === 'password')
     {
         passwordField.attr('type', 'text');
     } else {
