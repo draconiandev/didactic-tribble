@@ -81,6 +81,5 @@ group :test do
   gem 'database_cleaner', '~> 1.5'
   gem 'factory_girl_rails', '~> 4.7'
   gem 'launchy', '~> 2.4'
-  gem 'simplecov', require: false
   gem 'codeclimate-test-reporter', '~> 0.6.0', require: nil
 end
