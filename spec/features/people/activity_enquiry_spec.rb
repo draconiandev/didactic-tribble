@@ -4,7 +4,7 @@ feature 'Registered user' do
     login_as(create(:person, :user))
   end
 
-  scenario 'can enquire about an activity successfully with valid attributes', js: true do
+  scenario 'can enquire about an activity successfully with valid attributes' do
     activity = create(:activity)
     visit activities_path
     click_link activity.title
@@ -16,7 +16,7 @@ feature 'Registered user' do
     expect(page).to have_content('Thank you for your enquiry. We will get back soon to help you in your plans!')
   end
 
-  scenario 'cannot enquire about an activity with invalid attributes', js: true do
+  scenario 'cannot enquire about an activity with invalid attributes' do
     activity = create(:activity)
     visit activities_path
     click_link activity.title
