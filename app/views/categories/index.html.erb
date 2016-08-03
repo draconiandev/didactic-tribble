@@ -19,7 +19,7 @@
             <%= link_to truncate(category.name, length: 21), category_path(category) %>
             <i class="material-icons right">more_vert</i>
           </span>
-          <p> <!-- FIXME !IMPORTANT -->
+          <p>
             <%= link_to "View #{category.activities.count} #{"activity".pluralize(category.activities.count)} in this category", category_path(category) %>
           </p>
         </div>

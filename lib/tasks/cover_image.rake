@@ -1,9 +1,6 @@
 namespace :cover_image do
-  desc "TODO"
+  desc "it reprocesses the cover images of all the classes"
   task reprocess: :environment do
-    # [Activity, Destination, Category].each do |klass|
-    #   klass.cover.recreate_versions!
-    # end
     Activity.all.each do |activity|
       activity.cover.recreate_versions!
     end
