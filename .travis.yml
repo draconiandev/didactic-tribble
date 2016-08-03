@@ -1,0 +1,18 @@
+language: ruby
+cache: bundler
+sudo: false
+env: 
+  - RAILS_ENV=test
+before_install:
+  - "echo '--colour' > ~/.rspec"
+  - git config --global user.name 'Travis CI'
+  - git config --global user.email 'travis-ci@example.com'
+before_script:
+  - rake db:create:all
+bundler_args: --without production
+install: bundle install
+notifications:
+  email: false
+addons:
+    code_climate:
+        repo_token: 92e26736c91dcb351ac674dcf58c03f56d1b60f5773dc48ac3a06f59e1162e38
