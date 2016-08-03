@@ -11,6 +11,7 @@ before_script:
   - rake db:create:all
 bundler_args: --without production
 install: bundle install
+script: xvfb-run bundle exec rake
 notifications:
   email: false
 addons:
