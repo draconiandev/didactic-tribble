@@ -13,6 +13,9 @@ before_install:
 before_script:
   - rake db:create:all
   - sleep 10
+  - bundle exec rake environment elasticsearch:import:model CLASS='Activity' FORCE=true
+  - bundle exec rake environment elasticsearch:import:model CLASS='Category' FORCE=true
+  - bundle exec rake environment elasticsearch:import:model CLASS='Destination' FORCE=true
 bundler_args: --without production
 install: bundle install
 script: xvfb-run bundle exec rake
