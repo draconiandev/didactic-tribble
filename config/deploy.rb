@@ -20,7 +20,7 @@ set :scm, :git
 # These are the defaults.
 # set :format_options, command_output: true, log_file: 'log/capistrano.log', color: :auto, truncate: :auto
 
-# Default value for :pty is false
+# Default value for :pty is false 
 # set :pty, true
 
 # Default value for :linked_files is []
