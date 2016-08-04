@@ -39,6 +39,7 @@ gem 'pundit', '~> 1.1'
 gem 'carrierwave', '~> 0.11.2'
 gem 'photoswipe-rails', '~> 4.1'
 gem 'mini_magick', '~> 4.5'
+gem 'carrierwave-aws', '~> 1.0'
 
 #Pagination
 gem 'will_paginate', '~> 3.1'
