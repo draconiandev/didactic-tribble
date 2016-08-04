@@ -40,11 +40,10 @@ build/
 /.rubocop.yml
 /brakeman.html
 /coverage/*
-/.env.development
+/.env.production
 
 !.keep
 *.DS_Store
 *.swo
 *.swp
-deploy@ec2-52-66-119-94.ap-south-1.compute.amazonaws.com
 deploy@ec2-52-66-119-94.ap-south-1.compute.amazonaws.com
