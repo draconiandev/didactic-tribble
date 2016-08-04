@@ -20,7 +20,7 @@ feature 'Managers' do
     expect(page.current_url).to eq destination_url(destination)
   end
 
-  scenario 'cannot create new destinations without valid attributes', js: true do
+  scenario 'cannot create new destinations without valid attributes' do
     click_button 'Submit'
     expect(page).to have_content "Name can't be blank"
   end

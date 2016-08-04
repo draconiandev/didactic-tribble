@@ -11,8 +11,4 @@
 # Disallow /tags
 # User-agent: *
 # Disallow: /tag/
-# Disallow: /*trip_search_result.php?
-# Disallow: /*event_search_result.php?
-# Disallow: /*adventure_search.php?
-# Disallow: /*searchTrip.php?
 # Sitemap: http://www.trekhub.in/sitemap.xml.gz
