@@ -37,9 +37,9 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install openjdk-9-jre
 java -version
-# java version "9-ea"
-# Java(TM) SE Runtime Environment (build 9-ea+126)
-# Java HotSpot(TM) 64-Bit Server VM (build 9-ea+126, mixed mode)
+## java version "9-ea"
+## Java(TM) SE Runtime Environment (build 9-ea+126)
+## Java HotSpot(TM) 64-Bit Server VM (build 9-ea+126, mixed mode)
 
 sudo add-apt-repository -y ppa:webupd8team/java
 sudo apt-get update
