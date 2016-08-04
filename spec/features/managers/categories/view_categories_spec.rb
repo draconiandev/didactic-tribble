@@ -1,4 +1,4 @@
-feature 'Admins can view all categories' do
+feature 'Managers can view all categories' do
   let(:admin) { create(:person, :admin) }
 
   before do

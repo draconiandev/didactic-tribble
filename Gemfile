@@ -3,15 +3,15 @@ ruby '2.3.1'
 
 gem 'rails', '4.2.6'
 gem 'pg', '~> 0.15'
-gem 'jbuilder', '~> 2.0'
+gem 'jbuilder', '~> 2.6'
 gem 'enumerize', '~> 1.1'
 gem 'mail_form', '~> 1.5'
 
 #Frontend
 gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', '~> 3.0'
 gem 'jquery-rails', '~> 4.1'
-gem 'materialize-sass', '~> 0.97.6'
+gem 'materialize-sass', '~> 0.97.7'
 gem 'font-awesome-rails', '~> 4.6'
 gem 'react-rails', '~> 1.8'
 gem 'medium-editor-rails', '~> 2.2'
@@ -29,7 +29,7 @@ gem 'friendly_id', '~> 5.1'
 
 #Authentication
 gem 'devise', '~> 4.2'
-gem 'omniauth-facebook', '~> 3.0'
+gem 'omniauth-facebook', '~> 4.0'
 gem 'omniauth-google-oauth2', '~> 0.4.1'
 
 #Authorization

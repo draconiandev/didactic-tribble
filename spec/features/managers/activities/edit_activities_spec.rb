@@ -1,4 +1,4 @@
-feature 'Admins can edit activities' do
+feature 'Managers can edit activities' do
   let(:admin) { create(:person, :admin) }
 
   before do

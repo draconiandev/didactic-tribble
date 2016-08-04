@@ -1,4 +1,4 @@
-feature 'Admins can view all states' do
+feature 'Managers can view all states' do
   let(:admin) { create(:person, :admin) }
 
   before do

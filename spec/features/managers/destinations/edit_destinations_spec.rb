@@ -1,4 +1,4 @@
-feature 'Admin' do
+feature 'Manager' do
 
   let(:admin) { create(:person, :admin) }
 

@@ -1,11 +1,11 @@
-feature 'Admins can view all states' do
+feature 'Managers can view all enquiries associated with an activity' do
   let(:admin) { create(:person, :admin) }
 
   before do
     login_as(admin)
   end
 
-  scenario 'with the activity description' do
+  scenario 'along with the activity description' do
     # activity = create(:activity)
     enquiry = create(:enquiry)
     visit activities_path
