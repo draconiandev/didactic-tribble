@@ -12,8 +12,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '~> 3.0'
 gem 'jquery-rails', '~> 4.1'
 gem 'materialize-sass', '~> 0.97.7'
-gem 'font-awesome-rails', '~> 4.6'
 gem 'react-rails', '~> 1.8'
+gem 'font-awesome-rails', '~> 4.6'
 gem 'medium-editor-rails', '~> 2.2'
 gem 'lazyload-rails', '~> 0.3.1'
 gem 'gmaps4rails', '~> 2.1'
@@ -70,6 +70,10 @@ group :development do
   gem 'better_errors', '~> 2.1'
   gem 'brakeman', require: false
   gem 'meta_request', '~> 0.4.0'
+  gem 'capistrano', '~> 3.1'
+  gem 'capistrano-bundler', '~> 1.1'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-rbenv', '~> 2.0'
 end
 
 group :test do
