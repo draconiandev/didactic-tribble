@@ -46,3 +46,4 @@ build/
 *.DS_Store
 *.swo
 *.swp
+deploy@ec2-52-66-119-94.ap-south-1.compute.amazonaws.com
