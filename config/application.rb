@@ -8,7 +8,7 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "action_view/railtie"
 require "sprockets/railtie"
-require 'dotenv-rails'
+require 'dotenv/rails-now'
 Dotenv.load
 
 Bundler.require(*Rails.groups)

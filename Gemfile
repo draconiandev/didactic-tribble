@@ -3,6 +3,7 @@ ruby '2.3.1'
 
 gem 'rails', '4.2.6'
 gem 'pg', '~> 0.15'
+gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'jbuilder', '~> 2.6'
 gem 'enumerize', '~> 1.1'
 gem 'mail_form', '~> 1.5'
