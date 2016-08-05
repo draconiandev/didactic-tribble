@@ -26,7 +26,7 @@ set :scm, :git
 # Default value for :linked_files is []
 # append :linked_files, 'config/database.yml', 'config/secrets.yml'
 set :user, "deploy"
-set :linked_files, %w{config/database.yml .env}
+set :linked_files, %w{config/database.yml .rbenv-vars}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 # set :config_backend, :dotenv
 # set :config_file, '.env.production'
