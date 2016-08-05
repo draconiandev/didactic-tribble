@@ -41,7 +41,7 @@ build/
 /brakeman.html
 /coverage/*
 /.env.production
-/config/*secrets*
+config/*secrets*
 
 !.keep
 *.DS_Store
