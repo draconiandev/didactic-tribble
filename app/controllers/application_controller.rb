@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
       site:        site_name,
       title:       title,
       reverse:     true,
-      icon:        '/favicon.ico',
+      icon:        'favicon.ico',
       image:       image,
       description: description,
       keywords:    %w[trekhub adventure tourism trekking India paraglide scuba diving skydiving team outings campsites corporate tours],
