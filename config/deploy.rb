@@ -27,7 +27,7 @@ set :scm, :git
 # append :linked_files, 'config/database.yml', 'config/secrets.yml'
 set :user, "deploy"
 set :linked_files, %w{config/database.yml .rbenv-vars config/secrets.yml}
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 # set :config_backend, :dotenv
 # set :config_file, '.env.production'
 
