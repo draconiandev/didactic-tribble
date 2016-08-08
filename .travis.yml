@@ -10,9 +10,8 @@ before_install:
   - git config --global user.name 'Travis CI'
   - git config --global user.email 'travis-ci@example.com'
 before_script:
-  - - psql -c "CREATE USER thuser WITH PASSWORD 'randomly';" -U postgres
+  - psql -c 'create database travis_ci_test;' -U postgres
   - rake db:create:all
-  - sleep 100
 bundler_args: --without production
 install: bundle install
 script: xvfb-run bundle exec rake
