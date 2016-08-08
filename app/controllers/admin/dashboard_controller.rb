@@ -4,11 +4,12 @@ class Admin::DashboardController < ApplicationController
 
   def index
     authorize :dashboard, :index?
-    @activities = Activity.includes(:destination, :vendor, :categories).limit(100).order('created_at DESC')
+    @activities = Activity.includes(:destination, :vendor, :categories).latest(100)
     @categories = Category.limit(100).order('created_at DESC')
     @destinations = Destination.limit(100).order('created_at DESC')
     @vendors = Vendor.limit(100).order('created_at DESC')
     @enquiries = Enquiry.limit(100).order('created_at DESC').includes(:activity)
+    @people = Person.all
   end
 
   def activity

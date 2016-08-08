@@ -1,4 +1,81 @@
 <div class="container">
+
+  <div class="row">
+    <div class="col s3">
+      <div class="card-panel teal">
+        <h1 class="center white-text"><%= @activities.count %></h1>
+        <h5 class="center white-text">Total activities</h5>
+      </div>
+    </div>
+    <div class="col s3">
+      <div class="card-panel teal">
+        <h1 class="center white-text"><%= @activities.approved.count %></h1>
+        <h5 class="center white-text">Approved activities</h5>
+      </div>
+    </div>
+    <div class="col s3">
+      <div class="card-panel teal">
+        <h1 class="center white-text"><%= @activities.featured.count %></h1>
+        <h5 class="center white-text">Featured activities</h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s4">
+      <div class="card-panel teal">
+        <h1 class="center white-text"><%= @categories.count %></h1>
+        <h5 class="center white-text">Categories</h5>
+      </div>
+    </div>
+    <div class="col s1"></div>
+    <div class="col s4">
+      <div class="card-panel teal">
+        <h1 class="center white-text"><%= @destinations.count %></h1>
+        <h5 class="center white-text">Destinations</h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s4">
+      <div class="card-panel teal">
+        <h1 class="center white-text"><%= @vendors.count %></h1>
+        <h5 class="center white-text">Vendors</h5>
+      </div>
+    </div>
+    <div class="col s1"></div>
+    <div class="col s4">
+      <div class="card-panel teal">
+        <h1 class="center white-text"><%= @enquiries.count %></h1>
+        <h5 class="center white-text">Enquiries</h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s3">
+      <div class="card-panel teal">
+        <h1 class="center white-text"><%= @people.count %></h1>
+        <h5 class="center white-text">Total people</h5>
+      </div>
+    </div>
+    <div class="col s3">
+      <div class="card-panel teal">
+        <h1 class="center white-text"><%= @people.omniauthed.count %></h1>
+        <h5 class="center white-text">Through FB & G+</h5>
+      </div>
+    </div>
+    <div class="col s3">
+      <div class="card-panel teal">
+        <h1 class="center white-text"><%= @people.registered.count %></h1>
+        <h5 class="center white-text">Through TrekHub</h5>
+      </div>
+    </div>
+  </div>
+
+
+
   <div class="row">
       <div class="col s12 m10 l10">
         

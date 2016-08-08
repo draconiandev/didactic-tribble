@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
 
   def home
-    @activities = Activity.approved.latest(6).includes(:destination, :categories)
+    @activities = Activity.approved.featured.latest(6).includes(:destination, :categories)
     @destinations = Destination.order("created_at desc").limit(6)
     @weekend_getaways = Activity.approved.handcrafted(:weekend_getaway).count
     @team_outings = Activity.approved.handcrafted(:team_outing).count

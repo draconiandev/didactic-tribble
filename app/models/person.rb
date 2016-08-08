@@ -19,6 +19,9 @@ class Person < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders, :history]
 
+  scope :registered,      -> { where(provider: nil) }
+  scope :omniauthed,      -> { where.not(provider: nil) }
+
   def should_generate_new_friendly_id?
     name.blank? || name_changed?
   end
