@@ -9,6 +9,7 @@ FactoryGirl.define do
     cover                   { File.open("#{Rails.root}/spec/fixtures/files/card.jpg") }
     difficulty              'easy'
     brief                   Faker::Lorem.sentence
+    approved                true
     association             :destination, factory: :destination
     association             :vendor, factory: :vendor
   end
