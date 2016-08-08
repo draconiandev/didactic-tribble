@@ -29,7 +29,7 @@ class VendorsController < ApplicationController
   def show
     authorize @vendor
     
-    @activities = Activity.by_vendor(@vendor).includes(:vendor).order(created_at: :desc)
+    @activities = Activity.approved.by_vendor(@vendor).includes(:vendor).order(created_at: :desc)
     @categories = @vendor.categories.order(created_at: :desc)
 
     if request.path != vendor_path(@vendor)

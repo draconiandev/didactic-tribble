@@ -11,6 +11,7 @@ before_install:
   - git config --global user.email 'travis-ci@example.com'
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
   - rake db:create:all
 bundler_args: --without production
 install: bundle install

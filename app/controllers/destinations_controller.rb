@@ -30,7 +30,7 @@ class DestinationsController < ApplicationController
 
   def show
     authorize @destination
-    @activities = Activity.in_destination(@destination)
+    @activities = Activity.approved.in_destination(@destination)
                           .includes(:destination, :categories)
                           .shuffle
                           .paginate(page: params[:page], per_page: 12)

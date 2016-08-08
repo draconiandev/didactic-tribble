@@ -21,7 +21,7 @@
               <i class="material-icons right">more_vert</i>
             </span>
             <p>
-              <%= link_to "View All #{destination.activities.count} #{"activity".pluralize(destination.activities.count)} for this destination", destination_path(destination) %>
+              <%= link_to "View #{destination.activities.approved.count} #{"activity".pluralize(destination.activities.approved.count)} for this destination", destination_path(destination) %>
             </p>
           </div>
 

@@ -7,7 +7,7 @@ class ActivitiesController < ApplicationController
 
   def index
     authorize Activity
-    @activities = Activity.recent.includes(:destination, :categories).paginate(page: params[:page], per_page: 15)
+    @activities = Activity.approved.recent.includes(:destination, :categories).paginate(page: params[:page], per_page: 15)
     prepare_meta_tags title: "Activities", description: "Experience 100+ activities from around the country"
   end
 
@@ -36,12 +36,12 @@ class ActivitiesController < ApplicationController
     @galleries = @activity.galleries.all
     @enquiry = @activity.enquiries.build
 
-    @related_activities = Activity.related_activities(@activity)
+    @related_activities = Activity.approved.related_activities(@activity)
                                   .includes(:categories)
     # Refactor later
     # @nearby_activities =  Activity.where("id != '#{@activity.id}'")
     #                               .limit(3).includes(:destination, :categories)
-    @nearby_activities = Activity.nearby_activities(@activity)
+    @nearby_activities = Activity.approved.nearby_activities(@activity)
     meta_tags_for(@activity)
 
     build_map
@@ -99,7 +99,7 @@ class ActivitiesController < ApplicationController
                                      :price, :start_date, :end_date, :cover,
                                      :handcrafted, :handcrafted_category,
                                      :difficulty, :brief, :slug, :published_at, :featured,
-                                     :destination_id, :vendor_id,
+                                     :destination_id, :vendor_id, :approved,
                                      galleries_attributes: [:id, :activity_id,
                                       :image, :alt_text, :done, :_destroy],
                                       category_ids:[], categories_attributes: [:name])

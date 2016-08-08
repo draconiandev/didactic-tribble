@@ -20,7 +20,7 @@
             <i class="material-icons right">more_vert</i>
           </span>
           <p>
-            <%= link_to "View #{category.activities.count} #{"activity".pluralize(category.activities.count)} in this category", category_path(category) %>
+            <%= link_to "View #{category.activities.approved.count} #{"activity".pluralize(category.activities.approved.count)} in this category", category_path(category) %>
           </p>
         </div>
         <div class="card-reveal">

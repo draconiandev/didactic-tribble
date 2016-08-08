@@ -17,7 +17,8 @@
               <th>Destination</th>
               <th>Categories</th>
               <th>Vendor</th>
-              <th colspan="4"></th>
+              <th>Featured?</th>
+              <th>Approved?</th>
             </tr>
           </thead>
 
@@ -28,7 +29,8 @@
                 <td><%= activity.destination.name %></td>
                 <td><%= activity.categories.map(&:name).to_sentence(last_word_connector: ' and ') %></td>
                 <td><%= activity.vendor.name %></td>
-                <td><%= link_to 'Show', activity %></td>
+                <td><% if activity.featured? %>Yes<% end %></td>
+                <td><% if activity.approved? %>Yes<% end %></td>
                 <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
                 <td>
                   <%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } if policy(:activity).destroy? %>

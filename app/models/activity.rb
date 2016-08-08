@@ -40,10 +40,11 @@ class Activity < ActiveRecord::Base
                                       tsearch: { any_word: true, prefix: true, dictionary: 'english' },
                                       trigram: { threshold: 0.1 }
                                     }
-  # Maybe published should also be scoped if and when implemented.
+
   scope :recent,        -> { order(created_at: :desc) }
   scope :latest,        -> (number) { recent.limit(number) }
   scope :featured,      -> { where(featured: true) }
+  scope :approved,      -> { where(approved: true) }
 
   private
 

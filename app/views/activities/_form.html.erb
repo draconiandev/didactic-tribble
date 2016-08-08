@@ -60,6 +60,17 @@
                               input_html: { id: 'textarea1', class: 'materialize-textarea', length: '160' } %>
         </div>  
       </div>
+      <% if policy(:activity).destroy? %>
+        <hr><br><h5 class='center'>Booleans</h5><hr>
+        <div class="row">
+          <div class='input-field col s6'>
+            <%= f.input :featured, label: 'Featured?' %>
+          </div>
+          <div class='input-field col s6'>
+            <%= f.input :approved, label: 'Approved?' %>
+          </div>  
+        </div>
+      <% end %>
       <br><h5 class='center'>Images</h5><hr>
       <br><h6 class='center'>Cover Image</h6><hr>
       <div class='input-field col s12'>
