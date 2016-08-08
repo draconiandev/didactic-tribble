@@ -17,12 +17,9 @@
 //= require photoswipe
 //= require medium-editor
 //= require lazyload
-//= require react
-//= require react_ujs
 // = require underscore
 //= require gmaps/google
 //= require cocoon
-//= require components
 //= require_tree .
 
 $(document).ready(function() {

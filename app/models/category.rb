@@ -1,5 +1,9 @@
 #
 class Category < ActiveRecord::Base
+  extend Enumerize
+  extend FriendlyId
+  include PgSearch
+
   has_many :subscriptions
   has_many :categorizations, dependent: :destroy
   has_many :vendors, through: :subscriptions
@@ -8,15 +12,17 @@ class Category < ActiveRecord::Base
   validates :name, :description, :brief, :main_category, presence: true
   validates :name, uniqueness: true
 
-  extend Enumerize
   enumerize :main_category, in: [:air, :water, :land]
 
-  extend FriendlyId
   friendly_id :name, use: [:slugged, :finders, :history]
 
-  include SearchableCategory
-
   mount_uploader :cover, CoverUploader
+
+  pg_search_scope :category_search, against: :name,
+                                    using: {
+                                      tsearch: { any_word: true, prefix: true, dictionary: 'english' },
+                                      trigram: { threshold: 0.1 }
+                                    }
 
   private
 

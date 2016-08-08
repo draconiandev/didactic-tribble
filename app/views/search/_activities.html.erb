@@ -1,15 +1,14 @@
 <div class="center">
   <% if @activities.any? %>
     <h4>Activities</h4>
-    <h5><%= @activity_records.count %> <%=  "activity".pluralize(@activity_records.count) %> found</h5>  
+    <h5><%= @activities.count %> <%=  "activity".pluralize(@activities.count) %> found</h5>  
   <% end %>
 </div>
-  
 <div>
   <div class="row">
     <% @activities.each do |activity| %>
     <div class="col s12 m6 l6">
-      <div class="card hoverable">
+      <div class="card medium hoverable">
       
       <div class="card-image waves-effect waves-block waves-light">
         <%= link_to image_tag(activity.cover.card.url), activity_path(activity) %>

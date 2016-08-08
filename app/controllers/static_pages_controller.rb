@@ -7,6 +7,8 @@ class StaticPagesController < ApplicationController
     @team_outings = Activity.handcrafted(:team_outing).count
     @elderly_activities = Activity.handcrafted(:elderly_activity).count
     @women_specials = Activity.handcrafted(:women_special).count
+    @activities_autocomplete = Activity.all
+    @autocomplete = Destination.all + Category.all
   end
 
   def handcrafted

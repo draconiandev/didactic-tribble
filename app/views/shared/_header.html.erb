@@ -1,21 +1,52 @@
 <div class="aheader">
   <div id="index-banner" class="parallax-container">
-    <div class="section no-pad-bot">
+    <div class="container">
+      <br><br>
+      <h1 class="header center white-text">Welcome Home</h1>
+      <div class="row center">
+        <h5 class="header white-text text-lighten-1 col s12 light">Experience 200+ activities in more than 20 destinations</h5>
+      </div>
       <div class="container">
-        <br><br>
-        <h1 class="header center white-text">Welcome Home</h1>
-        <div class="row center">
-          <h5 class="header white-text text-lighten-1 col s12 light"> Experience 200+ activities in more than 20 destinations</h5>
-        </div>
-        <nav class="deep-orange lighten-1">
-          <div class="nav-wrapper">
-              <ul class="input-field">
-                <%= react_component('SearchContainer') %>            
-              </ul>
+        <div class="center">
+          <div class="row">
+            <form action="/search" accept-charset="UTF-8" method="get">
+              <div class="col s11">
+                <nav>
+                  <div class="nav-wrapper">
+                    <div class="input-field">
+                      <input name="utf8" type="hidden" value="√" />
+                      <input type="search" name="q" id="q" placeholder="Search for activities, categories and destinations" autocomplete="off" class="autocomplete" />
+                      <label for="q"><i class="material-icons">search</i></label>
+                      <i class="material-icons">close</i>
+                    </div>
+                  </div>
+                </nav>
+              </div>
+              <div class="col s1">
+                <button class="search-button waves-effect waves-light">
+                  <i class="material-icons prefix">send</i>
+                </button>
+              </div>
+            </form>
           </div>
-        </nav>  
-        <br><br>
+        </div>
       </div>
     </div>
+    <br><br>
   </div>
 </div>
+
+<script>
+$(document).ready(function() {
+  $('input.autocomplete').autocomplete({
+    data: {
+      <% @autocomplete.each do |ac| %>
+        "<%= ac.name %>": "<%= ac.cover.thumb %>",
+      <% end %>
+      <% @activities_autocomplete.each do |activity| %>
+        "<%= activity.title %>": "<%= activity.cover.thumb %>",
+      <% end %>
+    }
+  });
+});
+</script>

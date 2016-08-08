@@ -35,7 +35,7 @@
       <div class='col s12 m6 l6' >
         <h5 class='white-text'>
           <i class="fa fa-object-group" aria-hidden="true"></i> 
-          <%= @activity.categories.map(&:name).to_sentence(last_word_connector: ' and ') %>
+          <%= @activity.categories.pluck(:name).to_sentence(last_word_connector: ' and ') %>
         </h5>
       </div>
       <div class='col s12 m6 l6'>

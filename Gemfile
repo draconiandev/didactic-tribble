@@ -14,7 +14,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '~> 3.0'
 gem 'jquery-rails', '~> 4.1'
 gem 'materialize-sass', '~> 0.97.7'
-gem 'react-rails', '~> 1.8'
 gem 'font-awesome-rails', '~> 4.6'
 gem 'medium-editor-rails', '~> 2.2'
 gem 'lazyload-rails', '~> 0.3.1'
@@ -43,12 +42,11 @@ gem 'photoswipe-rails', '~> 4.1'
 gem 'mini_magick', '~> 4.5'
 gem 'carrierwave-aws', '~> 1.0'
 
+# Search
+gem 'pg_search'
+
 #Pagination
 gem 'will_paginate', '~> 3.1'
-
-#Search
-gem 'elasticsearch-rails', '~> 0.1.9'
-gem 'elasticsearch-model', '~> 0.1.9'
 
 group :development, :test do
   gem 'byebug'

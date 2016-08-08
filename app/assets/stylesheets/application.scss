@@ -135,6 +135,13 @@ a.footer-icons {
   font-size: 1.2rem;
 }
 
+.search-button{
+  @extend .btn-floating;
+  border-radius: 0%;
+  margin-left: -1.8rem;
+  margin-top: 0.2rem;
+}
+
 .div, #map {
   margin: 0;
   padding: 0;
@@ -156,87 +163,6 @@ a.footer-icons {
 .pinned {
   position: fixed !important;
   padding: 100px;
-}
-
-#autocomplete-items {
-  list-style: none;
-  // padding: 6px 8px;
-  // width: 100%;
-  background-color: $bg-color;
-  display: block;
-  li {
-    // padding: 4px 10px;
-    a {
-      color: white;
-      font-size: 2rem;
-      // padding: 3px 0;
-      // overflow: hid<den;
-      // &:hover {
-      //   background-color: white;
-      //   color: black;
-      // }
-    }
-  }
-  .autocomplete-heading {
-    // padding-bottom: 0;
-    h4 {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: black;
-      border-bottom: 1px solid $primary-color;
-      margin: 0;
-      // padding-bottom: 6px;
-    }
-  }
-}
-
-.large-searchbar {
-  form {
-    margin: 1rem 0 2rem;
-  }
-  input[type="search"] {
-    width: 100%;
-    font-size: 2rem;
-    font-weight: 100;
-    border: none;
-    outline: none;
-    background-color: #fff;
-    border-bottom: 0.15rem solid $secondary-color;
-  }
-}
-
-nav ul a{
-    display: block;
-    padding-left: 2rem;
-}
-
-.main-searchbar {
-  .dropdown-menu {
-    z-index: 200;
-    background-color: $bg-color;
-    .dropdown-arrow-top {
-      width: 0;
-      height: 0;
-      border-left: 10px solid transparent;
-      border-right: 10px solid transparent;
-      border-bottom: 10px solid #fff;
-      position: relative;
-      right: 96px;
-      top: -10px;
-    }
-    .dropdown-arrow-bottom {
-      width: 0;
-      height: 0;
-      border-left: 12px solid transparent;
-      border-right: 12px solid transparent;
-      z-index: 200;
-      border-bottom: 11px solid rgba(0, 0, 0, 0.11);
-      position: relative;
-      right: 94px;
-      top: -11px;
-    }
-  }
 }
 
 .display-next{

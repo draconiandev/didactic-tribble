@@ -2,7 +2,7 @@
 class Activity < ActiveRecord::Base
   extend FriendlyId
   extend Enumerize
-  include SearchableActivity
+  include PgSearch
 
   belongs_to :destination
   belongs_to :vendor
@@ -31,10 +31,19 @@ class Activity < ActiveRecord::Base
   # Use multiple options of carrierwave such as resize_to_fit or resize_to_fill and size of the images to configure.
   mount_uploader :cover, CoverUploader
 
+  pg_search_scope :activity_search, against: :title,
+                                    associated_against: {
+                                      destination: :name,
+                                      categories: :name
+                                    },
+                                    using: {
+                                      tsearch: { any_word: true, prefix: true, dictionary: 'english' },
+                                      trigram: { threshold: 0.1 }
+                                    }
   # Maybe published should also be scoped if and when implemented.
-  scope :recent,              -> { order(created_at: :desc) }
-  scope :latest,              -> (number) { recent.limit(number) }
-  scope :featured,            -> { where(featured: true) }
+  scope :recent,        -> { order(created_at: :desc) }
+  scope :latest,        -> (number) { recent.limit(number) }
+  scope :featured,      -> { where(featured: true) }
 
   private
 
@@ -54,8 +63,8 @@ class Activity < ActiveRecord::Base
   def self.related_activities(activity)
     joins(:categorizations)
     .where(categorizations: { category_id: activity.category_ids })
-    .where('activities.id != ?', activity.id)
-    .order("RANDOM()").limit(3).includes(:destination)
+    .where('activities.id != ?', activity.id).distinct
+    .limit(3).includes(:destination)
   end
 
   def self.nearby_activities(activity)

@@ -1,33 +1,53 @@
 <div class="container">
-  <nav class="deep-orange lighten-2">
-    <div class="nav-wrapper">
-      <form>
-        <ul class="input-field">
-          <div class="col-12 large-searchbar">
-            <%= form_for :search, url: search_path, method: :get, class: "navbar-form navbar-right", role: "search" do |f| %>
-              <%= f.search_field :q, value: params[:q], placeholder: 'Search for activities, categories and destinations', autofocus: true, autocomplete: 'off', onfocus: "this.value = this.value;" %>
-            <% end %>
-          </div>
-        </ul>
+  <br><br><br>
+  <div class="center">
+    <div class="row">
+      <form action="/search" accept-charset="UTF-8" method="get">
+        <div class="col s12 m11 l11">
+          <input name="utf8" type="hidden" value="√" />
+          <input type="search" name="q" id="q" placeholder="Search for activities, categories and destinations" autocomplete="off" class="autocomplete" />
+        </div>
+        <div class="col s12 m1 l1">
+          <button class="btn-floating waves-effect waves-light">
+            <i class="material-icons prefix">search</i>
+          </button>
+        </div>
       </form>
     </div>
-  </nav>
-  <br><br><br>
-<div class="row">
-  <div class="col s12 m6 l8">
-    <%= render 'activities' %>
   </div>
-  <div class="col s12 m4 l1">
-  </div>
-  <div class="col s12 m4 l3 right">
-    <div class="row">
-      <div class="col s12">
-        <%= render 'categories' %>
-      </div>
-      <div class="col s12">
-        <%= render 'destinations' %>
+
+<br><br><br>
+
+  <div class="row">
+    <div class="col s12 m6 l8">
+      <%= render 'activities' %>
+    </div>
+    <div class="col s12 m4 l1">
+    </div>
+    <div class="col s12 m4 l3 right">
+      <div class="row">
+        <div class="col s12">
+          <%= render 'categories' %>
+        </div>
+        <div class="col s12">
+          <%= render 'destinations' %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-</div>
+
+<script>
+$(document).ready(function() {
+  $('input.autocomplete').autocomplete({
+    data: {
+      <% @autocomplete.each do |ac| %>
+        "<%= ac.name %>": "<%= ac.cover.thumb %>",
+      <% end %>
+      <% @activities_autocomplete.each do |activity| %>
+        "<%= activity.title %>": "<%= activity.cover.thumb %>",
+      <% end %>
+    }
+  });
+});
+</script>

@@ -1,7 +1,7 @@
 <div class="center">
 	<% if @categories.any? %>
 	  <h5 class="center">Categories</h5>
-	  <h6><%= @category_records.count %> <%=  "category".pluralize(@category_records.count) %> found</h6>
+	  <h6><%= @categories.count %> <%=  "category".pluralize(@categories.count) %> found</h6>
     <br>
 
 	  <% @categories.each do |category| %>

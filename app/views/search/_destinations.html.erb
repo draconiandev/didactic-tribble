@@ -1,7 +1,7 @@
 <div class="center">
 	<% if @destinations.any? %>
 	  <h5 class="center">Destinations</h5>
-	  <h6><%= @destination_records.count %> <%=  "destination".pluralize(@destination_records.count) %> found</h6>
+	  <h6><%= @destinations.count %> <%=  "destination".pluralize(@destinations.count) %> found</h6>
     <br>
 	  
 	  <% @destinations.each do |destination| %>
