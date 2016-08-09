@@ -1,4 +1,82 @@
 <h1 class='center'>Help</h1>
 <div class="container">
-	
+  <ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header">What is TrekHub?</div>
+      <div class="collapsible-body">
+          <blockquote>TrekHub is a marketplace for all kind of adventure and skill tourism. Also, there are <i>Handcrafted Packages for women and elder travellers</i>. Apart from these we do provide itineraries for weekend get-aways and cater corporate team outings.
+          </blockquote>
+      </div>
+    </li>
+
+    <li>
+      <div class="collapsible-header">Why TrekHub?</div>
+      <div class="collapsible-body">
+          <blockquote>Simple. We believe we provide the best service out there. TrekHub will be a one-stop solution for all your adventures.
+          </blockquote>
+      </div>
+    </li>
+
+    <li>
+      <div class="collapsible-header">How do I Register?</div>
+      <div class="collapsible-body">
+          <blockquote>Click <%= link_to 'here', new_person_registration_path %> and enter valid E-mail ID and set a unique and secured password. Within few minutes you will recieve a confirmation link to complete your registration.
+          </blockquote>
+      </div>
+    </li>
+
+    <li>
+      <div class="collapsible-header">How do I Log In?</div>
+      <div class="collapsible-body">
+          <blockquote>Click <%= link_to 'here', new_person_session_path %> and enter registered E-mail and password.
+          </blockquote>
+      </div>
+    </li>
+
+    <li>
+      <div class="collapsible-header">What if I have forgot my Password?</div>
+      <div class="collapsible-body">
+          <blockquote>Click <%= link_to 'here', new_person_password_path %> and enter registered E-mail ID. Within few minutes you’ll recieve a mail with a link to reset your password. Click on it and set a unique and secured password.
+          </blockquote>
+      </div>
+    </li>
+
+    <li>
+      <div class="collapsible-header">How do search for an Activity?</div>
+      <div class="collapsible-body">
+          <blockquote>Browse through our site and you’ll find number of activities to choose from. You can search based on <%= link_to 'Activities', activities_path %>, <%= link_to 'Destinations', destinations_path %> and <%= link_to 'Categories', categories_path %>.
+          </blockquote>
+          <blockquote>Corporates can click <%= link_to 'here', static_pages_team_outing_path %> to view all the options to plan your Team Outings.
+          </blockquote>
+          <blockquote>Also we have dedicated Activities for <%= link_to 'Elder travellers', 
+            static_pages_elderly_path %> and <%= link_to 'Women travellers', static_pages_women_special_path %>.
+          </blockquote>
+      </div>
+    </li>
+
+    <li>
+      <div class="collapsible-header">How do I book an Activity?</div>
+      <div class="collapsible-body">
+          <blockquote>On the activity page you are interested in, you’ll find an “Enquiry” button on bottom-right corner. Click on it. Fill in the form and submit. Within 24 hours you’ll recieve a call from one of our executivies who then guide you further in confirming your booking.
+          </blockquote>
+      </div>
+    </li>
+
+    <li>
+      <div class="collapsible-header">How do I know that my booking is confirmed?</div>
+      <div class="collapsible-body">
+          <blockquote>Once you have made the payment you’ll revieve a mail with Payment Reciept, Activity Details and contact person’s details.
+          </blockquote>
+      </div>
+    </li>
+
+    <li>
+      <div class="collapsible-header">How do I cancel my booking?</div>
+      <div class="collapsible-body">
+          <blockquote>Send us a mail form the registered E-mail ID to <a class="orange-text text-lighten-3" href="mailto:info@trekhub.in" target="_blank">info@trekhub.in</a> with the details of your booking, like Name, Contact Number, Activity Name, Activity Schedule and number of Tickets Booked.
+          </blockquote>
+          <blockquote>However, all cancellations have to comply with our cancelletion policy. Please click <%= link_to 'here', static_pages_policies_path %> to know more.
+          </blockquote>
+      </div>
+    </li>
 </div>
