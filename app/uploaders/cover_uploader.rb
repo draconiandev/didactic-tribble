@@ -1,6 +1,7 @@
 # encoding: utf-8
 class CoverUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
+  process :validate_dimensions
 
   if Rails.env.production?
     storage :aws

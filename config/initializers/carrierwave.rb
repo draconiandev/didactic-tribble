@@ -7,6 +7,15 @@ module CarrierWave
         img
       end
     end
+
+    def validate_dimensions
+      manipulate! do |img|
+        if img.dimensions.any?{|i| i > 8000 }
+          raise CarrierWave::ProcessingError, "dimensions too large"
+        end
+        img
+      end
+    end
   end
 end
 

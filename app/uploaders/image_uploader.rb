@@ -1,8 +1,9 @@
 # encoding: utf-8
 class ImageUploader < CarrierWave::Uploader::Base
-  process :store_dimensions
 
   include CarrierWave::MiniMagick
+  process :store_dimensions
+  process :validate_dimensions
 
   storage :file
   # storage :aws
