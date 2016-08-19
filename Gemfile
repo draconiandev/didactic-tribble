@@ -9,7 +9,7 @@ gem 'jbuilder', '~> 2.6'
 gem 'enumerize', '~> 1.1'
 gem 'mail_form', '~> 1.5'
 
-#Frontend
+# Frontend
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '~> 3.0'
 gem 'jquery-rails', '~> 4.1'
@@ -28,15 +28,15 @@ gem 'cocoon', '~> 1.2'
 gem 'meta-tags', '~> 2.1'
 gem 'friendly_id', '~> 5.1'
 
-#Authentication
+# Authentication
 gem 'devise', '~> 4.2'
 gem 'omniauth-facebook', '~> 4.0'
 gem 'omniauth-google-oauth2', '~> 0.4.1'
 
-#Authorization
+# Authorization
 gem 'pundit', '~> 1.1'
 
-#Image
+# Image
 gem 'carrierwave', '~> 0.11.2'
 gem 'photoswipe-rails', '~> 4.1'
 gem 'mini_magick', '~> 4.5'
@@ -45,8 +45,11 @@ gem 'carrierwave-aws', '~> 1.0'
 # Search
 gem 'pg_search'
 
-#Pagination
+# Pagination
 gem 'will_paginate', '~> 3.1'
+
+# Security
+gem 'bundler-audit', require: false
 
 group :development, :test do
   gem 'byebug'
@@ -54,7 +57,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'awesome_print'
   gem 'bullet'
-  gem 'bundler-audit', require: false
   gem 'rspec-rails', '~> 3.5'
   gem 'poltergeist', '~> 1.10'
   gem 'faker', '~> 1.6'
