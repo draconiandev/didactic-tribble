@@ -41,10 +41,10 @@ class Activity < ActiveRecord::Base
                                       trigram: { threshold: 0.1 }
                                     }
 
-  scope :recent,        -> { order(created_at: :desc) }
-  scope :latest,        -> (number) { recent.limit(number) }
-  scope :featured,      -> { where(featured: true) }
-  scope :approved,      -> { where(approved: true) }
+  scope :recent,                    -> { order(created_at: :desc) }
+  scope :latest,                    -> (number) { recent.limit(number) }
+  scope :featured,                  -> { where(featured: true) }
+  scope :approved,                  -> { where(approved: true) }
 
   private
 
