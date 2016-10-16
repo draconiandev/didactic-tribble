@@ -20,6 +20,7 @@
 // = require underscore
 //= require gmaps/google
 //= require cocoon
+//= require ckeditor/init
 //= require_tree .
 
 $(document).ready(function() {

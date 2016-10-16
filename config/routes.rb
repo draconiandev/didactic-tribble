@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   devise_for :people, controllers: {
                         registrations: 'people/registrations',
                         omniauth_callbacks: 'people/omniauth_callbacks'

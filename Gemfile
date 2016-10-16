@@ -23,6 +23,7 @@ gem 'coffee-script', '~> 2.4'
 gem 'underscore-rails', '~> 1.8'
 gem 'simple_form', '~> 3.2'
 gem 'cocoon', '~> 1.2'
+gem 'ckeditor', '~> 4.2'
 
 # SEO
 gem 'meta-tags', '~> 2.1'

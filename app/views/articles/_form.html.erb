@@ -13,7 +13,7 @@
         <%= f.input :title %>
       </div>
       <div class="input-field col s12">
-        <%= f.input :body, input_html: { class: 'editable materialize-textarea' } %>
+        <%= f.input :body, as: :ckeditor, input_html: { ckeditor: { height: 600 }, id: 'bodyArea' } %>
       </div>
       <br><br><hr><br>
 
