@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :people, controllers: {
                         registrations: 'people/registrations',
                         omniauth_callbacks: 'people/omniauth_callbacks'
@@ -28,7 +27,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    get 'autocomplete' => 'search_autocomplete#index'    
+    get 'autocomplete' => 'search_autocomplete#index'
   end
 
   resources :categories
@@ -44,4 +43,7 @@ Rails.application.routes.draw do
 
   match '/contact', to: 'contacts#new', via: 'get'
   resources "contacts", only: [:new, :create]
+
+  # Blog
+  resources :articles
 end

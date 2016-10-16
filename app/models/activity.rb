@@ -22,7 +22,7 @@ class Activity < ActiveRecord::Base
 
   # Slugged candidates can also be used. Since, title is a unique attribute, just title would be sufficient.
   friendly_id :title, use: [:slugged, :finders, :history]
-  
+
   # If you add more categories or difficulties, don't forget at add them to contollers (static pages) and views as well.
   enumerize :difficulty, in: [:easy, :moderate, :challenging]
   enumerize :handcrafted_category, in: [:weekend_getaway, :team_outing,
@@ -74,7 +74,7 @@ class Activity < ActiveRecord::Base
     .where('activities.id != ?', activity.id)
     .order("RANDOM()").limit(3).includes(:destination, :categories)
   end
-  
+
   def end_date_after_start_date
     return if end_date.blank? || start_date.blank?
     errors.add(:end_date, 'must be after start date') if end_date < start_date
