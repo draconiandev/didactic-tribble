@@ -1,12 +1,49 @@
-<%= simple_form_for(@article) do |f| %>
-  <%= f.error_notification %>
+<div class="container">
+  <%= simple_form_for(@article) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :body %>
-  </div>
+    <ul>
+      <% @article.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.input :title %>
+      </div>
+      <div class="input-field col s12">
+        <%= f.input :body, input_html: { class: 'editable materialize-textarea' } %>
+      </div>
+      <br><br><hr><br>
+
+      <br><h6 class='center'>Cover Image</h6><hr>
+      <div class='input-field col s12'>
+        <div class='file-field input-field'>
+          <div class='btn teal'>
+            <span>*Cover Image</span>
+            <%= f.file_field :cover, type: :file, label: '' %>
+          </div>
+          <div class='file-path-wrapper'>
+            <input class='file-path validate' type='text'>
+          </div>
+        </div><br><br>
+        <%= @article.cover? ? 'There is a file already' : '' %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, class: 'center-align btn waves-effect waves-light' %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  var editor = new MediumEditor('.editable', {
+    toolbar: {
+        buttons: ['bold', 'italic', 'quote', 'underline', 'anchor', 'h2', 'h3', 'h4', 'h5', 'quote'],
+        diffLeft: 25,
+        diffTop: 10,
+    }
+  });
+</script>

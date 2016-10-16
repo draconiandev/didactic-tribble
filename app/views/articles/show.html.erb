@@ -1,14 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="container">
+    <%= image_tag @article.cover.cover.url, class:'col s12 materialboxed' %>
+  </div>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+<div class="container">
+  <div class="card-panel teal">
+    <div class="row">
+      <div class="col s12">
+        <h4 class="white-text"><%= @article.title %></h4>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Body:</strong>
-  <%= @article.body %>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content">
+          <p class="flow-text">
+            <%= sanitize @article.body, tags: %w(p b i u h2 h3 h4 h5 h6 blockquote), attributes: %w(href) %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+  <% if policy(:category).edit? %>
+    <%= link_to(edit_category_path) do %>
+      <div class="btn waves-effect waves-light">Edit Category<i class="material-icons right">mode_edit</i></div>
+    <% end %>
+  <% end %>
+
+  <% if policy(:category).destroy? %>
+    <div style="float:right;">
+      <%= link_to category_path(@category), method: :delete, data: {confirm: "Do you really want to delete this category?"} do %>
+        <div class="btn waves-effect waves-light red">Delete Category<i class="material-icons right">delete</i></div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

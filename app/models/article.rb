@@ -7,4 +7,6 @@ class Article < ActiveRecord::Base
   validates :body, presence: true
 
   friendly_id :title, use: [:slugged, :finders, :history]
+
+  mount_uploader :cover, CoverUploader
 end

@@ -6,7 +6,8 @@
         <li><%= msg %></li>
       <% end %>
     </ul>
-    <div class='row'><div class='input-field col s12'><%= f.input :title %></div>
+    <div class='row'>
+      <div class='input-field col s12'><%= f.input :title %></div>
       <div class='col s6'><%= f.input :difficulty %></div>
       <div class='col s6'><%= f.input :price %></div>
       <hr><br><h5 class='center'>Associations</h5><hr><br>
@@ -58,7 +59,7 @@
         <div class='input-field col s12'>
           <%= f.input :brief, label: 'Meta description',
                               input_html: { id: 'textarea1', class: 'materialize-textarea', length: '160' } %>
-        </div>  
+        </div>
       </div>
       <% if policy(:activity).destroy? %>
         <hr><br><h5 class='center'>Booleans</h5><hr>
@@ -68,7 +69,7 @@
           </div>
           <div class='input-field col s6'>
             <%= f.input :approved, label: 'Approved?' %>
-          </div>  
+          </div>
         </div>
       <% end %>
       <br><h5 class='center'>Images</h5><hr>
@@ -85,7 +86,7 @@
         </div><br><br>
         <%= @activity.cover? ? 'There is a file already' : '' %>
       </div>
-      
+
       <h6 class='center'>Gallery Images</h6><hr>
       <div id="galleries">
         <%= f.simple_fields_for :galleries do |gallery| %>
@@ -99,6 +100,7 @@
       </div><br><br>
     <%= f.submit 'Update', class: 'center-align btn waves-effect waves-light' %>
   <% end %>
+</div>
 </div>
 <script>
   var editor = new MediumEditor('.editable', {
