@@ -15,6 +15,7 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   def new
     @article = Article.new
+    @gallery = @article.galleries.build
   end
 
   # GET /articles/1/edit
@@ -69,6 +70,7 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :body)
+      params.require(:article).permit(:title, :body, galleries_attributes: [:id, :article_id,
+                                      :image, :alt_text, :done, :_destroy],)
     end
 end
