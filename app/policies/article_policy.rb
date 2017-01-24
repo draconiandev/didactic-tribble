@@ -35,10 +35,6 @@ class ArticlePolicy < ApplicationPolicy
     person.try(:admin?)
   end
 
-  def enquiries?
-    manager?
-  end
-
   private
 
   def manager?

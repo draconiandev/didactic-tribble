@@ -8,6 +8,8 @@ Ckeditor.setup do |config|
 
   Ckeditor.setup do |config|
     config.authorize_with :pundit
+    config.assets_languages = ['en']
+    # config.skin = 'moono-dark'
   end
 
   # Allowed image file types for upload.

@@ -13,7 +13,11 @@
         <%= f.input :title %>
       </div>
       <div class="input-field col s12">
-        <%= f.input :body, as: :ckeditor, input_html: { ckeditor: { height: 600 }, id: 'bodyArea' } %>
+        <%= f.input :body, as: :ckeditor,label: '', input_html: { ckeditor: { height: 600 }, id: 'bodyArea' } %>
+      </div>
+      <br><br><hr><br>
+      <div class="input-field col s12">
+        <%= f.input :all_tags, label: 'Enter related tags', placeholder: "Tags separated with comma" %>
       </div>
       <br><br><hr><br>
 
